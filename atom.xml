@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2020-12-29T15:52:23.813Z</updated>
+  <updated>2020-12-29T17:27:00.666Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>12.29</title>
+    <link href="https://luoyongjia.github.io/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/"/>
+    <id>https://luoyongjia.github.io/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/</id>
+    <published>2020-12-29T16:44:36.000Z</published>
+    <updated>2020-12-29T17:27:00.666Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="12-29"><a href="#12-29" class="headerlink" title="12.29"></a>12.29</h1><h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul><li>大约将博客搭起来了</li><li>了解了毕设中期需要做一些什么</li><li>开了蓝灯</li></ul><h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><h4 id="git在post的过程中出现帐号错误"><a href="#git在post的过程中出现帐号错误" class="headerlink" title="git在post的过程中出现帐号错误"></a>git在post的过程中出现帐号错误</h4><p>原因：当初作死，就想换个github帐号重新开始，导致电脑中默认的git帐号密码有问题</p><p>解决方法：不仅仅是说我使用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config -list \\查询信息</span><br><span class="line">git config --global  user.name</span><br><span class="line">git config --global user.email</span><br></pre></td></tr></table></figure><p>就可以了的，在不同的系统下操作不同，我此仅代表mac用户。</p><p>还需要删除钥匙串访问中的<code>github.com</code>项</p><h4 id="关于hexo-pure主题配置的一堆破事"><a href="#关于hexo-pure主题配置的一堆破事" class="headerlink" title="关于hexo pure主题配置的一堆破事"></a>关于hexo pure主题配置的一堆破事</h4><p>所以在这里写下从头开始应该怎么配置pure主题，附上<a href="https://github.com/cofess/hexo-theme-pure/blob/master/README.cn.md">官方文档</a></p><p>#####修改基本信息<br>基本信息</p><blockquote><p><code>hexofolder\themes\hexo-theme-pure\source\images</code>中替换头像的那张图片，然后在<code>hexo-theme-pure\_config.ym</code>中配置</p></blockquote><p>icon</p><blockquote><p>删除了<code>hexofolder\themes\hexo-theme-pure\source\</code>中的<code>favicon.png</code>，然后在<code>images</code>文件夹下 添加了icon的图片，将<code>hexofolder\themes\hexo-theme-pure\_config.yml</code>中favicon对应的路径改成了<code>\images\favicon</code>。这真的是一个大坑，因为在hexo创建新的文章后路径上会加上日期，所以使用相对路径就会找不到icon图标</p></blockquote><p>comment</p><blockquote><p>这部分肥肠简单，我选择的是valine。大约步骤如下</p><ol><li>注册一个LeanCloud帐号</li><li>创建一个工程</li><li>在设置中找应用keys填进去</li><li>在安全中心添加blog的url</li></ol></blockquote><h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>明明感觉自己做了很多事情，写起来又发现自己其实只做了一点点。毕设的中期答辩想要开始准备了，但是感觉还是无从下手。未来几个月怎么准备找工作的规划也还没做。可能是处理问题的速度太慢了。但是我也没有办法，只能慢慢来。</p><h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><ol><li>做好找工作的整体安排，安排了当天就做点吧</li><li>写git的常用操作并实践</li><li>毕设的概要了解，工作量估计</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;12-29&quot;&gt;&lt;a href=&quot;#12-29&quot; class=&quot;headerlink&quot; title=&quot;12.29&quot;&gt;&lt;/a&gt;12.29&lt;/h1&gt;&lt;h2 id=&quot;今天干了些什么&quot;&gt;&lt;a href=&quot;#今天干了些什么&quot; class=&quot;headerlink&quot; title=</summary>
+      
+    
+    
+    
+    <category term="总结" scheme="https://luoyongjia.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="瞎写" scheme="https://luoyongjia.github.io/tags/%E7%9E%8E%E5%86%99/"/>
+    
+    <category term="日记" scheme="https://luoyongjia.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>尝试发表第一篇文章</title>
