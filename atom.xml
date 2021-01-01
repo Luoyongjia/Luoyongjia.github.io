@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2020-12-31T16:36:44.164Z</updated>
+  <updated>2021-01-01T02:56:37.563Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2020年12月31日</title>
+    <link href="https://luoyongjia.github.io/2021/01/01/12%E6%9C%8831%E6%97%A5/"/>
+    <id>https://luoyongjia.github.io/2021/01/01/12%E6%9C%8831%E6%97%A5/</id>
+    <published>2020-12-31T16:37:41.000Z</published>
+    <updated>2021-01-01T02:56:37.563Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul><li>英语听力</li><li>hexo上传图片问题</li><li>Java基础语法</li></ul><h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><h3 id="hexo上传本地图片"><a href="#hexo上传本地图片" class="headerlink" title="hexo上传本地图片"></a>hexo上传本地图片</h3><p>在尝试调用url无效之后，开始打起了装插件的想法，没想到又是个大坑。不过终究是解决了。</p><h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h4><p>修改<strong>根目录</strong>的<code>_config.ym</code>中的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder:true</span><br></pre></td></tr></table></figure><h4 id="Step-2-安装正确版本的插件"><a href="#Step-2-安装正确版本的插件" class="headerlink" title="Step 2 安装正确版本的插件"></a>Step 2 安装正确版本的插件</h4><p>注意注意注意，我直接安装<code>hexo-asset-image</code>出现了图片被多加了一个/的问题，再搜，发现是这个包的问题，尝试了改<code>index.js</code>，发现无效，所以就卸载了：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unisntall -g hexo-asset-image</span><br></pre></td></tr></table></figure><p>然后安装正确版本<code>hexo-asset-image-0.0.5.git</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;EricGerry&#x2F;hexo-asset-image-0.0.5.git --save</span><br></pre></td></tr></table></figure><h4 id="Step-3-插入图片🎉"><a href="#Step-3-插入图片🎉" class="headerlink" title="Step 3 插入图片🎉"></a>Step 3 插入图片🎉</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![1](文章名字对应文件夹&#x2F;图片名)</span><br></pre></td></tr></table></figure><h3 id="Java内容明日再更新，之后再加链接到这里"><a href="#Java内容明日再更新，之后再加链接到这里" class="headerlink" title="Java内容明日再更新，之后再加链接到这里"></a>Java内容明日再更新，之后再加链接到这里</h3><h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>其实一上午都没有学习，因为起得晚，再🐟一下就到十点了，好像因为晚上睡得晚，导致早上也起不来…无解。有点想去自习室，但是爹妈就是不同意，不知道为什么。新的一年到来了，希望一切都能变得好起来。</p><h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><ol><li>英语听力</li><li>Java基础过完</li><li>新年计划（今天真的太困了…只能咕）</li><li>Java基础的blog总结一下</li><li>开题报告开题报告开题报告！</li><li>练字</li><li>letcode-3题（or more）</li></ol><hr><h6 id="refer：hexo本地图片不显示"><a href="#refer：hexo本地图片不显示" class="headerlink" title="refer：hexo本地图片不显示"></a>refer：<a href="http://www.theoak.online/2020/03/13/hexo%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/">hexo本地图片不显示</a></h6>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;今天干了些什么&quot;&gt;&lt;a href=&quot;#今天干了些什么&quot; class=&quot;headerlink&quot; title=&quot;今天干了些什么&quot;&gt;&lt;/a&gt;今天干了些什么&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;英语听力&lt;/li&gt;
+&lt;li&gt;hexo上传图片问题&lt;/li&gt;
+&lt;li&gt;Java基础语法&lt;/</summary>
+      
+    
+    
+    
+    <category term="总结" scheme="https://luoyongjia.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+    <category term="日记" scheme="https://luoyongjia.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>由JVM内存划分与职能到值传递和引用传递</title>
