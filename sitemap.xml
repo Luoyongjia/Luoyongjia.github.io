@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://luoyongjia.github.io/2021/01/02/Object%E7%B1%BB/</loc>
+    <loc>https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/</loc>
     
     <lastmod>2021-01-02</lastmod>
     
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/</loc>
+    <loc>https://luoyongjia.github.io/2021/01/02/Object%E7%B1%BB/</loc>
     
     <lastmod>2021-01-02</lastmod>
     
@@ -79,14 +79,7 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/links/index.html</loc>
+    <loc>https://luoyongjia.github.io/repository/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -100,7 +93,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/repository/index.html</loc>
+    <loc>https://luoyongjia.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/links/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
