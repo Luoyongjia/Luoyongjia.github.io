@@ -86,13 +86,6 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/repository/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
@@ -101,6 +94,13 @@
   
   <url>
     <loc>https://luoyongjia.github.io/links/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/repository/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -144,14 +144,14 @@
 
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E7%9E%8E%E5%86%99/</loc>
     <lastmod>2021-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%9E%8E%E5%86%99/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2021-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -188,14 +188,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/Java/</loc>
+    <loc>https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2021-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/</loc>
+    <loc>https://luoyongjia.github.io/categories/Java/</loc>
     <lastmod>2021-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
