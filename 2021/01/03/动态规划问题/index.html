@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>动态规划问题 | Gugugu&#39;s blog</title>
+  <meta name="description" content="一般形式是求最值，比如说最长递增子序列，最小编辑距离。 基本原理求最值，把所有的可行答案穷举出来，然后找最值就ok。 动态规划不是简单的穷举，因为动态规划问题存在「重叠子问题」，暴力穷举会效率很低，所以需要「备忘录」或者「DP table」来优化穷举的过程，避免不必要的计算。 并且动态规划一定会具备「最优子结构」，才能通过子问题的最值的到原问题的最值。需要列出正确的「状态转移方程」才能正确的穷举。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划问题">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Gugugu&#39;s blog">
+<meta property="og:description" content="一般形式是求最值，比如说最长递增子序列，最小编辑距离。 基本原理求最值，把所有的可行答案穷举出来，然后找最值就ok。 动态规划不是简单的穷举，因为动态规划问题存在「重叠子问题」，暴力穷举会效率很低，所以需要「备忘录」或者「DP table」来优化穷举的过程，避免不必要的计算。 并且动态规划一定会具备「最优子结构」，才能通过子问题的最值的到原问题的最值。需要列出正确的「状态转移方程」才能正确的穷举。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/figure1.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/figure2.jpg">
+<meta property="article:published_time" content="2021-01-03T06:04:03.000Z">
+<meta property="article:modified_time" content="2021-01-03T09:06:02.478Z">
+<meta property="article:author" content="罗咏佳">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/figure1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Luoyongjia" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">鸽子精</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Liaoning, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Luoyongjia" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>希望不做咕咕精🐦</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%BB%E7%BB%93/">总结</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%84%E5%88%92/">规划</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/" rel="tag">常用类</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9E%8E%E5%86%99/" rel="tag">瞎写</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/leetcode/" style="font-size: 13px;">leetcode</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/" style="font-size: 13px;">常用类</a> <a href="/tags/%E6%97%A5%E8%AE%B0/" style="font-size: 14px;">日记</a> <a href="/tags/%E7%9E%8E%E5%86%99/" style="font-size: 13.5px;">瞎写</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 13.5px;">编程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/" class="title">动态规划问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-03T06:04:03.000Z" itemprop="datePublished">2021-01-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/" class="title">2021年1月2日</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-02T15:04:58.000Z" itemprop="datePublished">2021-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/02/Object%E7%B1%BB/" class="title">Object类</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-02T14:59:11.000Z" itemprop="datePublished">2021-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/02/2021%E5%B9%B41%E6%9C%881%E6%97%A5/" class="title">2021年1月1日</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-01T16:14:30.000Z" itemprop="datePublished">2021-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/02/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8A%E6%98%93%E5%BF%BD%E7%95%A5%E7%82%B9%E6%80%BB%E7%BB%93/" class="title">Java基础语法以及易忽略点总结</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-01T16:09:10.000Z" itemprop="datePublished">2021-01-02</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-动态规划问题" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      动态规划问题
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/" class="article-date">
+	  <time datetime="2021-01-03T06:04:03.000Z" itemprop="datePublished">2021-01-03</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/leetcode/" rel="tag">leetcode</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>一般形式是求最值，比如说最长递增子序列，最小编辑距离。</p>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>求最值，把所有的可行答案穷举出来，然后找最值就ok。</p>
+<p><em>动态规划</em>不是简单的穷举，因为动态规划问题存在<strong>「重叠子问题」</strong>，暴力穷举会效率很低，所以需要「备忘录」或者「DP table」来优化穷举的过程，避免不必要的计算。</p>
+<p>并且动态规划一定会具备<strong>「最优子结构」</strong>，才能通过子问题的最值的到原问题的最值。<br>需要列出正确的<strong>「状态转移方程」</strong>才能正确的穷举。在实际的算法问题中，写出「状态转移方程」是最困难的。所以提供了一个思维框架辅助思考状态转移方程：</p>
+<p><strong>明确base case -&gt; 明确「状态」-&gt; 明确「选择」-&gt;定义dp数组/函数的含义</strong></p>
+<h2 id="509-斐波那契数列"><a href="#509-斐波那契数列" class="headerlink" title="509.斐波那契数列"></a>509.斐波那契数列</h2><h3 id="暴力递归法"><a href="#暴力递归法" class="headerlink" title="暴力递归法"></a>暴力递归法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int fib(int n)&#123;</span><br><span class="line">	if(n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2) return 1;</span><br><span class="line">	return fib(n - 1) + fib(n - 2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法十分的低效，假设n = 20，画出递归树：</p>
+<p><img src="/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/figure1.png" alt="figure1"></p>
+<p>PS：画出递归树是分析递归问题的好方法。</p>
+<h4 id="递归算法的时间复杂度计算"><a href="#递归算法的时间复杂度计算" class="headerlink" title="递归算法的时间复杂度计算"></a>递归算法的时间复杂度计算</h4><p>首先计算子问题数，由图可以看出斐波那契数列是满二叉树，所以子问题的个数为<em>O(2^n)</em></p>
+<p>然后计算每个子问题的时间，此算法没有循环，只有一个递归基和<code>f(n - 1) + f(n - 2)</code>，所以时间复杂度为<em>O(1)</em></p>
+<p>递归算法的时间复杂度为子问题数 <script type="math/tex">\times</script> 子问题的时间。由此可得：斐波那契的暴力递归解法的时间复杂度为 <em>O(2^n)</em></p>
+<p>观察递归树，可以发现：存在了大量的重复计算，比如<code>f(18)</code>被计算了两次，而<code>f(18)</code>为根的递归树体量巨大，多算一遍会耗费巨大的时间，在递归中出现了多次这样的情况，使得重复进行了多次相同的运算，使得这个算法十分低效。</p>
+<p>这就是动态规划问题的第一个性质：<strong>重叠子问题</strong>。</p>
+<h3 id="如何解决「重叠子问题」的问题"><a href="#如何解决「重叠子问题」的问题" class="headerlink" title="如何解决「重叠子问题」的问题"></a>如何解决「重叠子问题」的问题</h3><h4 id="带备忘录的递归解法"><a href="#带备忘录的递归解法" class="headerlink" title="带备忘录的递归解法"></a>带备忘录的递归解法</h4><p>我们可以造一个「备忘录」，每次计算出某个子问题的答案之后，先记入「备忘录」，然后再返回。每次遇到一个子问题先去「备忘录」中查查，如果发现已经解决过这个问题，就直接把答案拿出来用，就不用再次计算了。</p>
+<p>一般使用数组充当这个「备忘录」，当然也可以用哈希表（字典）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public int memoFib(int n)&#123;</span><br><span class="line">	if(n &lt; 0)</span><br><span class="line">		return 0;</span><br><span class="line">	&#x2F;&#x2F; 为了提高代码的可读性，所以开辟了n+1，这样每个fib数将会与相应的下标对应</span><br><span class="line">	int[] memoArray() &#x3D; new int[n+1];</span><br><span class="line">	</span><br><span class="line">	return helper(memoArray(), n);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 构造memArray()</span><br><span class="line">public int memArray(int[] memo, int n)&#123;</span><br><span class="line">	if(n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2)</span><br><span class="line">		return 1;</span><br><span class="line">	if(memo[n] !&#x3D; 0)</span><br><span class="line">		return memo[n];</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 递归体</span><br><span class="line">	memo[n] &#x3D; helper(memo, n - 1) + helper(memo, n - 2);</span><br><span class="line">	</span><br><span class="line">	return memo[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法的效率已经和迭代的动态规划解法一样了。实际上，这种解法和迭代的动态规划已经差不多了，只不过这种方法叫做「自顶向下」，动态规划叫做「自底向上」。</p>
+<h4 id="dp数组迭代解法"><a href="#dp数组迭代解法" class="headerlink" title="dp数组迭代解法"></a>dp数组迭代解法</h4><p>有了上一步「备忘录」的启发，我们可以把「备忘录」独立出来成为一张表，就叫做DP table。在这张表上完成「自底向上」的推算岂不美哉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int dpTable(int n)&#123;</span><br><span class="line">	if(n &lt; 0)</span><br><span class="line">		return 0;</span><br><span class="line">	if(n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2)</span><br><span class="line">		return 1;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 构建dpTable</span><br><span class="line">	int[] dp &#x3D; new int[n + 1];</span><br><span class="line">	dp[1] &#x3D; 1;</span><br><span class="line">	dp[2] &#x3D; 1;</span><br><span class="line">	for(int i &#x3D; 3; i &lt;&#x3D; n; i++)&#123;</span><br><span class="line">		dp[i] &#x3D; dp[i - 1] + dp[1 - 2];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/figure2.jpg" alt="figure2"></p>
+<p><strong>「状态转移方程」</strong>：</p>
+<script type="math/tex; mode=display">
+f(x)=\left\{
+\begin{aligned}
+1, n = 1,2 \\
+f(n-1) + f(n-2), n>2 \\
+\end{aligned}
+\right.</script><p>这里把<code>f(n)</code>想做状态<code>n</code>，状态<code>n</code>是由状态<code>n-1</code>和状态<code>n-2</code>相加转移而来的，这就叫状态转移。</p>
+<p>所以要先想出暴力解，然后通过暴力解的到转移方程，再通过备忘录或者DP table优化。</p>
+<p><strong>fib还可以优化</strong><br>甚至不需要整个dpTable，只需要记载n，n-1，n-2三个值就ok，此时的复杂度降到了<em>O(1)</em>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int bestFib(int n)&#123;</span><br><span class="line">	int num1 &#x3D; 1;</span><br><span class="line">	int num2 &#x3D; 1;</span><br><span class="line">	int num &#x3D; 0;</span><br><span class="line">	</span><br><span class="line">	for(int i &#x3D; 3; i &lt;&#x3D; n; i++)&#123;</span><br><span class="line">		num &#x3D; num1 + num2;</span><br><span class="line">		num1 &#x3D; num2;</span><br><span class="line">		num2 &#x3D; num;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法叫做「状态压缩」，当我们发现状态转移时只需要用上DP table中的一部分，那样就可以尝试用状态压缩来缩小DP table。</p>
+<h2 id="322-凑零钱"><a href="#322-凑零钱" class="headerlink" title="322.凑零钱"></a>322.凑零钱</h2><p>题目：给你<code>k</code>中面值的硬币，面值分别为<code>c1, c2, ...,ck</code>，美中硬币的数量无限，再给一个总金额<code>amount</code>，问最少需要几枚硬币来凑出这个金额，如果凑不出，返回<code>-1</code>。</p>
+<h3 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h3><p>首先，这个问题是动态规划问题，因为它具有「最优子结构」的。要符合<strong>「最优子结构」</strong>，<strong>子问题间必须互相独立</strong>。啥叫相互独立？用一个直观的例子来讲解。</p>
+<p>比如说，假设考试，每门科目的成绩都是互相独立的。你的原问题是考出最高的总成绩，那么你的子问题就是要把语文考到最高，数学考到最高…… 为了每门课考到最高，你要把每门课相应的选择题分数拿到最高，填空题分数拿到最高…… 当然，最终就是你每门课都是满分，这就是最高的总成绩。</p>
+<p>得到了正确的结果：最高的总成绩就是总分。因为这个过程符合最优子结构，“每门科目考到最高”这些子问题是互相独立，互不干扰的。</p>
+<p>但是，如果加一个条件：你的语文成绩和数学成绩会互相制约，数学分数高，语文分数就会降低，反之亦然。这样的话，显然你能考到的最高总成绩就达不到总分了，按刚才那个思路就会得到错误的结果。因为子问题并不独立，语文数学成绩无法同时最优，所以最优子结构被破坏。</p>
+<p>回到凑零钱问题，为什么说它符合最优子结构呢？比如你想求 <code>amount = 11</code> 时的最少硬币数（原问题），如果你知道凑出 <code>amount = 10</code> 的最少硬币数（子问题），你只需要把子问题的答案加一（再选一枚面值为 1 的硬币）就是原问题的答案。因为硬币的数量是没有限制的，所以子问题之间没有相互制，是互相独立的。</p>
+<h3 id="如何列出正确的状态转移方程"><a href="#如何列出正确的状态转移方程" class="headerlink" title="如何列出正确的状态转移方程"></a>如何列出正确的状态转移方程</h3><ol>
+<li><p><strong>确定 base case</strong>，这个很简单，显然目标金额 amount 为 0 时算法返回 0，因为不需要任何硬币就已经凑出目标金额了。</p>
+</li>
+<li><p><strong>确定「状态」</strong>，也就是原问题和子问题中会变化的变量。由于硬币数量无限，硬币的面额也是题目给定的，只有目标金额会不断地向 base case 靠近，所以唯一的「状态」就是目标金额 amount。</p>
+</li>
+<li><strong>确定「选择」</strong>，也就是导致「状态」产生变化的行为。目标金额为什么变化呢，因为你在选择硬币，你每选择一枚硬币，就相当于减少了目标金额。所以说所有硬币的面值，就是你的「选择」。</li>
+<li><strong>明确 dp 函数/数组的定义</strong>。这里讲的是自顶向下的解法，所以会有一个递归的 dp 函数，一般来说函数的参数就是状态转移中会变化的量，也就是上面说到的「状态」；函数的返回值就是题目要求我们计算的量。就本题来说，状态只有一个，即「目标金额」，题目要求我们计算凑出目标金额所需的最少硬币数量。所以我们可以这样定义 dp 函数：</li>
+</ol>
+<p><code>dp(n)</code> ：输入一个目标金额 n，返回凑出目标金额 n 的最少硬币数量。</p>
+<p>然后就可以得到状态转移方程</p>
+<script type="math/tex; mode=display">
+f(x)=\left\{
+\begin{aligned}
+0, n=0 \\
+-1, n<0 \\
+min\{dg(n-coin) + 1|coin \in coins\}, n>0
+\end{aligned}
+\right.</script><h3 id="带备忘录的递归解法-1"><a href="#带备忘录的递归解法-1" class="headerlink" title="带备忘录的递归解法"></a>带备忘录的递归解法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public int getCoinsMemo(int[] coins, int n) &#123;</span><br><span class="line">    if(n &lt; 0)</span><br><span class="line">        return -1;</span><br><span class="line">    if(n &#x3D;&#x3D; 0)</span><br><span class="line">        return 0;</span><br><span class="line">    </span><br><span class="line">    int[] memo &#x3D; new int[n + 1];</span><br><span class="line">    return helper(coins, memo, n);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">public int helper(int[] coins, int[] memo, int n) &#123;</span><br><span class="line">    if(n &lt; 0)</span><br><span class="line">        return -1;</span><br><span class="line">    if(n &#x3D;&#x3D; 0)</span><br><span class="line">        return 0;</span><br><span class="line">    if(memo[n] !&#x3D; 0)</span><br><span class="line">        return memo[n];</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;得到当💰需要的coin数</span><br><span class="line">    int cur &#x3D; Integer.MAX_VALUE;</span><br><span class="line">    int coinNum &#x3D; 0;</span><br><span class="line">    for (int coin : coins) &#123;</span><br><span class="line">        coinNum &#x3D; helper(coins, memo, n - coin);</span><br><span class="line">        &#x2F;&#x2F; 当小于0或者这个子方法表示不出的时候</span><br><span class="line">        if (n - coin &lt; 0 || coinNum &#x3D;&#x3D; -1)</span><br><span class="line">            continue;</span><br><span class="line">        if (coinNum + 1 &lt; cur) &#123;</span><br><span class="line">            cur &#x3D; coinNum + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(cur &#x3D;&#x3D; Integer.MAX_VALUE)&#123;</span><br><span class="line">        cur &#x3D; -1;</span><br><span class="line">    &#125;</span><br><span class="line">    memo[n] &#x3D; cur;</span><br><span class="line">    return cur;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="自底向上的DPtable方法"><a href="#自底向上的DPtable方法" class="headerlink" title="自底向上的DPtable方法"></a>自底向上的DPtable方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;自底向上DPtable方法</span><br><span class="line">public int getCoinsDP(int[] coins, int sum) &#123;</span><br><span class="line">    if (sum &lt; 0)</span><br><span class="line">        return -1;</span><br><span class="line">    if (sum &#x3D;&#x3D; 0)</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    int dp[] &#x3D; new int[sum + 1];</span><br><span class="line">    dp[0] &#x3D; 0;</span><br><span class="line">    int cur;</span><br><span class="line">    for (int i &#x3D; 1; i &lt;&#x3D; sum; i++) &#123;</span><br><span class="line">        cur &#x3D; Integer.MAX_VALUE;</span><br><span class="line">        for (int coin : coins) &#123;</span><br><span class="line">            if (i - coin &lt; 0 || dp[i - coin] &#x3D;&#x3D; -1)</span><br><span class="line">                continue;</span><br><span class="line">            if (dp[i - coin] + 1 &lt; cur)</span><br><span class="line">                cur &#x3D; dp[i - coin] + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (cur &#x3D;&#x3D; Integer.MAX_VALUE)</span><br><span class="line">            dp[i] &#x3D; -1;</span><br><span class="line">        else</span><br><span class="line">            dp[i] &#x3D; cur;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[sum];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>就是那个步骤：</p>
+<p><strong>明确base case（递归基） -&gt; 明确「状态」-&gt; 明确「选择」-&gt;定义dp数组/函数的含义 -&gt;优化</strong></p>
+<h3 id="「备忘录」自上而下的方法"><a href="#「备忘录」自上而下的方法" class="headerlink" title="「备忘录」自上而下的方法"></a>「备忘录」自上而下的方法</h3><p>其实就是一种递归的优化方法，消除了很多重复计算的部分，所以优化了方法，但是还是没有自下而上好。</p>
+<h3 id="「DPtable」自下而上的方法"><a href="#「DPtable」自下而上的方法" class="headerlink" title="「DPtable」自下而上的方法"></a>「DPtable」自下而上的方法</h3><p>当我们分析出「状态转移方程」后，就可以自下而上构造<code>dp[]</code>（其实就是备忘录），然后直接从中取得就OK。</p>
+<hr>
+<p>refer：<br><a target="_blank" rel="noopener" href="https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/dong-tai-gui-hua-xiang-jie-jin-jie">动态规划解题套路框架</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Luoyongjia/leetCode/tree/main/src/dynamicProgramming">Code</a></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/" title="动态规划问题" target="_blank" rel="external">https://luoyongjia.github.io/2021/01/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Luoyongjia" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Luoyongjia" target="_blank"><span class="text-dark">鸽子精</span><small class="ml-1x">Student</small></a></h3>
+        <div>鸽子精本精</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/" title="2021年1月2日"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Luoyongjia" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '34gCi0O2RInex7JNM8H90VfK-gzGzoHsz',
+    appKey: '4j2aSFWODDTyn3FovQgEvjcU',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+<!-- <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
