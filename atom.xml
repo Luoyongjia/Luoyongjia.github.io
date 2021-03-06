@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-03-06T12:19:28.588Z</updated>
+  <updated>2021-03-06T13:21:35.100Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【数据结构】绪论</title>
+    <link href="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/"/>
+    <id>https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/</id>
+    <published>2021-03-06T12:27:22.000Z</published>
+    <updated>2021-03-06T13:21:35.100Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的数据结构是以《王道 2021数据结构复习指导》为基础。然后其中我认为难理解的点，会拎出来重点分析一下。</p><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>很好，记不住的东西。</p><p><strong>数据</strong> 是信息，是数据，是程序直接处理的原料。<br><strong>数据元素</strong> 数据元素含有数据，是由一群数据组成的最小的、不可分割的最小单位。比如说，一个学生（包括他的姓名、学号、年龄等）就是一个数据元素。<br><strong>数据对象</strong> 一群同类型的数据元素组成的。比如说，学生对象，就是由一群学生对象组成的。<br><strong>数据类型</strong> 就比如说<code>byte, short, int, long</code>这些。就是一种数值的集合。其下面又有<strong>原子类型</strong>、<strong>结构类型</strong>、<strong>抽象数据类型</strong>，分别表示值不可分，值可以分，数据和与之相关的操作。<br><strong>数据结构</strong> 诶嘿，终于到它了。数据结构是有关系的数据元素的集合。包括<strong>逻辑结构</strong>，<strong>存储结构</strong>和<strong>数据的运算</strong>（个人理解为方法）。</p><h2 id="数据结构三要素"><a href="#数据结构三要素" class="headerlink" title="数据结构三要素"></a>数据结构三要素</h2><p>我觉得这里主要是在讲逻辑结构与存储结构。还有一个名词叫“物理结构”，我在这里将会把他们仨分清楚。</p><h3 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h3><p>逻辑逻辑嘛，那当然是一种抽象的东西，我们不考虑他们的实际应该怎么样，只去考虑这样子特性的数据有些什么特色，可以怎么操作。</p><p><img src="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/逻辑结构.png" alt="f1"></p><p>这里要解释一下<strong>集合</strong>，就是一群数据挤到一起，没有其他联系这样子。</p><h3 id="存储结构（物理结构）"><a href="#存储结构（物理结构）" class="headerlink" title="存储结构（物理结构）"></a>存储结构（物理结构）</h3><p>就是解决如何将数据存储的问题。</p><p><img src="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/存储结构.png" alt="f1"></p><h3 id="数据的运算"><a href="#数据的运算" class="headerlink" title="数据的运算"></a>数据的运算</h3><p>个人理解，就是操作、方法这种东西。</p><h3 id="这里来几道错题加深理解"><a href="#这里来几道错题加深理解" class="headerlink" title="这里来几道错题加深理解"></a>这里来几道错题加深理解</h3><blockquote><ol><li>可以用（ ）来定义一个完整的数据结构<br><br>A. 数据元素        B.数据对象        C.数据关系        D. 抽象数据类型<br><br>这里，👀上面的基本概念，就能得出答案D<br><br><br></li><li>以下属于逻辑结构的是（ ）<br><br>A. 顺序表    B. 哈希表    C. 有序表    D. 单链表<br><br><br>顺序表、哈希表、单链表，既可以表示逻辑结构，又可以表示存储结构。只有有序表是单纯的。<br><br><br></li><li>以下数据与数据的存储结构无关的术语是（ ）<br><br>A. 循环队列 B. 链表 C. 哈希表 D. 栈<br><br><br>B和C都很好排除。循环队列为一种数据结构？（这里存疑，之后来解决）可能是因为，他包含顺序表的逻辑结构，和顺序存储的存储结构，以及一些操作方法。讲真，<strong>不知道如何区分数据结构和逻辑结构的区别</strong>。问问后来补充。<br><br><br></li><li>在存储数据时，通常不仅要存储个数据元素的值，而且要存储( )<br><br>A. 数据的操作方法 B. 数据元素的类型 C. 数据元素之间的关系 D. 数据存取的方法<br><br><br>D，这没啥好说的，记住就好。</li></ol></blockquote><h2 id="算法评价"><a href="#算法评价" class="headerlink" title="算法评价"></a>算法评价</h2><p>算法，对于一个问题的解决方法逐步描述。</p><h3 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h3><p><strong>有穷性</strong> 是不是有穷时间能跑完<br><strong>确定性</strong> 描述是不是无歧义的<br><strong>可行性</strong> 电脑能不能跑起来<br><strong>I/O</strong> 输入输出<br><strong>正确性</strong> 能不能正确解决问题<br><strong>可读性</strong> 是不是很好理解<br><strong>健壮性</strong> 能不能面对攻击<br><strong>效率</strong> 效率就是效率，时间、空间效率</p><h3 id="时间复杂度、空间复杂度"><a href="#时间复杂度、空间复杂度" class="headerlink" title="时间复杂度、空间复杂度"></a>时间复杂度、空间复杂度</h3><p>这种主要考：给段代码，然后让算复杂度。</p><p>注意点：O(1)的可以是常数级别的复杂度。</p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr><p><a href="https://blog.csdn.net/YangTongA/article/details/78244252">数据结构之逻辑结构与物理结构（存储结构）</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;我的数据结构是以《王道 2021数据结构复习指导》为基础。然后其中我认为难理解的点，会拎出来重点分析一下。&lt;/p&gt;
+&lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;p&gt;很</summary>
+      
+    
+    
+    
+    <category term="考研复试" scheme="https://luoyongjia.github.io/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>再开公告</title>

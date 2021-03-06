@@ -17,23 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>再开公告 | Gugugu&#39;s blog</title>
-  <meta name="description" content="很幸运，考研排到了第十名。听说今年还有三十多的名额。所以开始准备复试了。 之前真的是很绝望，不知道之后该怎么走才好。想了很多年的事情也没有去做。我啊，就是想得很多，做的很少。想要做研究，但是本科一点也没有向这个方向去努力。之前做双目识别，感觉很困难，也不敢去找别人讨论；看元学习那篇大论文的时候，因为很多数学知识不了解，又放弃（过了一段时间明白了之中的大概原理）。当然，可能因为当初想的很多的时候，人">
+  <title>【数据结构】绪论 | Gugugu&#39;s blog</title>
+  <meta name="description" content="我的数据结构是以《王道 2021数据结构复习指导》为基础。然后其中我认为难理解的点，会拎出来重点分析一下。 基本概念很好，记不住的东西。 数据 是信息，是数据，是程序直接处理的原料。数据元素 数据元素含有数据，是由一群数据组成的最小的、不可分割的最小单位。比如说，一个学生（包括他的姓名、学号、年龄等）就是一个数据元素。数据对象 一群同类型的数据元素组成的。比如说，学生对象，就是由一群学生对象组成的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="再开公告">
-<meta property="og:url" content="https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/index.html">
+<meta property="og:title" content="【数据结构】绪论">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
-<meta property="og:description" content="很幸运，考研排到了第十名。听说今年还有三十多的名额。所以开始准备复试了。 之前真的是很绝望，不知道之后该怎么走才好。想了很多年的事情也没有去做。我啊，就是想得很多，做的很少。想要做研究，但是本科一点也没有向这个方向去努力。之前做双目识别，感觉很困难，也不敢去找别人讨论；看元学习那篇大论文的时候，因为很多数学知识不了解，又放弃（过了一段时间明白了之中的大概原理）。当然，可能因为当初想的很多的时候，人">
+<meta property="og:description" content="我的数据结构是以《王道 2021数据结构复习指导》为基础。然后其中我认为难理解的点，会拎出来重点分析一下。 基本概念很好，记不住的东西。 数据 是信息，是数据，是程序直接处理的原料。数据元素 数据元素含有数据，是由一群数据组成的最小的、不可分割的最小单位。比如说，一个学生（包括他的姓名、学号、年龄等）就是一个数据元素。数据对象 一群同类型的数据元素组成的。比如说，学生对象，就是由一群学生对象组成的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/1.jpg">
-<meta property="article:published_time" content="2021-03-06T11:56:28.000Z">
-<meta property="article:modified_time" content="2021-03-06T12:19:28.588Z">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/逻辑结构.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/存储结构.png">
+<meta property="article:published_time" content="2021-03-06T12:27:22.000Z">
+<meta property="article:modified_time" content="2021-03-06T13:21:35.100Z">
 <meta property="article:author" content="罗咏佳">
-<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/1.jpg">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/逻辑结构.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -344,14 +344,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-再开公告" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-【数据结构】绪论" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      再开公告
+      【数据结构】绪论
     </h1>
   
 
@@ -359,38 +359,50 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/" class="article-date">
-	  <time datetime="2021-03-06T11:56:28.000Z" itemprop="datePublished">2021-03-06</time>
+	<a href="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/" class="article-date">
+	  <time datetime="2021-03-06T12:27:22.000Z" itemprop="datePublished">2021-03-06</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+    <a class="article-category-link" href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">考研复试</a>
   </span>
 
         
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
-  </span>
-
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>很幸运，考研排到了第十名。听说今年还有三十多的名额。所以开始准备复试了。</p>
-<p>之前真的是很绝望，不知道之后该怎么走才好。想了很多年的事情也没有去做。我啊，就是想得很多，做的很少。想要做研究，但是本科一点也没有向这个方向去努力。之前做双目识别，感觉很困难，也不敢去找别人讨论；看元学习那篇大论文的时候，因为很多数学知识不了解，又放弃（过了一段时间明白了之中的大概原理）。当然，可能因为当初想的很多的时候，人还很小；来到大学了之后接触了更多的东西，选择多了，人也就迷惑了。</p>
-<p>但是我觉得，我的绝望，很多是来源与我自己。我总觉得自己应该成为一个了不起的人，但是，大多数人最终不是还是普通人吗？我打算认命的，但是我做了什么呢？在家摸鱼摸了俩月。看出来了吧，就是因为自己骨子里的懒惰。考研的时候也是这样，学了两天之后，得休息上三天，才能继续。恨自己的不争气，却又一再地放纵。还有遇见了困难，总是想逃避，总想过着当下混沌又舒适的生活。可是这样的生活，我过得也很难受。总的来说，就是想要摆脱现状，但是又没有行动这样子。</p>
-<p>认识到问题，当然得改。我试着去改改吧，这样下去不是个事儿。就从这次准备复试开始吧。</p>
-<p>接下来想要在blog上分享一下我每天为复试准备的知识，以及每次上完TOEFL课的小总结这样子。</p>
-<p><img src="/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/1.jpg" alt="figer1"></p>
-<p>偷偷放一张喜欢的焦糖太太的图。</p>
+        <p>我的数据结构是以《王道 2021数据结构复习指导》为基础。然后其中我认为难理解的点，会拎出来重点分析一下。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>很好，记不住的东西。</p>
+<p><strong>数据</strong> 是信息，是数据，是程序直接处理的原料。<br><strong>数据元素</strong> 数据元素含有数据，是由一群数据组成的最小的、不可分割的最小单位。比如说，一个学生（包括他的姓名、学号、年龄等）就是一个数据元素。<br><strong>数据对象</strong> 一群同类型的数据元素组成的。比如说，学生对象，就是由一群学生对象组成的。<br><strong>数据类型</strong> 就比如说<code>byte, short, int, long</code>这些。就是一种数值的集合。其下面又有<strong>原子类型</strong>、<strong>结构类型</strong>、<strong>抽象数据类型</strong>，分别表示值不可分，值可以分，数据和与之相关的操作。<br><strong>数据结构</strong> 诶嘿，终于到它了。数据结构是有关系的数据元素的集合。包括<strong>逻辑结构</strong>，<strong>存储结构</strong>和<strong>数据的运算</strong>（个人理解为方法）。</p>
+<h2 id="数据结构三要素"><a href="#数据结构三要素" class="headerlink" title="数据结构三要素"></a>数据结构三要素</h2><p>我觉得这里主要是在讲逻辑结构与存储结构。还有一个名词叫“物理结构”，我在这里将会把他们仨分清楚。</p>
+<h3 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h3><p>逻辑逻辑嘛，那当然是一种抽象的东西，我们不考虑他们的实际应该怎么样，只去考虑这样子特性的数据有些什么特色，可以怎么操作。</p>
+<p><img src="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/逻辑结构.png" alt="f1"></p>
+<p>这里要解释一下<strong>集合</strong>，就是一群数据挤到一起，没有其他联系这样子。</p>
+<h3 id="存储结构（物理结构）"><a href="#存储结构（物理结构）" class="headerlink" title="存储结构（物理结构）"></a>存储结构（物理结构）</h3><p>就是解决如何将数据存储的问题。</p>
+<p><img src="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/存储结构.png" alt="f1"></p>
+<h3 id="数据的运算"><a href="#数据的运算" class="headerlink" title="数据的运算"></a>数据的运算</h3><p>个人理解，就是操作、方法这种东西。</p>
+<h3 id="这里来几道错题加深理解"><a href="#这里来几道错题加深理解" class="headerlink" title="这里来几道错题加深理解"></a>这里来几道错题加深理解</h3><blockquote>
+<ol>
+<li>可以用（ ）来定义一个完整的数据结构<br><br>A. 数据元素        B.数据对象        C.数据关系        D. 抽象数据类型<br><br>这里，👀上面的基本概念，就能得出答案D<br><br><br></li>
+<li>以下属于逻辑结构的是（ ）<br><br>A. 顺序表    B. 哈希表    C. 有序表    D. 单链表<br><br><br>顺序表、哈希表、单链表，既可以表示逻辑结构，又可以表示存储结构。只有有序表是单纯的。<br><br><br></li>
+<li>以下数据与数据的存储结构无关的术语是（ ）<br><br>A. 循环队列 B. 链表 C. 哈希表 D. 栈<br><br><br>B和C都很好排除。循环队列为一种数据结构？（这里存疑，之后来解决）可能是因为，他包含顺序表的逻辑结构，和顺序存储的存储结构，以及一些操作方法。讲真，<strong>不知道如何区分数据结构和逻辑结构的区别</strong>。问问后来补充。<br><br><br></li>
+<li>在存储数据时，通常不仅要存储个数据元素的值，而且要存储( )<br><br>A. 数据的操作方法 B. 数据元素的类型 C. 数据元素之间的关系 D. 数据存取的方法<br><br><br>D，这没啥好说的，记住就好。</li>
+</ol>
+</blockquote>
+<h2 id="算法评价"><a href="#算法评价" class="headerlink" title="算法评价"></a>算法评价</h2><p>算法，对于一个问题的解决方法逐步描述。</p>
+<h3 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h3><p><strong>有穷性</strong> 是不是有穷时间能跑完<br><strong>确定性</strong> 描述是不是无歧义的<br><strong>可行性</strong> 电脑能不能跑起来<br><strong>I/O</strong> 输入输出<br><strong>正确性</strong> 能不能正确解决问题<br><strong>可读性</strong> 是不是很好理解<br><strong>健壮性</strong> 能不能面对攻击<br><strong>效率</strong> 效率就是效率，时间、空间效率</p>
+<h3 id="时间复杂度、空间复杂度"><a href="#时间复杂度、空间复杂度" class="headerlink" title="时间复杂度、空间复杂度"></a>时间复杂度、空间复杂度</h3><p>这种主要考：给段代码，然后让算复杂度。</p>
+<p>注意点：O(1)的可以是常数级别的复杂度。</p>
+<h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/YangTongA/article/details/78244252">数据结构之逻辑结构与物理结构（存储结构）</a></p>
 
       
     </div>
@@ -400,7 +412,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/" title="再开公告" target="_blank" rel="external">https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/</a>
+      <a href="https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/" title="【数据结构】绪论" target="_blank" rel="external">https://luoyongjia.github.io/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -446,13 +458,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/" title="【数据结构】绪论"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2021/01/08/String%EF%BC%8CStringBuffer%E5%92%8CStringBuilder%E7%B1%BB/" title="String，StringBuffer和StringBuilder类"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/" title="再开公告"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
