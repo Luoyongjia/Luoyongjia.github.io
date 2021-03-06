@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-01-08T10:16:39.200Z</updated>
+  <updated>2021-03-06T12:19:28.588Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再开公告</title>
+    <link href="https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/"/>
+    <id>https://luoyongjia.github.io/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/</id>
+    <published>2021-03-06T11:56:28.000Z</published>
+    <updated>2021-03-06T12:19:28.588Z</updated>
+    
+    <content type="html"><![CDATA[<p>很幸运，考研排到了第十名。听说今年还有三十多的名额。所以开始准备复试了。</p><p>之前真的是很绝望，不知道之后该怎么走才好。想了很多年的事情也没有去做。我啊，就是想得很多，做的很少。想要做研究，但是本科一点也没有向这个方向去努力。之前做双目识别，感觉很困难，也不敢去找别人讨论；看元学习那篇大论文的时候，因为很多数学知识不了解，又放弃（过了一段时间明白了之中的大概原理）。当然，可能因为当初想的很多的时候，人还很小；来到大学了之后接触了更多的东西，选择多了，人也就迷惑了。</p><p>但是我觉得，我的绝望，很多是来源与我自己。我总觉得自己应该成为一个了不起的人，但是，大多数人最终不是还是普通人吗？我打算认命的，但是我做了什么呢？在家摸鱼摸了俩月。看出来了吧，就是因为自己骨子里的懒惰。考研的时候也是这样，学了两天之后，得休息上三天，才能继续。恨自己的不争气，却又一再地放纵。还有遇见了困难，总是想逃避，总想过着当下混沌又舒适的生活。可是这样的生活，我过得也很难受。总的来说，就是想要摆脱现状，但是又没有行动这样子。</p><p>认识到问题，当然得改。我试着去改改吧，这样下去不是个事儿。就从这次准备复试开始吧。</p><p>接下来想要在blog上分享一下我每天为复试准备的知识，以及每次上完TOEFL课的小总结这样子。</p><p><img src="/2021/03/06/%E5%86%8D%E5%BC%80%E5%85%AC%E5%91%8A/1.jpg" alt="figer1"></p><p>偷偷放一张喜欢的焦糖太太的图。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;很幸运，考研排到了第十名。听说今年还有三十多的名额。所以开始准备复试了。&lt;/p&gt;
+&lt;p&gt;之前真的是很绝望，不知道之后该怎么走才好。想了很多年的事情也没有去做。我啊，就是想得很多，做的很少。想要做研究，但是本科一点也没有向这个方向去努力。之前做双目识别，感觉很困难，也不敢去找</summary>
+      
+    
+    
+    
+    <category term="日记" scheme="https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+    <category term="随笔" scheme="https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>String，StringBuffer和StringBuilder类</title>
@@ -95,7 +120,7 @@
     <link href="https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/"/>
     <id>https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/</id>
     <published>2021-01-02T15:04:58.000Z</published>
-    <updated>2021-01-02T15:14:24.005Z</updated>
+    <updated>2021-03-06T12:00:52.711Z</updated>
     
     <content type="html"><![CDATA[<h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul><li>英语听力</li><li>Object类</li></ul><h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><p>Object类太难了，套娃一样，lei了。从Object到String到Integer…希望明天能简单一点。</p><h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>方法有问题，明日改方法。希望每天的时间能够均匀一点，不要总扑在一件事情上。明天中午睡觉不脱裤子，不然又会睡过，今天中午就睡了一个半小时，起床之后还泡了一杯奶茶…但是还是消除不了Object带来的心累。害，明天一定不会这么苦，希望拥有正常的作息。☕️</p><h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><ol><li>英语听力</li><li>letcode中的3题，一定要开始！</li><li>Java两个类的使用</li><li>剑指offer的2题</li><li>练字</li></ol><hr><p>今天又是鸽子精，希望明天能做不咕鸟🐦</p>]]></content>
     
@@ -113,8 +138,6 @@
     
     <category term="日记" scheme="https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
     
-    
-    <category term="瞎写" scheme="https://luoyongjia.github.io/tags/%E7%9E%8E%E5%86%99/"/>
     
   </entry>
   
