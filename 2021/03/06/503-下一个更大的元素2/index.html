@@ -17,20 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>2020年12月31日 | Gugugu&#39;s blog</title>
-  <meta name="description" content="今天干了些什么 英语听力 hexo上传图片问题 Java基础语法  过程中遇见的问题hexo上传本地图片在尝试调用url无效之后，开始打起了装插件的想法，没想到又是个大坑。不过终究是解决了。 Step 1修改根目录的_config.ym中的 1post_asset_folder:true Step 2 安装正确版本的插件注意注意注意，我直接安装hexo-asset-image出现了图片被多加了一个">
+  <title>503. 下一个更大的元素2 | Gugugu&#39;s blog</title>
+  <meta name="description" content="先来看看题，这题…有点绕。 题目给定一个循环数组（首尾相接那种），输出每个元素的下一个更大元素。如果搜完了整个数组，都没有找到比它大的数字，就输出-1。  输入：[1, 2, 1]输出：[2, -1, 2]解释：第一个1的下一个更大的数是2；数字2找不到下一个更大的数；第二个1的下一个最大的数循环搜索，结果就是2  自己一想简单，粗暴的方法。这样时间复杂度到了$O(n^{2})$ 12345678">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020年12月31日">
-<meta property="og:url" content="https://luoyongjia.github.io/2021/01/01/12%E6%9C%8831%E6%97%A5/index.html">
+<meta property="og:title" content="503. 下一个更大的元素2">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
-<meta property="og:description" content="今天干了些什么 英语听力 hexo上传图片问题 Java基础语法  过程中遇见的问题hexo上传本地图片在尝试调用url无效之后，开始打起了装插件的想法，没想到又是个大坑。不过终究是解决了。 Step 1修改根目录的_config.ym中的 1post_asset_folder:true Step 2 安装正确版本的插件注意注意注意，我直接安装hexo-asset-image出现了图片被多加了一个">
+<meta property="og:description" content="先来看看题，这题…有点绕。 题目给定一个循环数组（首尾相接那种），输出每个元素的下一个更大元素。如果搜完了整个数组，都没有找到比它大的数字，就输出-1。  输入：[1, 2, 1]输出：[2, -1, 2]解释：第一个1的下一个更大的数是2；数字2找不到下一个更大的数；第二个1的下一个最大的数循环搜索，结果就是2  自己一想简单，粗暴的方法。这样时间复杂度到了$O(n^{2})$ 12345678">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-31T16:37:41.000Z">
-<meta property="article:modified_time" content="2021-01-03T15:45:30.262Z">
+<meta property="article:published_time" content="2021-03-06T15:37:15.000Z">
+<meta property="article:modified_time" content="2021-03-06T16:16:35.377Z">
 <meta property="article:author" content="罗咏佳">
+<meta property="article:tag" content="单调栈">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/2021/01/01/12%E6%9C%8831%E6%97%A5/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -341,14 +342,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-12月31日" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-503-下一个更大的元素2" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      2020年12月31日
+      503. 下一个更大的元素2
     </h1>
   
 
@@ -356,51 +357,53 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/01/01/12%E6%9C%8831%E6%97%A5/" class="article-date">
-	  <time datetime="2020-12-31T16:37:41.000Z" itemprop="datePublished">2021-01-01</time>
+	<a href="/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/" class="article-date">
+	  <time datetime="2021-03-06T15:37:15.000Z" itemprop="datePublished">2021-03-06</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </span>
 
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/01/12%E6%9C%8831%E6%97%A5/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul>
-<li>英语听力</li>
-<li>hexo上传图片问题</li>
-<li>Java基础语法</li>
+        <p>先来看看题，这题…有点绕。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个循环数组（首尾相接那种），输出每个元素的下一个更大元素。如果搜完了整个数组，都没有找到比它大的数字，就输出-1。</p>
+<blockquote>
+<p><strong>输入：</strong>[1, 2, 1]<br><br><strong>输出：</strong>[2, -1, 2]<br><br><strong>解释：</strong>第一个1的下一个更大的数是2；<br><br>数字2找不到下一个更大的数；<br>第二个1的下一个最大的数循环搜索，结果就是2</p>
+</blockquote>
+<h2 id="自己一想"><a href="#自己一想" class="headerlink" title="自己一想"></a>自己一想</h2><p>简单，粗暴的方法。这样时间复杂度到了$O(n^{2})$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public int[] nextGreaterElements(int[] nums) &#123;</span><br><span class="line">    int[] ans &#x3D; new int[nums.length];</span><br><span class="line">    boolean forhead;</span><br><span class="line">    &#x2F;&#x2F; 找每一个数字的下一个更大的元素</span><br><span class="line">    for(int i &#x3D; 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">        forhead &#x3D; true;</span><br><span class="line">        &#x2F;&#x2F; 先找i后面的元素</span><br><span class="line">        for(int j &#x3D; i+1; j &lt; nums.length; j++)&#123;</span><br><span class="line">            if(nums[j] &gt; nums[i])&#123;</span><br><span class="line">                ans[i] &#x3D; nums[j];</span><br><span class="line">                forhead &#x3D; false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 再找i前面的元素</span><br><span class="line">        if(forhead &#x3D;&#x3D; true)&#123;</span><br><span class="line">            int k;</span><br><span class="line">            for(k &#x3D; 0; k &lt; i; k++)&#123;</span><br><span class="line">                if(nums[k] &gt; nums[i])&#123;</span><br><span class="line">                    ans[i] &#x3D; nums[k];</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(k &#x3D;&#x3D; i)&#123;</span><br><span class="line">                ans[i] &#x3D; -1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="然后解析里的“单调栈”"><a href="#然后解析里的“单调栈”" class="headerlink" title="然后解析里的“单调栈”"></a>然后解析里的“单调栈”</h2><h3 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h3><p>栈里面的元素从栈底到栈顶是单调的。</p>
+<ul>
+<li>如果栈空，当前元素入栈</li>
+<li>栈非空，判断当前和栈顶元素的大小<ul>
+<li>如果比栈顶元素大，那么逐个弹出比较，构建ans</li>
+<li>如果比栈顶元素小，则当前元素入栈</li>
 </ul>
-<h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><h3 id="hexo上传本地图片"><a href="#hexo上传本地图片" class="headerlink" title="hexo上传本地图片"></a>hexo上传本地图片</h3><p>在尝试调用url无效之后，开始打起了装插件的想法，没想到又是个大坑。不过终究是解决了。</p>
-<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h4><p>修改<strong>根目录</strong>的<code>_config.ym</code>中的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder:true</span><br></pre></td></tr></table></figure>
-<h4 id="Step-2-安装正确版本的插件"><a href="#Step-2-安装正确版本的插件" class="headerlink" title="Step 2 安装正确版本的插件"></a>Step 2 安装正确版本的插件</h4><p>注意注意注意，我直接安装<code>hexo-asset-image</code>出现了图片被多加了一个/的问题，再搜，发现是这个包的问题，尝试了改<code>index.js</code>，发现无效，所以就卸载了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unisntall -g hexo-asset-image</span><br></pre></td></tr></table></figure>
-<p>然后安装正确版本<code>hexo-asset-image-0.0.5.git</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;EricGerry&#x2F;hexo-asset-image-0.0.5.git --save</span><br></pre></td></tr></table></figure>
-<h4 id="Step-3-插入图片🎉"><a href="#Step-3-插入图片🎉" class="headerlink" title="Step 3 插入图片🎉"></a>Step 3 插入图片🎉</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![1](文章名字对应文件夹&#x2F;图片名)</span><br></pre></td></tr></table></figure>
-<h3 id="Java内容明日再更新，之后再加链接到这里"><a href="#Java内容明日再更新，之后再加链接到这里" class="headerlink" title="Java内容明日再更新，之后再加链接到这里"></a>Java内容明日再更新，之后再加链接到这里</h3><h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>其实一上午都没有学习，因为起得晚，再🐟一下就到十点了，好像因为晚上睡得晚，导致早上也起不来…无解。有点想去自习室，但是爹妈就是不同意，不知道为什么。新的一年到来了，希望一切都能变得好起来。</p>
-<h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><ol>
-<li>英语听力</li>
-<li>Java基础过完</li>
-<li>新年计划（今天真的太困了…只能咕）</li>
-<li>Java基础的blog总结一下</li>
-<li>开题报告开题报告开题报告！</li>
-<li>练字</li>
-<li>letcode-3题（or more）</li>
-</ol>
-<hr>
-<h6 id="refer：hexo本地图片不显示"><a href="#refer：hexo本地图片不显示" class="headerlink" title="refer：hexo本地图片不显示"></a>refer：<a target="_blank" rel="noopener" href="http://www.theoak.online/2020/03/13/hexo%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/">hexo本地图片不显示</a></h6>
+</li>
+</ul>
+<h3 id="循环数组实现方法："><a href="#循环数组实现方法：" class="headerlink" title="循环数组实现方法："></a>循环数组实现方法：</h3><p><strong>Way1:</strong>  把数组复制一份到数组的末尾<br><strong>Way2:</strong> 使用取模运算，把下表为$i$映射到数组$nus$的长度$0-N$中</p>
+<h2 id="重写代码"><a href="#重写代码" class="headerlink" title="重写代码"></a>重写代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int[] nextGreaterElements(int[] nums) &#123;</span><br><span class="line">    int n &#x3D; nums.length;</span><br><span class="line">    int[] ans &#x3D; new int[n];</span><br><span class="line">    &#x2F;&#x2F;将ans用-1初始化</span><br><span class="line">    Arrays.fill(ans, -1);</span><br><span class="line">    Deque&lt;Integer&gt; stack &#x3D; new LinkedList&lt;Integer&gt;();</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n;i++)&#123;</span><br><span class="line">        &#x2F;&#x2F; 栈非空,且比栈顶元素大，逐个弹出比较，构建ans</span><br><span class="line">        while(!stack.isEmpty() &amp;&amp; nums[stack.peek()]&lt;nums[i%n])&#123;</span><br><span class="line">            ans[stack.pop()] &#x3D; nums[i%n];</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 不比栈顶元素大了，或者小了，或者栈空了，压入</span><br><span class="line">        stack.push(i%n);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-greater-element-ii/solution/dong-hua-jiang-jie-dan-diao-zhan-by-fuxu-4z2g/">动画讲解：单调栈</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-greater-element-ii/solution/xia-yi-ge-geng-da-yuan-su-ii-by-leetcode-bwam/">code来源-LeetCode-Solution</a></p>
+
       
     </div>
     <div class="article-footer">
@@ -409,7 +412,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://luoyongjia.github.io/2021/01/01/12%E6%9C%8831%E6%97%A5/" title="2020年12月31日" target="_blank" rel="external">https://luoyongjia.github.io/2021/01/01/12%E6%9C%8831%E6%97%A5/</a>
+      <a href="https://luoyongjia.github.io/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/" title="503. 下一个更大的元素2" target="_blank" rel="external">https://luoyongjia.github.io/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -455,13 +458,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2021/01/02/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8A%E6%98%93%E5%BF%BD%E7%95%A5%E7%82%B9%E6%80%BB%E7%BB%93/" title="Java基础语法以及易忽略点总结"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/12/31/%E7%94%B1JVM%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E4%B8%8E%E8%81%8C%E8%83%BD%E5%88%B0%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" title="由JVM内存划分与职能到值传递和引用传递"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/03/06/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BB%AA%E8%AE%BA/" title="【数据结构】绪论"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
