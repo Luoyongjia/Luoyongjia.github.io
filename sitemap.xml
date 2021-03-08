@@ -135,6 +135,13 @@
   </url>
   
   <url>
+    <loc>https://luoyongjia.github.io/repository/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/links/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
@@ -143,13 +150,6 @@
   
   <url>
     <loc>https://luoyongjia.github.io/tags/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/repository/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -193,14 +193,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-03-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
     <lastmod>2021-03-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
