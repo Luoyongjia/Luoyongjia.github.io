@@ -17,16 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>归档: 2020 | Gugugu&#39;s blog</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Gugugu&#39;s blog">
-<meta property="og:url" content="https://luoyongjia.github.io/archives/2020/index.html">
+  <title>【数据结构】栈和队列 | Gugugu&#39;s blog</title>
+  <meta name="description" content="栈定义是线性表的应用和推广。是受限的线性表。栈，就是“先进后出”。就像一个只有一个出口的桶，先进去的人只能等后进去的人走了才能出去。 基本操作isEmpty() 栈是否为空push(&amp;s, T elem) 压入栈pop(&amp;s, T elem) 吐出最顶上那个元素getTop(s, &amp;x)  把最顶上那个复制一份给xdestroyStack() 毁灭吧，栈 存储结构顺序存储—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数据结构】栈和队列">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
+<meta property="og:description" content="栈定义是线性表的应用和推广。是受限的线性表。栈，就是“先进后出”。就像一个只有一个出口的桶，先进去的人只能等后进去的人走了才能出去。 基本操作isEmpty() 栈是否为空push(&amp;s, T elem) 压入栈pop(&amp;s, T elem) 吐出最顶上那个元素getTop(s, &amp;x)  把最顶上那个复制一份给xdestroyStack() 毁灭吧，栈 存储结构顺序存储—">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-10T12:51:00.000Z">
+<meta property="article:modified_time" content="2021-03-10T14:03:32.755Z">
 <meta property="article:author" content="罗咏佳">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/archives/2020/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -336,98 +340,201 @@
   
   
 <main class="main" role="main">
-  	<article class="content article article-archives article-type-list" itemscope="">
-	    <header class="article-header">
-	      <h1 itemprop="title">归档: 2020</h1>
-	      <p class="text-muted">共 6 篇文章</p>
-	    </header>
-	    <div class="article-body">
-	      
+  <div class="content">
+  <article id="post-【数据结构】栈和队列" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
   
+    <h1 class="article-title" itemprop="name">
+      【数据结构】栈和队列
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="article-date">
+	  <time datetime="2021-03-10T12:51:00.000Z" itemprop="datePublished">2021-03-10</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>是线性表的应用和推广。是受限的线性表。栈，就是“先进后出”。就像一个只有一个出口的桶，先进去的人只能等后进去的人走了才能出去。</p>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p><strong>isEmpty()</strong> 栈是否为空<br><strong>push(&amp;s, T elem)</strong> 压入栈<br><strong>pop(&amp;s, T elem)</strong> 吐出最顶上那个元素<br><strong>getTop(s, &amp;x)</strong>  把最顶上那个复制一份给x<br><strong>destroyStack()</strong> 毁灭吧，栈</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><h3 id="顺序存储—-gt-顺序栈"><a href="#顺序存储—-gt-顺序栈" class="headerlink" title="顺序存储—&gt;顺序栈"></a>顺序存储—&gt;顺序栈</h3><p>就是用数组来存，然后有一个位置指针来操作。</p>
+<h4 id="共享栈"><a href="#共享栈" class="headerlink" title="共享栈"></a>共享栈</h4><p>顺序栈的抠门做法。一个空间俩栈用。一个从头开始，一个从尾巴开始这样子。</p>
+<h3 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h3><p>就叫链栈。便于多个栈共享存储空间，提高效率。不存在放不下的问题，反正链式，可以无限扩展。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>算式转换，中序转后序。这个不好怎么解释，就来个🌰体会一下。</p>
+<blockquote>
+<p>中序表达式 <code>a + b - a * ((c + d) / e - f) + g</code>转换为等价的后缀表达式为<code>ab+acd+e/f-*-g+</code><br><br>过程大约是这个样子的：<br></p>
+<ol>
+<li>最先压入一个“#”<br></li>
+<li>然后遇到数字直接输出<br></li>
+<li>遇到符号根据优先级来，如果后一个的优先级高于栈顶的，则直接压入；如果后一个的优先级低于栈顶的，则弹出栈顶的，再做比较。</li>
+</ol>
+</blockquote>
+<p>来一道例题吧</p>
+<blockquote>
+<p>假设栈初始为空，将中序表达式<code>a / b + (c * d - e * f) / g</code>转换为等价的后缀表达式的过程中，当扫描到<code>f</code>时，栈中的元素依次是<br><br>A.<code>+(*-</code> B. <code>+(-*</code> C. <code>/+(*-*</code> D. <code>/+-*</code><br><br><br><br>直接来个答案吧，B</p>
+</blockquote>
+<h2 id="题"><a href="#题" class="headerlink" title="题"></a>题</h2><blockquote>
+<ol>
+<li>设链表不带头节点，且所有操作均在表头进行，则下列最不适合作为链栈的是（ ）<br><br> A. 只有表头节点指针，没有表尾指针的双向循环链表<br> B. 只有表尾节点指针，没有表头指针的双向循环链表<br>C. 只有表头节点指针，没有表尾指针的单项循环链表<br>D.只有表尾节点指针，没有表头指针的单项循环链表<br><br><br><br>C. 因为这里只有表头，没有表尾。每次对于栈的操作都是在头上做的。但是为了维持循环链表，所以得找到尾，所以所有操作至少都是<script type="math/tex">O(n)</script>，所以它不合适。<br><br></li>
+<li><p>若已知一个栈的入栈序列是1，2，3，4，其出栈序列为<script type="math/tex">P_{1}, P_{2}, P_{3}, P_{4}</script>, 则<script type="math/tex">P_{2}, P_{4}</script>不可能是（ ）<br><br>A. 2，4  B. 2，1 C. 4，3 D.<br><br><br><br>这种题目，就只有一种方法，那就是自己一个个举例子。<br><br></p>
+</li>
+<li><p>设栈的初始状态为空，当字符序列“n1_”作为栈的输入时，输出长度为3，且可用作C语言标识符的序列有（ ）<br><br>A. 4 B. 5 C. 3 D. 6<br><br><br><br>这个题我个人觉得出的还挺好的，结合了数据结构和C语言的知识。这里，C语言标识符的要求是“第1个字符只能是字母或是下划线。”</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>也是特殊的线性表。先进先出，就跟那吸管一样，只有一头可以进，另一头可以出。</p>
+<h2 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h2><p><strong>front</strong> 头<br><strong>rear</strong> 尾<br><strong>enQueue()</strong> 压入<br><strong>deQueue()</strong> 出队列<br><strong>getHead()</strong> 获取头</p>
+<h2 id="存储结构-1"><a href="#存储结构-1" class="headerlink" title="存储结构"></a>存储结构</h2><h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><p>“假溢出”。要是用传统的一条的那种数组来存队列的话，进进出出几次，下标就给整没了，但是其实那时候队列里面还是有空间存储元素的。</p>
+<h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><p>所以人们就变聪明了，用环形的来存储队列。这就涉及一个下标计算的问题，这个问题常考，所以要记得一些公式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">队首指针进1: front &#x3D; (front + 1) % MaxSize</span><br><span class="line">队尾指针进1:rear &#x3D; (rear + 1) %MaxSize</span><br><span class="line">队列长度:(rear + MaxSize - front) %MaxSize</span><br><span class="line">队满：(rear + 1) % MaxSize &#x3D;&#x3D; front</span><br><span class="line">空：front &#x3D;&#x3D; rear</span><br></pre></td></tr></table></figure>
+<h3 id="链式存储-1"><a href="#链式存储-1" class="headerlink" title="链式存储"></a>链式存储</h3><p>带头节点单链表。</p>
+<h2 id="奇奇怪怪的队列增加了"><a href="#奇奇怪怪的队列增加了" class="headerlink" title="奇奇怪怪的队列增加了"></a>奇奇怪怪的队列增加了</h2><h3 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h3><p>就是两端都可以出栈和入栈。</p>
+<h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><p>外设进程不同步，CPU任务处理方法。</p>
+<h2 id="题-1"><a href="#题-1" class="headerlink" title="题"></a>题</h2><p>明日再更</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="【数据结构】栈和队列" target="_blank" rel="external">https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Luoyongjia" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Luoyongjia" target="_blank"><span class="text-dark">鸽子精</span><small class="ml-1x">Student</small></a></h3>
+        <div>鸽子精本精</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
   
     
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
     
-      
-      
-      <section class="panel panel-default b-no">
-        <div class="panel-heading" role="tab">
-          <h3 class="panel-title">
-            <a data-toggle="collapse" href="#collapse2020" aria-expanded="true">
-              <i class="icon icon-calendar-plus text-active"></i><i class="icon icon-calendar-minus text"></i>
-              2020
-            </a>
-            <!-- <a href="/archives/2020" class="archive-year">2020</a> -->
-          </h3>
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/03/08/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E7%BA%BF%E6%80%A7%E8%A1%A8/" title="【数据结构】线性表"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div id="collapse2020" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2020">
-        <div class="panel-body">
-          <div class="collection">
-    
-    
-<a href="/2020/12/31/%E7%94%B1JVM%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E4%B8%8E%E8%81%8C%E8%83%BD%E5%88%B0%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-12-31T14:52:00.000Z" itemprop="datePublished">2020-12-31</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 由JVM内存划分与职能到值传递和引用传递
-</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  
-    
-    
-    
-<a href="/2020/12/30/%E6%88%91%E7%9A%84JAVA%E7%AC%AC%E4%B8%80%E8%AF%BE/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-12-30T15:31:50.000Z" itemprop="datePublished">2020-12-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 我的Java第一课
-</a>
 
-
-  
-    
-    
-    
-<a href="/2020/12/30/12-30/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-12-30T14:31:54.000Z" itemprop="datePublished">2020-12-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 2020年12月30日
-</a>
-
-
-  
-    
-    
-    
-<a href="/2020/12/30/%E6%98%A5%E6%8B%9B%E5%87%86%E5%A4%87%E8%A7%84%E5%88%92%E3%80%90%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E3%80%91/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-12-30T04:02:12.000Z" itemprop="datePublished">2020-12-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 春招准备规划【实时更新】
-</a>
-
-
-  
-    
-    
-    
-<a href="/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-12-29T16:44:36.000Z" itemprop="datePublished">2020-12-30</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> 2020年12月29日
-</a>
-
-
-  
-    
-    
-    
-<a href="/2020/12/29/hello-world/" class="collection-item" target="_blank" itemprop="url">
-  <time datetime="2020-12-29T06:07:19.495Z" itemprop="datePublished">2020-12-29</time>
-  <span>&nbsp;&nbsp;&nbsp;</span> Hello World
-</a>
-
-
-  
-  
-    </div></div></div></section>
-  
-
-	    </div>
-  	</article>
-  	 	
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -482,6 +589,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '34gCi0O2RInex7JNM8H90VfK-gzGzoHsz',
+    appKey: '4j2aSFWODDTyn3FovQgEvjcU',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
