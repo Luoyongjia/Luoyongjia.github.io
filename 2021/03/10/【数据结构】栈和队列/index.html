@@ -26,7 +26,7 @@
 <meta property="og:description" content="栈定义是线性表的应用和推广。是受限的线性表。栈，就是“先进后出”。就像一个只有一个出口的桶，先进去的人只能等后进去的人走了才能出去。 基本操作isEmpty() 栈是否为空push(&amp;s, T elem) 压入栈pop(&amp;s, T elem) 吐出最顶上那个元素getTop(s, &amp;x)  把最顶上那个复制一份给xdestroyStack() 毁灭吧，栈 存储结构顺序存储—">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-10T12:51:00.000Z">
-<meta property="article:modified_time" content="2021-03-10T14:03:32.755Z">
+<meta property="article:modified_time" content="2021-03-11T02:26:17.195Z">
 <meta property="article:author" content="罗咏佳">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -408,10 +408,9 @@
 <h2 id="存储结构-1"><a href="#存储结构-1" class="headerlink" title="存储结构"></a>存储结构</h2><h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><p>“假溢出”。要是用传统的一条的那种数组来存队列的话，进进出出几次，下标就给整没了，但是其实那时候队列里面还是有空间存储元素的。</p>
 <h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><p>所以人们就变聪明了，用环形的来存储队列。这就涉及一个下标计算的问题，这个问题常考，所以要记得一些公式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">队首指针进1: front &#x3D; (front + 1) % MaxSize</span><br><span class="line">队尾指针进1:rear &#x3D; (rear + 1) %MaxSize</span><br><span class="line">队列长度:(rear + MaxSize - front) %MaxSize</span><br><span class="line">队满：(rear + 1) % MaxSize &#x3D;&#x3D; front</span><br><span class="line">空：front &#x3D;&#x3D; rear</span><br></pre></td></tr></table></figure>
-<h3 id="链式存储-1"><a href="#链式存储-1" class="headerlink" title="链式存储"></a>链式存储</h3><p>带头节点单链表。</p>
+<h3 id="链式存储-1"><a href="#链式存储-1" class="headerlink" title="链式存储"></a>链式存储</h3><p>带头节点单链表。有一个头头节点，然后有一个rear节点，这样子就能够很好的表示队列。</p>
 <h2 id="奇奇怪怪的队列增加了"><a href="#奇奇怪怪的队列增加了" class="headerlink" title="奇奇怪怪的队列增加了"></a>奇奇怪怪的队列增加了</h2><h3 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h3><p>就是两端都可以出栈和入栈。</p>
-<h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><p>外设进程不同步，CPU任务处理方法。</p>
-<h2 id="题-1"><a href="#题-1" class="headerlink" title="题"></a>题</h2><p>明日再更</p>
+<h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><p>解决主机与外设之间速度不匹配的问题，解决由多用户引起的cpu资源竞争问题。<br>eg：设置一个打印数据缓冲区。cpu中的任务排成一个队列。</p>
 
       
     </div>
