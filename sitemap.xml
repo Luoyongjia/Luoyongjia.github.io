@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoyongjia.github.io/2021/03/11/%E3%80%90TOEFL%E3%80%91-%E5%8F%A3%E8%AF%ADTask1%E3%80%81Task2/</loc>
+    
+    <lastmod>2021-03-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</loc>
     
     <lastmod>2021-03-11</lastmod>
@@ -135,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/links/index.html</loc>
+    <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/index.html</loc>
+    <loc>https://luoyongjia.github.io/links/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -214,6 +221,13 @@
   </url>
   
   <url>
+    <loc>https://luoyongjia.github.io/tags/%E5%8F%A3%E8%AF%AD/</loc>
+    <lastmod>2021-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
@@ -245,6 +259,13 @@
   
   <url>
     <loc>https://luoyongjia.github.io/categories/Java/</loc>
+    <lastmod>2021-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/categories/TOEFL/</loc>
     <lastmod>2021-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
