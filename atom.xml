@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-03-11T02:54:07.758Z</updated>
+  <updated>2021-03-18T04:01:39.258Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【数据结构】串</title>
+    <link href="https://luoyongjia.github.io/2021/03/18/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E4%B8%B2/"/>
+    <id>https://luoyongjia.github.io/2021/03/18/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E4%B8%B2/</id>
+    <published>2021-03-18T02:08:37.000Z</published>
+    <updated>2021-03-18T04:01:39.258Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>计算机上非数值的处理对象。</p><h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p><strong>Copy(&amp;T, s)</strong> 就是copy操作，将一个地址里的东西取出来，存到新的字符串里面。<br><strong>length()</strong> 字符串的长度。<br><strong>Index(S, T)</strong> 定位t的初始位置。</p><h1 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h1><h2 id="定长顺序存储"><a href="#定长顺序存储" class="headerlink" title="定长顺序存储"></a>定长顺序存储</h2><p>顺序存储结构，分配一个定长的空间存储字符串。</p><h2 id="堆分配存储"><a href="#堆分配存储" class="headerlink" title="堆分配存储"></a>堆分配存储</h2><p>是在程序运行的过程中，动态分配形成的。当程序请求一块空间之后，在堆空间中分配一块区域。不成功返回null。</p><h2 id="块链存储"><a href="#块链存储" class="headerlink" title="块链存储"></a>块链存储</h2><p>类似于链式存储。多个节点，每个节点里面放几个字符。空的用“#”补全。</p><h1 id="字符串算法"><a href="#字符串算法" class="headerlink" title="字符串算法"></a>字符串算法</h1><h2 id="暴力匹配"><a href="#暴力匹配" class="headerlink" title="暴力匹配"></a>暴力匹配</h2><p>老暴力方法了，就两个字符串硬比，没什么技术水平。</p><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>这才是重中之重！<br>为什么有这种方法呢，因为在暴力算法中重复了大量的比较，这种方法能够减少这种重复的出现。</p><h3 id="先来一个文字描述"><a href="#先来一个文字描述" class="headerlink" title="先来一个文字描述"></a>先来一个文字描述</h3><blockquote><p><strong>什么是next数组</strong><br>next数组就是匹配字串的每一位所在的最长前后缀相同的长度。<br><br><strong>如何构建呢？<br></strong></p><ol><li>我使用的是动态规划的方法。前后两个指针。前指针指向后缀的最后一个字符，后指针指向后缀的最后一个字符。比较这两个指针存的内容，<br></li><li>当前指针为0，且前指针与后指针内容不相等的时候，后指针所指下标next数组存为0<br></li><li>相同则后指针所在位置等于前指针前一位next数组存的数字+1<br></li><li>不同则将前指针移动到前指针前一位next数组存的数字地址再做比较，直到前指针到0。<br><br><strong>如何匹配<br></strong></li><li>正常匹配<br></li><li>当遇到两个字符不相等的时候，将母串与子串的next数组对应的前一位的内容做对比，相当于将子串移动到前一next位。这样就减少了前一next之前的那些重复的比较。</li></ol></blockquote><h3 id="再来一个代码"><a href="#再来一个代码" class="headerlink" title="再来一个代码"></a>再来一个代码</h3><p>代码再说吧，有时间再写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;计算机上非数值的处理对象。&lt;/p&gt;
+&lt;h1 id=&quot;基本操作&quot;&gt;&lt;a href=&quot;#基本操作&quot; class=&quot;headerlink&quot; tit</summary>
+      
+    
+    
+    
+    <category term="数据结构" scheme="https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【TOEFL】 口语Task1、Task2</title>
@@ -475,26 +498,6 @@
     
     
     <category term="日记" scheme="https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://luoyongjia.github.io/2020/12/29/hello-world/"/>
-    <id>https://luoyongjia.github.io/2020/12/29/hello-world/</id>
-    <published>2020-12-29T06:07:19.495Z</published>
-    <updated>2020-12-29T06:07:19.495Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
     
     
   </entry>
