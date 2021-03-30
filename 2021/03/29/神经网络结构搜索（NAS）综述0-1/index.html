@@ -3,8 +3,6 @@
 <head>
   <meta charset="utf-8">
   
-  <meta name="referrer" content="never">
-  
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="renderer" content="webkit">
@@ -19,18 +17,26 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>书单 | Gugugu&#39;s blog</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="书单">
-<meta property="og:url" content="https://luoyongjia.github.io/books/index.html">
+  <title>神经网络结构搜索（NAS）综述0.1 | Gugugu&#39;s blog</title>
+  <meta name="description" content="近期读了一篇Nas综述（Neural Architecture Search: A Survey）了，这篇是一篇19年的综述…就这两年Nas的发展可以说是老综述了；但是更新的我也没找到，所以就凑活着看看。 背景首先是深度学习在各个领域的应用。随着深度学习的发展，网络结构的设计对于完成任务至关重要。但是很多网络结构的设计都是基于人的经验的，这很容易出错。所以将构建网络这个过程，也交给数据与机器去自动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络结构搜索（NAS）综述0.1">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
+<meta property="og:description" content="近期读了一篇Nas综述（Neural Architecture Search: A Survey）了，这篇是一篇19年的综述…就这两年Nas的发展可以说是老综述了；但是更新的我也没找到，所以就凑活着看看。 背景首先是深度学习在各个领域的应用。随着深度学习的发展，网络结构的设计对于完成任务至关重要。但是很多网络结构的设计都是基于人的经验的，这很容易出错。所以将构建网络这个过程，也交给数据与机器去自动">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-29T09:45:56.166Z">
-<meta property="article:modified_time" content="2020-12-29T06:21:42.126Z">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/1.jpg">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/2.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/3.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/4.png">
+<meta property="article:published_time" content="2021-03-29T02:37:04.000Z">
+<meta property="article:modified_time" content="2021-03-30T02:32:33.717Z">
 <meta property="article:author" content="罗咏佳">
+<meta property="article:tag" content="Nas">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/1.jpg">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/books/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -47,7 +53,7 @@
 <meta name="generator" content="Hexo 5.3.0"></head>
 
 
-<body class="main-center theme-black no-sidebar" itemscope itemtype="http://schema.org/WebPage">
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
   <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -338,40 +344,195 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="article article-links article-type-list" itemscope="">
-  <header class="article-header">
-    <h1 itemprop="title">书单</h1>
-    <p class="text-muted">个人收藏的书单推荐给大家 <a href="https://www.douban.com/people/180091298/" target="_blank">[我的豆瓣]</a></p>
-    <nav role="navigation" id="nav-main" class="okayNav">
-      <ul id="tabs">
-        <li><a id="reading-tab" href="javascript:show('reading')" rel="external">在读<span id="reading-total"></span></a></li>
-        <li><a id="wish-tab" href="javascript:show('wish')" rel="external">想读<span id="wish-total"></span></a></li>
-        <li><a id="read-tab" href="javascript:show('read')" rel="external">已读<span id="read-total"></span></a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="article-body">
-    <div id="loading">
-      <p>正在加载...</p>
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-神经网络结构搜索（NAS）综述0-1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      神经网络结构搜索（NAS）综述0.1
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/" class="article-date">
+	  <time datetime="2021-03-29T02:37:04.000Z" itemprop="datePublished">2021-03-29</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Research/">Research</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Nas/" rel="tag">Nas</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
     </div>
-    <div id="douban">
-      <div id="collections">
-        <div id="reading" class="row hide">
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>近期读了一篇Nas综述（<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1808.05377">Neural Architecture Search: A Survey</a>）了，这篇是一篇19年的综述…就这两年Nas的发展可以说是老综述了；但是更新的我也没找到，所以就凑活着看看。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>首先是<strong>深度学习</strong>在各个领域的应用。随着深度学习的发展，网络结构的设计对于完成任务至关重要。但是很多网络结构的设计都是基于人的经验的，这很容易出错。所以将构建网络这个过程，也交给数据与机器去自动选择。</p>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>能够快速地找到适应一个任务的网络结构。<br>如图所示：</p>
+<p><img src="/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/1.jpg" alt="f1"></p>
+<h1 id="经典方法"><a href="#经典方法" class="headerlink" title="经典方法"></a>经典方法</h1><p><img src="/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/2.png" alt="f2"></p>
+<p>主要包含三个方向：<strong>搜索空间</strong>、<strong>搜索策略</strong>、<strong>评价预估</strong>。很好理解：<br><strong>搜索空间</strong> 从哪些网络结构中搜索<br><strong>搜索策略</strong> 怎么针对任务挑出适应的结构<br><strong>评价预估</strong> 具像化简单的理解，就是评价搜索策略找出来的这个网络结构的性能。        </p>
+<h1 id="Search-Space"><a href="#Search-Space" class="headerlink" title="Search Space"></a>Search Space</h1><p><script type="math/tex">chain-structured neural networks</script>: 链式的网络结构，搜索的可以有：1. 网络的层数；2. 每一层的操作；3. 超参。<br>如图中左边的结构。</p>
+<p><script type="math/tex">multi-branch networks</script>: 就字面意思，多分支，看图中右边结构就懂了。</p>
+<p><img src="/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/3.png" alt="f3"></p>
+<p><script type="math/tex">cells</script>：人工设计的复杂的网络中有很多重复的部分，大约就是，训练小的cell，然后再进行堆叠。</p>
+<p><img src="/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/4.png" alt="f4"></p>
+<h1 id="Search-Strategy"><a href="#Search-Strategy" class="headerlink" title="Search Strategy"></a>Search Strategy</h1><h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p>这个暂时还不懂。</p>
+<h2 id="遗传进化算法"><a href="#遗传进化算法" class="headerlink" title="遗传进化算法"></a>遗传进化算法</h2><p>大约的框架就是：</p>
+<blockquote>
+<ol>
+<li>随机生成一个种群（n个网络结构）</li>
+<li>循环：选择、交叉、变异，直到满足最终条件</li>
+</ol>
+</blockquote>
+<p>不同的工作可以聚焦在不同的过程中，比如如何sample种群，如何选择种群等。</p>
+<p>我毕设中就是用的这种方法。</p>
+<h2 id="基于梯度的方法"><a href="#基于梯度的方法" class="headerlink" title="基于梯度的方法"></a>基于梯度的方法</h2><p>强化学习和遗传进化算法都是在离散的空间中搜索，这种方法就是把操作与操作之间的路径选择转基于选择某路径的概率，从而使得离散的问题变成了连续的问题，就可以基于梯度优化的方法进行网络结构搜索了。</p>
+<h1 id="Performance-Estimation-Strategy"><a href="#Performance-Estimation-Strategy" class="headerlink" title="Performance Estimation Strategy"></a>Performance Estimation Strategy</h1><p>诶嘿，这块儿是一个加快NAS训练的重要点。然后我挑了俩个人觉得还算靠谱的方法。</p>
+<h2 id="Weight-Inheritance"><a href="#Weight-Inheritance" class="headerlink" title="Weight Inheritance"></a>Weight Inheritance</h2><p>参数级别的迁移，用之前已经训练好的模型权重参数对于目标问题赋值，从一个较高起点的初值开始搜。具体怎么搞的，以后再补充。</p>
+<h2 id="One-shot"><a href="#One-shot" class="headerlink" title="One-shot"></a>One-shot</h2><p>在其他的方法中都需要对于每一个（<script type="math/tex">n</script>）网络结构进行训练。所以One-shot把这<script type="math/tex">n</script>个网络结构使用一个SuperNet表示。SuperNet中，可以表示不同的SubNet，从而覆盖了之前的<script type="math/tex">n</script>个网络结构。通过对于这个SuperNet的训练达到了训练<script type="math/tex">n</script>个网络结构的效果。从而大大减少了训练所需的时间和资源。</p>
+<h1 id="自己的碎碎念"><a href="#自己的碎碎念" class="headerlink" title="自己的碎碎念"></a>自己的碎碎念</h1><p>之前了解得不多，怎么说呢，想要开始就整这个方向。现在看了🤏相关的知识，会发现这其实只是一种方法，也可以说是一种工具吧，并不是一个好的，作为research起点的方向。确实这个方向有很多值得研究的方面，但是我觉得都是需要基于个人对于另一个什么方向有了深刻的理解了，再来，或许是优化NAS的方法，又或许是NAS与某个方面结合，亦或许是使NAS能做到多任务。这都是没有好的其他的基础，做不到的，so.</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/" title="神经网络结构搜索（NAS）综述0.1" target="_blank" rel="external">https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Luoyongjia" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Luoyongjia" target="_blank"><span class="text-dark">鸽子精</span><small class="ml-1x">Student</small></a></h3>
+        <div>鸽子精本精</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/03/26/Mac%E9%85%8D%E7%BD%AEAnaconda%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="Mac配置Anaconda环境变量"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="clearfix"></div>
-        <div id="wish" class="row hide">
-        </div>
-        <div class="clearfix"></div>
-        <div id="read" class="row hide">
-        </div>
-        <div class="clearfix"></div>
       </div>
     </div>
   </div>
-</article>
-
-  
+</div>
 
 
 
@@ -429,155 +590,37 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
-   <script>
-function show(id) {
-  document.getElementById('reading').classList.remove('active');
-  document.getElementById('read').classList.remove('active');
-  document.getElementById('wish').classList.remove('active');
-  document.getElementById('reading').classList.add('hide');
-  document.getElementById('read').classList.add('hide');
-  document.getElementById('wish').classList.add('hide');
 
-  var ele = document.getElementById(id);
-  ele.classList.remove('hide');
-  ele.classList.add('active');
-
-  document.getElementById('reading-tab').classList.remove('active');
-  document.getElementById('read-tab').classList.remove('active');
-  document.getElementById('wish-tab').classList.remove('active');
-  document.getElementById(id + '-tab').classList.add('active');
-};
-
-(function() {
-  var read = [];
-  var wish = [];
-  var reading = [];
-
-  // XHR 获取豆瓣书单数据，数据格式json
-  // function loadDoubanCollections() {
-  //   var xhr = new XMLHttpRequest();
-  //   // https://api.douban.com/v2/book/user/:name/collections
-  //   xhr.open('GET', 'http://7b1fa0.com1.z0.glb.clouddn.com/douban-20170429-1.json', true);
-
-  //   xhr.onload = function() {
-  //     // console.log(this);
-  //     if (this.status >= 200 && this.status < 300) {
-  //       var res = JSON.parse(this.response);
-  //       searchData = res;
-  //       onLoadDouban(searchData);
-  //     } else {
-  //       console.error(this.statusText);
-  //     }
-  //   };
-
-  //   xhr.onerror = function() {
-  //     console.error(this.statusText);
-  //   };
-
-  //   xhr.send();
-  // }
-  
-  // Ajax 获取豆瓣书单数据，数据格式json
-  function loadDoubanCollections() {
-    var _this = this;
-    // https://api.douban.com/v2/book/user/:name/collections?start=0&count=100
-    var url = "https://api.douban.com/v2/book/user/180091298/collections"
-    $.ajax({
-      url: url,
-      type: 'GET',
-      data: {
-        start:0, // 从哪一条记录开始
-        count:100 // 获取豆瓣书单数据条数
-      },
-      dataType: 'JSONP', //here
-      success: function(data) {
-        // console.log(data);
-        onLoadDouban(data);
-      }
-    });
-  }
-
-  function onLoadDouban(data) {
-    if (data['count'] > 0) {
-      for (var i = 0; i < data['collections'].length; ++i) {
-        resolveBook(data['collections'][i]);
-      }
-    }
-    render();
-  }
-
-  function resolveBook(book) {
-    if (book['status'] == 'read') {
-      read.push(book);
-    }
-    if (book['status'] == 'wish') {
-      wish.push(book);
-    }
-    if (book['status'] == 'reading') {
-      reading.push(book);
-    }
-  }
-
-  function render() {
-    renderList(read, 'read');
-    renderList(wish, 'wish');
-    renderList(reading, 'reading');
-
-    document.getElementById('reading-total').innerHTML = '(' + reading.length + ')';
-    document.getElementById('read-total').innerHTML = '(' + read.length + ')';
-    document.getElementById('wish-total').innerHTML = '(' + wish.length + ')';
-
-    show('reading');
-    document.getElementById('loading').classList.add('hide');
-  }
-
-  function renderList(list, id) {
-    for (var i = 0; i < list.length; ++i) {
-      var h = renderBook(list[i]);
-      if (i > 0 && i % 4 == 3) {
-        h += '<div class="clearfix"></div>';
-      }
-      document.getElementById(id).innerHTML = document.getElementById(id).innerHTML + h;
-    }
-  }
-
-  function renderBook(book) {
-    var html = '<div class="col-sm-6 col-md-6"><div class="panel panel-default hover-grow"><div class="panel-body">'
-      + '<div class="media media-middle book book-' + book['status'] + '" itemscope itemtype="http://schema.org/Book">' 
-      + '<div class="media-left"><a class="media-middle" target="_blank" href="' + book.book.alt + '" rel="external nofollow noopener noreferrer"><img class="media-object" src="' + book.book.image + '" itemprop="image"/></a></div><div class="media-body">' 
-      + '<h3 class="media-heading" itemprop="name"><a target="_blank" href="' + book.book.alt + '" rel="external nofollow noopener noreferrer">' + book.book.title + '</a></h3>' 
-      + '<p class="meta text-nowrap-1x"><small itemprop="author">' + book.book.author[0] + '</small> / <small itemprop="datePublished">' + book.book.pubdate + '</small> / <small itemprop="ratingValue">' + book.book.rating.average + '分</small></p>' 
-      + '<p class="meta text-nowrap-1x">' + book.updated.substring(0, 10) + resolveRating(book.rating) + resolveTags(book.tags) + '</p>' 
-      + '<div class="comments text-muted text-nowrap-3x" itemprop="comment">' + (book.comment ? book.comment : '') + '</div>' 
-      + '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
-    return html;
-  }
-
-  function resolveRating(rating) {
-    if (rating && rating.value) {
-      return ' / ' + rating.value + '星';
-    }
-    return '';
-  }
-
-  function resolveTags(tags) {
-    if (tags && tags.length > 0) {
-      var html = ' / ';
-      for (var i = 0; i < tags.length; ++i) {
-        html += tags[i] + ' ';
-      }
-      return html;
-    }
-    return '';
-  }
-
-  setTimeout(function() {
-    loadDoubanCollections();
-  }, 0)
-})()
-</script>
+   
 
 
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '34gCi0O2RInex7JNM8H90VfK-gzGzoHsz',
+    appKey: '4j2aSFWODDTyn3FovQgEvjcU',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
