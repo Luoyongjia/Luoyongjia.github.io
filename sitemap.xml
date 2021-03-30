@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoyongjia.github.io/2021/03/30/Linux%E6%9F%A5%E7%9C%8BGPU%E7%8A%B6%E6%80%81/</loc>
+    
+    <lastmod>2021-03-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/2021/03/29/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E6%90%9C%E7%B4%A2%EF%BC%88NAS%EF%BC%89%E7%BB%BC%E8%BF%B00-1/</loc>
     
     <lastmod>2021-03-30</lastmod>
@@ -235,6 +242,20 @@
   </url>
   
   <url>
+    <loc>https://luoyongjia.github.io/tags/GPU/</loc>
+    <lastmod>2021-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/tags/Linux/</loc>
+    <lastmod>2021-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
@@ -294,6 +315,13 @@
   
   <url>
     <loc>https://luoyongjia.github.io/categories/Java/</loc>
+    <lastmod>2021-03-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2021-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
