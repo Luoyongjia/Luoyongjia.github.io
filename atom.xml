@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-03-30T12:15:25.499Z</updated>
+  <updated>2021-04-01T13:19:37.035Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【ML】Regression</title>
+    <link href="https://luoyongjia.github.io/2021/04/01/%E3%80%90ML%E3%80%91Regression/"/>
+    <id>https://luoyongjia.github.io/2021/04/01/%E3%80%90ML%E3%80%91Regression/</id>
+    <published>2021-04-01T13:06:44.000Z</published>
+    <updated>2021-04-01T13:19:37.035Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Regression在做什么"><a href="#Regression在做什么" class="headerlink" title="Regression在做什么"></a>Regression在做什么</h1><p>输入数据，输出一个<strong>数值</strong>。    </p><ul><li>股票预测<ul><li><script type="math/tex; mode=display">f(info about stocks) = Dow Jones Industrial Average at tomorrow</script></li></ul></li><li>自动驾驶<ul><li><script type="math/tex">f(info of road) =</script> 方向盘的角度</li></ul></li></ul><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>课上用宝可梦的例子来解释了这个步骤。通过一个基础宝可梦的相关数据预测其进化后的Combat Power(CP)</p><h2 id="Step-1-Model"><a href="#Step-1-Model" class="headerlink" title="Step 1: Model"></a>Step 1: Model</h2><p>从一堆不同的函数中（一次函数、二次函数、对数函数等），选取合适当前数据的函数。</p><p>这里选取了线性模型：<script type="math/tex">y = b + \sum w_{i}x_{i}</script></p><p>不同的<script type="math/tex">w</script>和<script type="math/tex">b</script>的选择能构成各种各样的函数：        </p><script type="math/tex; mode=display">f1: y = 10.0 + 9.0\cdotw</script><script type="math/tex; mode=display"></script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Regression在做什么&quot;&gt;&lt;a href=&quot;#Regression在做什么&quot; class=&quot;headerlink&quot; title=&quot;Regression在做什么&quot;&gt;&lt;/a&gt;Regression在做什么&lt;/h1&gt;&lt;p&gt;输入数据，输出一个&lt;strong&gt;数值&lt;/s</summary>
+      
+    
+    
+    
+    <category term="深度学习基础" scheme="https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>conda常用操作</title>
@@ -473,31 +495,6 @@
     
     <category term="日记" scheme="https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>由JVM内存划分与职能到值传递和引用传递</title>
-    <link href="https://luoyongjia.github.io/2020/12/31/%E7%94%B1JVM%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E4%B8%8E%E8%81%8C%E8%83%BD%E5%88%B0%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/"/>
-    <id>https://luoyongjia.github.io/2020/12/31/%E7%94%B1JVM%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E4%B8%8E%E8%81%8C%E8%83%BD%E5%88%B0%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</id>
-    <published>2020-12-31T14:52:00.000Z</published>
-    <updated>2021-01-01T03:43:56.656Z</updated>
-    
-    <content type="html"><![CDATA[<p>课程布置了一项小作业，让了解值传递和引用传递，于是去从网上搜，就找到了这篇写得非常清晰的文章，让我从JVM内存划分的基础角度了解了值传递和引用传递的区别。</p><h2 id="JVM内存划分与职能"><a href="#JVM内存划分与职能" class="headerlink" title="JVM内存划分与职能"></a>JVM内存划分与职能</h2><p>在java第一课中我们认识到了java程序都是运行在jvm上的，那jvm里面到底干了些什么呢？这里给出一个更加详细的程序执行图</p><p><img src="/2020/12/31/%E7%94%B1JVM%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E4%B8%8E%E8%81%8C%E8%83%BD%E5%88%B0%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/1.png" alt="figer1"></p><h3 id="内存划分"><a href="#内存划分" class="headerlink" title="内存划分"></a>内存划分</h3><p>由图可以得出，当java代码被翻译成字节码后，jvm开辟了一片新的内存空间（运行时数据区），下面依次来介绍其中的功能。</p><h4 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h4><p>方法被执行的地方，虚拟基站中存放着栈帧，方法调用的过程对应着栈帧在虚拟机中入栈到出栈的过程。</p><p>栈时私有的，也就是线程之间栈是隔离的。当程序某个线程开始执行一个方法，就会创建一个栈帧并入栈（于栈顶），方法结束后，栈帧出栈</p><p>下图为Java栈的模型及栈帧的组成：</p><p><img src="/2020/12/31/%E7%94%B1JVM%E5%86%85%E5%AD%98%E5%88%92%E5%88%86%E4%B8%8E%E8%81%8C%E8%83%BD%E5%88%B0%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/2.png" alt="figer2"></p><p><strong>局部变量表：</strong>储存方法中的局部变量，变量为基本数据类型时，存储值，变量为引用类时，存储引用类对象的地址</p><p><strong>操作数栈：</strong>Java虚拟机的解释执行引擎常被称为<strong>“基于栈的执行引擎”</strong>，其中的栈为这个操作栈</p><p><strong>指向运行时常量池的引用：</strong>可能用到的常量的<strong>引用</strong></p><p><strong>方法返回地址：</strong>存储方法执行完之后的返回地址</p><h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>存储对象本身和数组，JVM中只有一个堆，所以堆是被所有线程共享的。</p><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>一块线程共享的内存逻辑区域，JVM中只有一个方法区，存放一些线程可共享的内容。它是线程安全的，多个线程访问一个内容时，只有一个线程装载其数据，其他线程等待。</p><h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h4><p>本地方法栈和虚拟机栈功能大约相同，线程私有。它和虚拟机栈之间的差别在于它主要<strong>为本地方法服务</strong>而虚拟机栈为Java方法服务。</p><h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h4><p>线程私有。记录当前线程所执行的字节码（*.class）的行号和指示器。字节码解释器工作就是通过改变计数器的值来选去下一条需要执行的字节码指令。个人认为程序计数器实现了Java的解释型语言性质。</p><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="数据基础知识"><a href="#数据基础知识" class="headerlink" title="数据基础知识"></a>数据基础知识</h3><blockquote><p>基本类型：byte, short, int, long, float, double, char, boolean </p><p>引用类型：类，接口，数组</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Example&#123;</span><br><span class="line">public static PI &#x3D; 3.14;&#x2F;&#x2F;静态变量</span><br><span class="line">private int name;&#x2F;&#x2F;成员变量</span><br><span class="line"></span><br><span class="line">public void static main(String[] args)&#123;</span><br><span class="line">int a;&#x2F;&#x2F;局部变量</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int sum(int num1, int num2)&#123;</span><br><span class="line">int sum &#x3D; 0;&#x2F;&#x2F;局部变量</span><br><span class="line">sum &#x3D; num1 + num2;</span><br><span class="line">return sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="数据在内存中存储方法"><a href="#数据在内存中存储方法" class="headerlink" title="数据在内存中存储方法"></a>数据在内存中存储方法</h3><h4 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h4><h5 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h5><p>直接存储在内存中的栈上，也就是之前提到过的“虚拟机栈”。</p><p>所以当我们给一个方法传入变量时，栈帧中拷贝了一份变量的值，并创建了一个副本来储存这个值，当方法结束时，栈帧被丢掉，这个副本也就被删了，原来变量的值也就没变。</p><h5 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h5><p>也就是class中的一些属性变量，这些变量的生命周期同对象是一致的。</p><h5 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h5><p>当类开始纯在，静态变量就储存在了堆中，当类被消灭的时候，它们才会被消灭。</p><h4 id="引用数据"><a href="#引用数据" class="headerlink" title="引用数据"></a>引用数据</h4><p>引用数据传入时，传入的是存放变量内容的地址。</p><h2 id="值传递与引用传递"><a href="#值传递与引用传递" class="headerlink" title="值传递与引用传递"></a>值传递与引用传递</h2><h3 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h3><p>可以简单的理解为上面对于成员变量的定义，一次性的变量。</p><p>当我们给一个方法传入变量时，栈帧中拷贝了一份变量的值，并创建了一个副本来储存这个值，当方法结束时，栈帧被丢掉，这个副本也就被删了，原来变量的值也就没变。</p><h3 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h3><p>很好理解，就是将存变量值的堆中的地址给传进方法了，所以方法中对于传入的变量的更改实质上就是更改那个地址中存储的内容，一改则全改。<br>eg:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Person&#123;</span><br><span class="line">private String name;</span><br><span class="line"></span><br><span class="line">public String getName()&#123;</span><br><span class="line">return name;</span><br><span class="line">&#125;</span><br><span class="line">public void setName(String name)&#123;</span><br><span class="line">this.name &#x3D; name;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">public static void PersonCrossTest(Person person)&#123;</span><br><span class="line">        System.out.println(&quot;传入的person的name：&quot;+person.getName());</span><br><span class="line">        person.setName(&quot;小红&quot;);</span><br><span class="line">        System.out.println(&quot;方法内重新赋值后的name：&quot;+person.getName());</span><br><span class="line">    &#125;</span><br><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">Person p &#x3D; new Person();</span><br><span class="line">p.setName(&quot;小明&quot;);</span><br><span class="line">PersonCrossTest(p);</span><br><span class="line">System.out.println(&quot;方法执行后的name: &quot; + p.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结果将会是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">传入的person的name：小明</span><br><span class="line">方法内重新赋值后的name：小红</span><br><span class="line">方法执行后的name：小红</span><br></pre></td></tr></table></figure><p><strong>在那篇博客中还发现了一片很好玩的问题：</strong></p><p>还是刚刚那段代码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Person&#123;</span><br><span class="line">private String name;</span><br><span class="line"></span><br><span class="line">public String getName()&#123;</span><br><span class="line">return name;</span><br><span class="line">&#125;</span><br><span class="line">public void setName(String name)&#123;</span><br><span class="line">this.name &#x3D; name;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">public static void PersonCrossTest(Person person)&#123;</span><br><span class="line">        System.out.println(&quot;传入的person的name：&quot;+person.getName());</span><br><span class="line">        &#x2F;&#x2F;改变的地方</span><br><span class="line">        person &#x3D; new Person();</span><br><span class="line">        person.setName(&quot;小红&quot;);</span><br><span class="line">        System.out.println(&quot;方法内重新赋值后的name：&quot;+person.getName());</span><br><span class="line">    &#125;</span><br><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">Person p &#x3D; new Person();</span><br><span class="line">p.setName(&quot;小明&quot;);</span><br><span class="line">PersonCrossTest(p);</span><br><span class="line">System.out.println(&quot;方法执行后的name: &quot; + p.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个地方在PersonCrossTest方法里，person由原来指向<code>小明</code>的<strong>地址1</strong>改为了在方法中new Person()创建的临时的一个Person对象的<strong>地址2</strong>，在PersonCrossTest方法结束时<strong>地址2</strong>就被删除了，<strong>地址1</strong>中的内容并没有改变。</p><p>所以说，这里的引用传递其实是一个虚假的引用传递，不过是在栈帧中创建了一个变量存储传进来变量的地址。</p><hr><p>终于写完了，今天就只加个总结吧，Java基础内容明日再更。</p><h6 id="refer-这一次，彻底解决Java的值传递和引用传递"><a href="#refer-这一次，彻底解决Java的值传递和引用传递" class="headerlink" title="refer:这一次，彻底解决Java的值传递和引用传递"></a>refer:<a href="https://segmentfault.com/a/1190000016773324">这一次，彻底解决Java的值传递和引用传递</a></h6>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;课程布置了一项小作业，让了解值传递和引用传递，于是去从网上搜，就找到了这篇写得非常清晰的文章，让我从JVM内存划分的基础角度了解了值传递和引用传递的区别。&lt;/p&gt;
-&lt;h2 id=&quot;JVM内存划分与职能&quot;&gt;&lt;a href=&quot;#JVM内存划分与职能&quot; class=&quot;header</summary>
-      
-    
-    
-    
-    <category term="Java" scheme="https://luoyongjia.github.io/categories/Java/"/>
-    
-    
-    <category term="编程" scheme="https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
