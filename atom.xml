@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-04-11T14:02:36.949Z</updated>
+  <updated>2021-04-14T04:21:09.565Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【ML】Gradient Descent</title>
+    <link href="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/"/>
+    <id>https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/</id>
+    <published>2021-04-12T13:39:07.000Z</published>
+    <updated>2021-04-14T04:21:09.565Z</updated>
+    
+    <content type="html"><![CDATA[<p>李宏毅机器学习3-1笔记。</p><h1 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h1><p>是一种得到loss最优值的一种方法。</p><blockquote><ol><li>随机取一点</li><li>求这一点的梯度</li><li>根据梯度以及learning rate来更新参数<br><br>从而得到最小的loss==得到最佳的参数</li></ol></blockquote><h1 id="为什么有效"><a href="#为什么有效" class="headerlink" title="为什么有效"></a>为什么有效</h1><p>GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。</p><p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png" alt="f1"></p><h2 id="如何快速地取到这个局部最优呢？"><a href="#如何快速地取到这个局部最优呢？" class="headerlink" title="如何快速地取到这个局部最优呢？"></a>如何快速地取到这个局部最优呢？</h2><p>这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取：</p><script type="math/tex; mode=display">h(x) \approx h(x_{0}) + h'(x_{0})(x - x_{0})</script><p>假设u、v为loss对于两个参数的偏微分，则：</p><script type="math/tex; mode=display">L(\theta) \approx s + u(\theta_{1} - a) + v(\theta_{2} - b)</script><p>想要<script type="math/tex">L(\theta)</script>取得最小值，则如图所示<script type="math/tex">(\Delta \theta_{1}, \Delta \theta_{2})</script>取(u, v)反方向，最大值。所以Gradient Descent的过程是<script type="math/tex">\theta^{1}\gets \theta ^{0 } - \eta \Delta L</script></p><p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/2.png" alt="f2"></p><h1 id="Gradient-Descent的升级版"><a href="#Gradient-Descent的升级版" class="headerlink" title="Gradient Descent的升级版"></a>Gradient Descent的升级版</h1><h2 id="基于Learning-Rate"><a href="#基于Learning-Rate" class="headerlink" title="基于Learning Rate"></a>基于Learning Rate</h2><p>Learning rate 这个东西，太大很可能得不到最优值，太小呢效率又低，所以选择一个正确的learning rate是十分重要的。</p><p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/4.png" alt="f4"><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/3.png" alt="f3"></p><h3 id="Adaptive-Learning-Rate"><a href="#Adaptive-Learning-Rate" class="headerlink" title="Adaptive Learning Rate"></a>Adaptive Learning Rate</h3><p>这是基于随着梯度下降的进行，当前点距离最优解是越来越近的理论的。随着梯度下降的进行，learning rate随之减小，比如说像这样的learning rate：</p><script type="math/tex; mode=display">\eta^{t} = \frac{\eta}{\sqrt{n + 1}}</script><h4 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h4><script type="math/tex; mode=display">\begin{equation*}\begin{aligned}&w^{t+1} \gets w^{t} - \frac{n^{t}}{\sigma^{t}}\\&\sigma^{t} = \sqrt{\frac{1}{t + 1}\sum_{i = 0}^{t}(g^{i})^{2}}\\& \eta^{t} = \frac{\eta}{\sqrt{n + 1}}\\\end{aligned}\end{equation*}</script><p>其中<script type="math/tex">\sigma^{t}</script>是之前这个<script type="math/tex">w</script>的所有偏微分值的均方根。这样子当t较大的时候，<script type="math/tex">\sigma^{t}</script>就能十分接近二次微分从而做到对于不同的<script type="math/tex">w</script>有一个将不同参数的分布进行类似归一化的处理。使得不同的参数的取值距离最优点距离的估算都是一个单位的。</p><p>对于上述算式进行化简，得到：</p><script type="math/tex; mode=display">w^{t+1} \gets w^{t} - \frac{\eta}{\sqrt{\sum_{i = 0}^{t} (g^{i})^{2}}}</script><h2 id="Stochastic-Gradient-Descent"><a href="#Stochastic-Gradient-Descent" class="headerlink" title="Stochastic Gradient Descent"></a>Stochastic Gradient Descent</h2><p>传统的GD是对于所有的训练数据计算梯度，然后更新系数。SGD是从训练数据中随机的抽取几个数据来算梯度，立马更新。显然这种方法更加快，效果也不错。</p><p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/5.png" alt="f5"></p><h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>当不同参数传入的特征值单位相差很大的时候，不同参数对于结果的影响就会出现偏差，这样是非常不好的，不仅仅会影响到参数的更新，也会影响到训练的效率以及结果。所以需要将不同的特征值进行归一化处理。</p><p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/6.png" alt="f6"></p><p>将特征的值，通过：</p><script type="math/tex; mode=display">x_{i}^{r} \gets \frac{x_{i}^{r} - m_{i}}{\sigma^{2}}</script><p>其中<script type="math/tex">m_{i}</script>是所有<script type="math/tex">x_{i}</script>这个特征值的平均值，<script type="math/tex">\sigma^{2}</script>是方差。这样处理之后，此特征的分布平均值为0，方差为1，对于所有的feature都进行这样的处理了之后，就服从相同的分布了。</p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr><p><a href="https://www.youtube.com/watch?v=yKKNr-QKz2Q&amp;feature=youtu.be">ML Lecture 3-1: Gradient Descent</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;李宏毅机器学习3-1笔记。&lt;/p&gt;
+&lt;h1 id=&quot;是什么&quot;&gt;&lt;a href=&quot;#是什么&quot; class=&quot;headerlink&quot; title=&quot;是什么&quot;&gt;&lt;/a&gt;是什么&lt;/h1&gt;&lt;p&gt;是一种得到loss最优值的一种方法。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;</summary>
+      
+    
+    
+    
+    <category term="深度学习基础" scheme="https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【ML】Error</title>
@@ -472,31 +498,6 @@
     
     
     <category term="常用类" scheme="https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021年1月1日</title>
-    <link href="https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%881%E6%97%A5/"/>
-    <id>https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%881%E6%97%A5/</id>
-    <published>2021-01-01T16:14:30.000Z</published>
-    <updated>2021-01-03T15:45:17.287Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul><li>英语听力</li><li>年度计划（永远立不起来的flag）</li><li>Java基础语法</li></ul><h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><p>无，详情请见<a href="Java基础语法以及易忽略点总结">Java基础语法以及易忽略点总结</a></p><h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>今天睡得很开心，中午也睡了午觉。任务太多了，完不成。所以决定调整计划，明天希望过得轻松一点。空调温度果然还是需要调高一点，下午20度真的冻死我了。（附：还是好想去自习室，元旦特惠没有了，有点可惜）。</p><h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><p>flag永不倒！！！！</p><ul><li>找2个类学学</li><li>英语听力</li><li>leetcode-3个题</li><li><strong>开题报告开题报告开题报告开题报告</strong></li><li>剑指offer2个题</li><li>练字</li></ul><hr><p>明天一定是 <strong>不 咕 鸟</strong>🐦！！！</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;今天干了些什么&quot;&gt;&lt;a href=&quot;#今天干了些什么&quot; class=&quot;headerlink&quot; title=&quot;今天干了些什么&quot;&gt;&lt;/a&gt;今天干了些什么&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;英语听力&lt;/li&gt;
-&lt;li&gt;年度计划（永远立不起来的flag）&lt;/li&gt;
-&lt;li&gt;Jav</summary>
-      
-    
-    
-    
-    <category term="日记" scheme="https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
-    
     
   </entry>
   

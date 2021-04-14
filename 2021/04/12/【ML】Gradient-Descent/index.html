@@ -17,20 +17,27 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>2020年12月29日 | Gugugu&#39;s blog</title>
-  <meta name="description" content="今天干了些什么 大约将博客搭起来了 了解了毕设中期需要做一些什么 开了蓝灯  过程中遇见的问题搭建博客git在post的过程中出现帐号错误原因：当初作死，就想换个github帐号重新开始，导致电脑中默认的git帐号密码有问题 解决方法：不仅仅是说我使用 123git config -list \\查询信息git config --global  user.namegit config --glob">
+  <title>【ML】Gradient Descent | Gugugu&#39;s blog</title>
+  <meta name="description" content="李宏毅机器学习3-1笔记。 是什么是一种得到loss最优值的一种方法。   随机取一点 求这一点的梯度 根据梯度以及learning rate来更新参数从而得到最小的loss&#x3D;&#x3D;得到最佳的参数   为什么有效GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。  如何快速地取到这个局部最优呢？这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取： h(x) \approx h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020年12月29日">
-<meta property="og:url" content="https://luoyongjia.github.io/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="【ML】Gradient Descent">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
-<meta property="og:description" content="今天干了些什么 大约将博客搭起来了 了解了毕设中期需要做一些什么 开了蓝灯  过程中遇见的问题搭建博客git在post的过程中出现帐号错误原因：当初作死，就想换个github帐号重新开始，导致电脑中默认的git帐号密码有问题 解决方法：不仅仅是说我使用 123git config -list \\查询信息git config --global  user.namegit config --glob">
+<meta property="og:description" content="李宏毅机器学习3-1笔记。 是什么是一种得到loss最优值的一种方法。   随机取一点 求这一点的梯度 根据梯度以及learning rate来更新参数从而得到最小的loss&#x3D;&#x3D;得到最佳的参数   为什么有效GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。  如何快速地取到这个局部最优呢？这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取： h(x) \approx h">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-29T16:44:36.000Z">
-<meta property="article:modified_time" content="2021-01-03T15:45:53.849Z">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/2.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/4.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/3.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/5.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/6.png">
+<meta property="article:published_time" content="2021-04-12T13:39:07.000Z">
+<meta property="article:modified_time" content="2021-04-14T04:21:09.565Z">
 <meta property="article:author" content="罗咏佳">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -331,14 +338,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-12-29日总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-【ML】Gradient-Descent" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      2020年12月29日
+      【ML】Gradient Descent
     </h1>
   
 
@@ -346,61 +353,61 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/" class="article-date">
-	  <time datetime="2020-12-29T16:44:36.000Z" itemprop="datePublished">2020-12-30</time>
+	<a href="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/" class="article-date">
+	  <time datetime="2021-04-12T13:39:07.000Z" itemprop="datePublished">2021-04-12</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a>
+    <a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
   </span>
 
         
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul>
-<li>大约将博客搭起来了</li>
-<li>了解了毕设中期需要做一些什么</li>
-<li>开了蓝灯</li>
-</ul>
-<h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><h4 id="git在post的过程中出现帐号错误"><a href="#git在post的过程中出现帐号错误" class="headerlink" title="git在post的过程中出现帐号错误"></a>git在post的过程中出现帐号错误</h4><p>原因：当初作死，就想换个github帐号重新开始，导致电脑中默认的git帐号密码有问题</p>
-<p>解决方法：不仅仅是说我使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config -list \\查询信息</span><br><span class="line">git config --global  user.name</span><br><span class="line">git config --global user.email</span><br></pre></td></tr></table></figure>
-<p>就可以了的，在不同的系统下操作不同，我此仅代表mac用户。</p>
-<p>还需要删除钥匙串访问中的<code>github.com</code>项</p>
-<h4 id="关于hexo-pure主题配置的一堆破事"><a href="#关于hexo-pure主题配置的一堆破事" class="headerlink" title="关于hexo pure主题配置的一堆破事"></a>关于hexo pure主题配置的一堆破事</h4><p>所以在这里写下从头开始应该怎么配置pure主题，附上<a target="_blank" rel="noopener" href="https://github.com/cofess/hexo-theme-pure/blob/master/README.cn.md">官方文档</a></p>
-<h5 id="修改基本信息"><a href="#修改基本信息" class="headerlink" title="修改基本信息"></a>修改基本信息</h5><p>基本信息</p>
+        <p>李宏毅机器学习3-1笔记。</p>
+<h1 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h1><p>是一种得到loss最优值的一种方法。</p>
 <blockquote>
-<p><code>hexofolder\themes\hexo-theme-pure\source\images</code>中替换头像的那张图片，然后在<code>hexo-theme-pure\_config.ym</code>中配置</p>
-</blockquote>
-<p>icon</p>
-<blockquote>
-<p>删除了<code>hexofolder\themes\hexo-theme-pure\source\</code>中的<code>favicon.png</code>，然后在<code>images</code>文件夹下 添加了icon的图片，将<code>hexofolder\themes\hexo-theme-pure\_config.yml</code>中favicon对应的路径改成了<code>\images\favicon</code>。这真的是一个大坑，因为在hexo创建新的文章后路径上会加上日期，所以使用相对路径就会找不到icon图标</p>
-</blockquote>
-<p>comment</p>
-<blockquote>
-<p>这部分肥肠简单，我选择的是valine。大约步骤如下</p>
 <ol>
-<li>注册一个LeanCloud帐号</li>
-<li>创建一个工程</li>
-<li>在设置中找应用keys填进去</li>
-<li>在安全中心添加blog的url</li>
+<li>随机取一点</li>
+<li>求这一点的梯度</li>
+<li>根据梯度以及learning rate来更新参数<br><br>从而得到最小的loss==得到最佳的参数</li>
 </ol>
 </blockquote>
-<h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>明明感觉自己做了很多事情，写起来又发现自己其实只做了一点点。毕设的中期答辩想要开始准备了，但是感觉还是无从下手。未来几个月怎么准备找工作的规划也还没做。可能是处理问题的速度太慢了。但是我也没有办法，只能慢慢来。</p>
-<h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><ol>
-<li>做好找工作的整体安排，安排了当天就做点吧</li>
-<li>写git的常用操作并实践</li>
-<li>毕设的概要了解，工作量估计</li>
-</ol>
+<h1 id="为什么有效"><a href="#为什么有效" class="headerlink" title="为什么有效"></a>为什么有效</h1><p>GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。</p>
+<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png" alt="f1"></p>
+<h2 id="如何快速地取到这个局部最优呢？"><a href="#如何快速地取到这个局部最优呢？" class="headerlink" title="如何快速地取到这个局部最优呢？"></a>如何快速地取到这个局部最优呢？</h2><p>这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取：</p>
+<script type="math/tex; mode=display">h(x) \approx h(x_{0}) + h'(x_{0})(x - x_{0})</script><p>假设u、v为loss对于两个参数的偏微分，则：</p>
+<script type="math/tex; mode=display">L(\theta) \approx s + u(\theta_{1} - a) + v(\theta_{2} - b)</script><p>想要<script type="math/tex">L(\theta)</script>取得最小值，则如图所示<script type="math/tex">(\Delta \theta_{1}, \Delta \theta_{2})</script>取(u, v)反方向，最大值。所以Gradient Descent的过程是<script type="math/tex">\theta^{1}\gets \theta ^{0 } - \eta \Delta L</script></p>
+<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/2.png" alt="f2"></p>
+<h1 id="Gradient-Descent的升级版"><a href="#Gradient-Descent的升级版" class="headerlink" title="Gradient Descent的升级版"></a>Gradient Descent的升级版</h1><h2 id="基于Learning-Rate"><a href="#基于Learning-Rate" class="headerlink" title="基于Learning Rate"></a>基于Learning Rate</h2><p>Learning rate 这个东西，太大很可能得不到最优值，太小呢效率又低，所以选择一个正确的learning rate是十分重要的。</p>
+<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/4.png" alt="f4"><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/3.png" alt="f3"></p>
+<h3 id="Adaptive-Learning-Rate"><a href="#Adaptive-Learning-Rate" class="headerlink" title="Adaptive Learning Rate"></a>Adaptive Learning Rate</h3><p>这是基于随着梯度下降的进行，当前点距离最优解是越来越近的理论的。随着梯度下降的进行，learning rate随之减小，比如说像这样的learning rate：</p>
+<script type="math/tex; mode=display">\eta^{t} = \frac{\eta}{\sqrt{n + 1}}</script><h4 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h4><script type="math/tex; mode=display">
+\begin{equation*}
+\begin{aligned}
+&w^{t+1} \gets w^{t} - \frac{n^{t}}{\sigma^{t}}\\
+&\sigma^{t} = \sqrt{\frac{1}{t + 1}\sum_{i = 0}^{t}(g^{i})^{2}}\\
+& \eta^{t} = \frac{\eta}{\sqrt{n + 1}}\\
+\end{aligned}
+\end{equation*}</script><p>其中<script type="math/tex">\sigma^{t}</script>是之前这个<script type="math/tex">w</script>的所有偏微分值的均方根。这样子当t较大的时候，<script type="math/tex">\sigma^{t}</script>就能十分接近二次微分从而做到对于不同的<script type="math/tex">w</script>有一个将不同参数的分布进行类似归一化的处理。使得不同的参数的取值距离最优点距离的估算都是一个单位的。</p>
+<p>对于上述算式进行化简，得到：</p>
+<script type="math/tex; mode=display">w^{t+1} \gets w^{t} - \frac{\eta}{\sqrt{\sum_{i = 0}^{t} (g^{i})^{2}}}</script><h2 id="Stochastic-Gradient-Descent"><a href="#Stochastic-Gradient-Descent" class="headerlink" title="Stochastic Gradient Descent"></a>Stochastic Gradient Descent</h2><p>传统的GD是对于所有的训练数据计算梯度，然后更新系数。SGD是从训练数据中随机的抽取几个数据来算梯度，立马更新。显然这种方法更加快，效果也不错。</p>
+<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/5.png" alt="f5"></p>
+<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>当不同参数传入的特征值单位相差很大的时候，不同参数对于结果的影响就会出现偏差，这样是非常不好的，不仅仅会影响到参数的更新，也会影响到训练的效率以及结果。所以需要将不同的特征值进行归一化处理。</p>
+<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/6.png" alt="f6"></p>
+<p>将特征的值，通过：</p>
+<script type="math/tex; mode=display">x_{i}^{r} \gets \frac{x_{i}^{r} - m_{i}}{\sigma^{2}}</script><p>其中<script type="math/tex">m_{i}</script>是所有<script type="math/tex">x_{i}</script>这个特征值的平均值，<script type="math/tex">\sigma^{2}</script>是方差。这样处理之后，此特征的分布平均值为0，方差为1，对于所有的feature都进行这样的处理了之后，就服从相同的分布了。</p>
+<h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yKKNr-QKz2Q&amp;feature=youtu.be">ML Lecture 3-1: Gradient Descent</a></p>
 
       
     </div>
@@ -410,7 +417,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://luoyongjia.github.io/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/" title="2020年12月29日" target="_blank" rel="external">https://luoyongjia.github.io/2020/12/30/12-29%E6%97%A5%E6%80%BB%E7%BB%93/</a>
+      <a href="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/" title="【ML】Gradient Descent" target="_blank" rel="external">https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -456,13 +463,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2020/12/30/%E6%98%A5%E6%8B%9B%E5%87%86%E5%A4%87%E8%A7%84%E5%88%92%E3%80%90%E5%AE%9E%E6%97%B6%E6%9B%B4%E6%96%B0%E3%80%91/" title="春招准备规划【实时更新】"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2020/12/29/hello-world/" title="Hello World"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/04/10/%E3%80%90ML%E3%80%91Error/" title="【ML】Error"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
