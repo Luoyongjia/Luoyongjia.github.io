@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-04-19T08:14:44.665Z</updated>
+  <updated>2021-04-23T07:13:01.730Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【ML】DNN</title>
+    <link href="https://luoyongjia.github.io/2021/04/21/%E3%80%90ML%E3%80%91DNN/"/>
+    <id>https://luoyongjia.github.io/2021/04/21/%E3%80%90ML%E3%80%91DNN/</id>
+    <published>2021-04-21T13:19:14.000Z</published>
+    <updated>2021-04-23T07:13:01.730Z</updated>
+    
+    <content type="html"><![CDATA[<p>李宏毅机器学习笔记</p><h1 id="发展史"><a href="#发展史" class="headerlink" title="发展史"></a>发展史</h1><p>1958: Preceptron(线形模型)<br>1980s: Multi-layer perceptorn<br>1986: Backpropagation<br>1989: 1 hidden layer is “good enough”, why deep<br>2006: RBM initializaiton(breakthrough)<br>2009: GPU<br>2011: speech recognition<br>2012: win ILSVRC image competition</p><h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>与机器学习步骤相同，只不过第一步换成了设计一个网络结构</p><h1 id="Why-Deep"><a href="#Why-Deep" class="headerlink" title="Why Deep?"></a>Why Deep?</h1><p>有种模块化的意思。就像软件设计中，会有很多基础功能，然后基础功能一层层结合，实现更加复杂的功能这样子。</p><p>课程中举了一个例子：一个分类网络，需要分辨出这个人是长发女，长发男，短发女还是短发男。假设现在长发男的数据特别少，我们想要一层分辨出长发男就很难。但是如果我们将网络搭两层，就能第一层学习是男还是女，是长发还是短发；然后第二层再做排列组合细分这样子。</p><p>在图像方面，就比如第一层学习了图中是否有横线、斜线等，然后第二层学习是否有某个花纹，第三层学习是否有某个物体一部分…逐步提高识别的细粒度。</p><p>在语音方面，首先学习这个音是怎样发出的，然后学习这些音的组合，然后再学习内容这样子。</p><p>所以deep，能够让网络将复杂的任务分解，使本需要大量数据训练的函数，现在需要较少的数据，也能做到较好的效果。网络，就是一个大型特征提取器。也可以简单的端到端，这样，网络能够通过一定量的数据，自动地学到如何去模组化这个任务。</p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr><p><a href="https://www.youtube.com/watch?v=Dr-WRlEFefw">DL</a><br><a href="https://www.youtube.com/watch?v=XsC9byQkUH8">Why Deep</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;李宏毅机器学习笔记&lt;/p&gt;
+&lt;h1 id=&quot;发展史&quot;&gt;&lt;a href=&quot;#发展史&quot; class=&quot;headerlink&quot; title=&quot;发展史&quot;&gt;&lt;/a&gt;发展史&lt;/h1&gt;&lt;p&gt;1958: Preceptron(线形模型)&lt;br&gt;1980s: Multi-layer perc</summary>
+      
+    
+    
+    
+    <category term="深度学习基础" scheme="https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【ML】Classification and Logistic Regression</title>
@@ -468,32 +491,6 @@
     
     
     <category term="leetcode" scheme="https://luoyongjia.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021年1月2日</title>
-    <link href="https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/"/>
-    <id>https://luoyongjia.github.io/2021/01/02/2021%E5%B9%B41%E6%9C%882%E6%97%A5/</id>
-    <published>2021-01-02T15:04:58.000Z</published>
-    <updated>2021-03-06T12:00:52.711Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="今天干了些什么"><a href="#今天干了些什么" class="headerlink" title="今天干了些什么"></a>今天干了些什么</h2><ul><li>英语听力</li><li>Object类</li></ul><h2 id="过程中遇见的问题"><a href="#过程中遇见的问题" class="headerlink" title="过程中遇见的问题"></a>过程中遇见的问题</h2><p>Object类太难了，套娃一样，lei了。从Object到String到Integer…希望明天能简单一点。</p><h2 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h2><p>方法有问题，明日改方法。希望每天的时间能够均匀一点，不要总扑在一件事情上。明天中午睡觉不脱裤子，不然又会睡过，今天中午就睡了一个半小时，起床之后还泡了一杯奶茶…但是还是消除不了Object带来的心累。害，明天一定不会这么苦，希望拥有正常的作息。☕️</p><h2 id="明日规划"><a href="#明日规划" class="headerlink" title="明日规划"></a>明日规划</h2><ol><li>英语听力</li><li>letcode中的3题，一定要开始！</li><li>Java两个类的使用</li><li>剑指offer的2题</li><li>练字</li></ol><hr><p>今天又是鸽子精，希望明天能做不咕鸟🐦</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;今天干了些什么&quot;&gt;&lt;a href=&quot;#今天干了些什么&quot; class=&quot;headerlink&quot; title=&quot;今天干了些什么&quot;&gt;&lt;/a&gt;今天干了些什么&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;英语听力&lt;/li&gt;
-&lt;li&gt;Object类&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;过程中</summary>
-      
-    
-    
-    
-    <category term="日记" scheme="https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
-    
     
   </entry>
   
