@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91How-to-train-DNN/</loc>
+    
+    <lastmod>2021-04-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/2021/04/21/%E3%80%90ML%E3%80%91DNN/</loc>
     
     <lastmod>2021-04-23</lastmod>
@@ -219,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/index.html</loc>
+    <loc>https://luoyongjia.github.io/tags/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/links/index.html</loc>
+    <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -240,7 +247,7 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/index.html</loc>
+    <loc>https://luoyongjia.github.io/links/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -284,13 +291,6 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-04-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://luoyongjia.github.io/tags/GPU/</loc>
     <lastmod>2021-04-23</lastmod>
     <changefreq>daily</changefreq>
@@ -306,6 +306,13 @@
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
+    <lastmod>2021-04-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-04-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -377,14 +384,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/Java/</loc>
+    <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2021-04-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
+    <loc>https://luoyongjia.github.io/categories/Java/</loc>
     <lastmod>2021-04-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -398,14 +405,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/TOEFL/</loc>
+    <loc>https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2021-04-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://luoyongjia.github.io/categories/TOEFL/</loc>
     <lastmod>2021-04-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
