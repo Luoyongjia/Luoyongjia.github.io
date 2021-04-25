@@ -17,18 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>友情链接 | Gugugu&#39;s blog</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="友情链接">
-<meta property="og:url" content="https://luoyongjia.github.io/links/index.html">
+  <title>【ML】CNN | Gugugu&#39;s blog</title>
+  <meta name="description" content="李宏毅机器学习笔记 图像的特点 图像的特征很小，比如说鸟嘴，鸟尾巴，鸟眼睛这种，对于一整张图片来说，这知识一部分 同一个特征可能出现在一张图片的不同位置 subsampling，一个图片放大缩小旋转这些操作，并不会影响特征的提取  所以，可以使用卷积来提取特征。 CNN的整个框架 卷积操作可以对应图像的特征1和特征2。卷积核可以在不同位置识别出较小的特征。 maxPooling对应图片缩小并不会影">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ML】CNN">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
+<meta property="og:description" content="李宏毅机器学习笔记 图像的特点 图像的特征很小，比如说鸟嘴，鸟尾巴，鸟眼睛这种，对于一整张图片来说，这知识一部分 同一个特征可能出现在一张图片的不同位置 subsampling，一个图片放大缩小旋转这些操作，并不会影响特征的提取  所以，可以使用卷积来提取特征。 CNN的整个框架 卷积操作可以对应图像的特征1和特征2。卷积核可以在不同位置识别出较小的特征。 maxPooling对应图片缩小并不会影">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-29T09:45:56.181Z">
-<meta property="article:modified_time" content="2020-12-29T06:21:42.127Z">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/1.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/2.png">
+<meta property="article:published_time" content="2021-04-23T13:54:40.000Z">
+<meta property="article:modified_time" content="2021-04-25T12:00:04.216Z">
 <meta property="article:author" content="罗咏佳">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/links/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -45,7 +50,7 @@
 <meta name="generator" content="Hexo 5.3.0"></head>
 
 
-<body class="main-center theme-black no-sidebar" itemscope itemtype="http://schema.org/WebPage">
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
   <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -326,28 +331,191 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="article article-links article-type-list" itemscope="">
-  <header class="article-header">
-    <h1 itemprop="title">友情链接</h1>
-    <p class="text-muted">
-      欢迎交换链接，可在当前页面留言
-    </p>
-  </header>
-  <div class="article-body">
-    <div class="row">
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-【ML】CNN" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【ML】CNN
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/04/23/%E3%80%90ML%E3%80%91CNN/" class="article-date">
+	  <time datetime="2021-04-23T13:54:40.000Z" itemprop="datePublished">2021-04-23</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/04/23/%E3%80%90ML%E3%80%91CNN/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>李宏毅机器学习笔记</p>
+<h1 id="图像的特点"><a href="#图像的特点" class="headerlink" title="图像的特点"></a>图像的特点</h1><ol>
+<li>图像的特征很小，比如说鸟嘴，鸟尾巴，鸟眼睛这种，对于一整张图片来说，这知识一部分</li>
+<li>同一个特征可能出现在一张图片的不同位置</li>
+<li>subsampling，一个图片放大缩小旋转这些操作，并不会影响特征的提取</li>
+</ol>
+<p>所以，可以使用卷积来提取特征。</p>
+<h1 id="CNN的整个框架"><a href="#CNN的整个框架" class="headerlink" title="CNN的整个框架"></a>CNN的整个框架</h1><p><img src="/2021/04/23/%E3%80%90ML%E3%80%91CNN/1.png" alt="f1"></p>
+<p>卷积操作可以对应图像的特征1和特征2。卷积核可以在不同位置识别出较小的特征。</p>
+<p>maxPooling对应图片缩小并不会影响判断的特征。</p>
+<p>然后这个过程可以重复好多遍，从底层的特征提取到高层的特征。</p>
+<h1 id="Convolution（基础卷积）"><a href="#Convolution（基础卷积）" class="headerlink" title="Convolution（基础卷积）"></a>Convolution（基础卷积）</h1><p>就是使用多个卷积核，在输入的图片上进行卷积操作。需要注意到：卷积核的channel数应该和输入的channel数相同，卷积核的个数对应输出的channel数。具体怎么算我就不赘述了，我的汇报ppt上有，并且还有各种奇奇怪怪的卷积。以及对应的参数，功能，时间、空间复杂度的计算，复习复习就行。</p>
+<p>就是对应位置相乘，然后取和。输出就是：Feature Map</p>
+<p>注意卷积计算，filter的channel数和输入的channel数是一样的，输出channel数等于filter的个数。</p>
+<h2 id="conv和全连接的区别"><a href="#conv和全连接的区别" class="headerlink" title="conv和全连接的区别"></a>conv和全连接的区别</h2><p>老师课程中说得非常清楚，这个图很好的表现了conv和全连接之间的区别。</p>
+<p><img src="/2021/04/23/%E3%80%90ML%E3%80%91CNN/2.png" alt="f2"></p>
+<p>其实就是消除了全连接之中的一些我们根据图像特征判断出的无效的连接，并且实现了一些参数共享，从而减少了参数量。</p>
+<h1 id="max-pooling"><a href="#max-pooling" class="headerlink" title="max pooling"></a>max pooling</h1><p>就是对于图像进行一个缩小。从而减少计算量。主要操作有max，或是average。一般为变长为2的，就是直接缩少到一半。</p>
+<h1 id="Flatten"><a href="#Flatten" class="headerlink" title="Flatten"></a>Flatten</h1><p>将所有的输出拉长，然后进行分类这样子。</p>
+<h1 id="CNN在干什么？"><a href="#CNN在干什么？" class="headerlink" title="CNN在干什么？"></a>CNN在干什么？</h1><p>如何去分析一个filter在干嘛？</p>
+<p>先确定这个函数被激活的程度：</p>
+<script type="math/tex; mode=display">a^{k} = \sum_{i = 1}^{11} \sum_{j = 1}^{11} a_{ij}^{k}</script><p>然后我们将这个作为指标，来设计loss：</p>
+<script type="math/tex; mode=display">x* = arg \substack{\max\\x} a^{k}</script><p>然后通过gradient ascent来求这个<script type="math/tex">x*</script></p>
+<p>底层的大多去学一个简单的特征，比如说线啊，重复的波纹啊。然后对于较高的层，我们能够识别比较复杂的特征，比如说是一只猫，还是一只狗，它们特征集合的这样子。</p>
+<h1 id="CNN的应用"><a href="#CNN的应用" class="headerlink" title="CNN的应用"></a>CNN的应用</h1><p>我们可以根据任务来设计我们的CNN模型。CNN不仅仅可以应用于图片，还可以应用于alpha go。</p>
+<p>但是从alpha go的任务出发，我们可以发现，棋谱并没有那个可以缩小放大的性能。所以在alpha go的模型中可以发现，并没有pooling层。</p>
+<p>其他两个例子我也没有太理解。</p>
+
       
     </div>
-  </div>
-</article>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/" title="【ML】CNN" target="_blank" rel="external">https://luoyongjia.github.io/2021/04/23/%E3%80%90ML%E3%80%91CNN/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
 
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Luoyongjia" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Luoyongjia" target="_blank"><span class="text-dark">鸽子精</span><small class="ml-1x">Student</small></a></h3>
+        <div>鸽子精本精</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
   
+    
   <section id="comments">
   	
       <div id="vcomments"></div>
     
   </section>
 
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/04/23/%E3%80%90ML%E3%80%91How-to-train-DNN/" title="【ML】How to train DNN"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -403,6 +571,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+
+   
 
 
 
