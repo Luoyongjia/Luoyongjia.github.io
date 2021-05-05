@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-04-25T12:00:04.216Z</updated>
+  <updated>2021-05-05T12:32:35.341Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Colab使用基础指南</title>
+    <link href="https://luoyongjia.github.io/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/"/>
+    <id>https://luoyongjia.github.io/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/</id>
+    <published>2021-05-05T11:57:50.000Z</published>
+    <updated>2021-05-05T12:32:35.341Z</updated>
+    
+    <content type="html"><![CDATA[<p>嫖嫖嫖，就硬嫖。香香香！白嫖的显卡就是香！</p><p>这里来几个基础操作。</p><h1 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h1><p>可以看到，Colab是基于Google Drive的。要读取我们云端的数据，就需要：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import drive</span><br><span class="line">drive.mount(&#39;&#x2F;content&#x2F;drive&#x2F;&#39;)</span><br><span class="line"># 设置工作路径，个人觉得可以咩</span><br><span class="line">import os</span><br><span class="line">os.chdir(&quot;&#x2F;content&#x2F;drive&#x2F;My Drive&#x2F;YourWorkPath&quot;)</span><br></pre></td></tr></table></figure><p>这是每一个ipynb文件都需要先执行一下下得。</p><h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><p>就是路径读取。我们先将文件上传到云上面。然后在Colab的左侧，文件那一栏，就可以看到我们的文件都路径。通过路径读取就ok。</p><p><img src="/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/1.png" alt="f1"></p><h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><p>查看已安装的包: <code>! pip list</code><br>安装新的包： <code>! pip install packegeName</code><br>查看嫖到什么显卡：<code>! /opt/bin/nvidia-smi</code><br>进入bash: <code>! bash</code><br>推出：<code>exit</code></p><h1 id="保持连接"><a href="#保持连接" class="headerlink" title="保持连接"></a>保持连接</h1><p>没开pro最长就是12h，不够用了再说吧。如何保持12h不断开？<br>F12看网页代码，打开<strong>console</strong>输入这行代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function ClickConnect()&#123;</span><br><span class="line">    console.log(&quot;Clicked on connect button&quot;); </span><br><span class="line">    document.querySelector(&quot;colab-connect-button&quot;).click()</span><br><span class="line">&#125;</span><br><span class="line">setInterval(ClickConnect,60000)</span><br></pre></td></tr></table></figure><p>每60s按一次colab-connecte-button，保持连接。<br>每次刷新之后需要再次输入。</p><h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><p><img src="/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/2.png" alt="f2"><br><img src="/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/3.png" alt="f3">    </p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr><p><a href="http://www.zhaoyongjie.cn/post/487.html">Google Colab入门（一）</a><br><a href="https://www.wxp123.me/p/197">Google Colab 如何查看显卡配置和驱动情况？</a><br><a href="https://zhuanlan.zhihu.com/p/144629818?from_voters_page=true">colab保持连接的方法</a><br><a href="https://www.jiqizhixin.com/articles/2020-09-27-2">20种小技巧，玩转Google Colab</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;嫖嫖嫖，就硬嫖。香香香！白嫖的显卡就是香！&lt;/p&gt;
+&lt;p&gt;这里来几个基础操作。&lt;/p&gt;
+&lt;h1 id=&quot;IO&quot;&gt;&lt;a href=&quot;#IO&quot; class=&quot;headerlink&quot; title=&quot;IO&quot;&gt;&lt;/a&gt;IO&lt;/h1&gt;&lt;p&gt;可以看到，Colab是基于Google Dri</summary>
+      
+    
+    
+    
+    <category term="基本操作" scheme="https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+    
+    <category term="Colab" scheme="https://luoyongjia.github.io/tags/Colab/"/>
+    
+  </entry>
   
   <entry>
     <title>【ML】CNN</title>
@@ -464,30 +490,6 @@
     
     
     <category term="随笔" scheme="https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>String，StringBuffer和StringBuilder类</title>
-    <link href="https://luoyongjia.github.io/2021/01/08/String%EF%BC%8CStringBuffer%E5%92%8CStringBuilder%E7%B1%BB/"/>
-    <id>https://luoyongjia.github.io/2021/01/08/String%EF%BC%8CStringBuffer%E5%92%8CStringBuilder%E7%B1%BB/</id>
-    <published>2021-01-08T10:14:09.000Z</published>
-    <updated>2021-01-08T10:16:39.200Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="String，StringBuffer和StringBuilder类"><a href="#String，StringBuffer和StringBuilder类" class="headerlink" title="String，StringBuffer和StringBuilder类"></a>String，StringBuffer和StringBuilder类</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>String对象的值是无法改变的！要改变，请找String Buffer和String Builer</p><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str0 &#x3D; &quot;Gugugu&quot;;</span><br><span class="line">String str1 &#x3D; &quot;Gugugu&quot;;</span><br><span class="line">String str2 &#x3D; new String(&quot;Gugugu&quot;);</span><br><span class="line">String str3 &#x3D; new String(&quot;Gugugu&quot;);</span><br></pre></td></tr></table></figure><p>str0和str1都是指向公共池中相同的地址，而str2和str3指向堆中的不同地址。</p><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><strong>str0.length()</strong>    获取长度</p><p><strong>str0.concat(str1)</strong>    连接两个字符串，返回的是创建的一个新字符串，可以自己连自己。</p><p><strong>String.format(“balabalabala是%f”, floatVar)</strong>    就跟printf一样。String（java）里面是百分号诶。</p><p><strong>char charAt(int index)</strong> 返回指定下标的字符</p><p><strong>int indexOf(int ch)</strong> 返回第一次出现ch（or str）的下标，如果没有就-1</p><p><strong>int compareTo(String str)</strong> 字典序比较字符串</p><p><strong>int compareTolgnoreCase(String str)</strong>    不考虑大小写的比较字符串</p><p><strong>boolean contentEquals(StringBuffer sb)</strong>    与指定的StringBuffer有相同顺序的字符时返回true</p><p><strong>static String copyValueOf(char[] data, int offset, int count)</strong>    返回指定数组中表示改字符的序列的String。offset是开始点。</p><p><strong>char[] toCharArray()</strong>    转换为字符数组</p><p><strong>String toLowerCase()</strong>    全部转小写</p><p><strong>String toUpperCase()</strong>    全部转大写</p><p><strong>isEmpty()</strong>    判断字符串是否为空</p><h2 id="String-Buffer和String-Builder"><a href="#String-Buffer和String-Builder" class="headerlink" title="String Buffer和String Builder"></a>String Buffer和String Builder</h2><p>StringBuffer和StringBuilder类的对象能够被多次修改，不产生新的未使用对象。</p><p>StringBuilder和StringBuffer最大的不同在于StringBuilder的方法不是线程安全的（不能同步访问）。</p><p>StringBuilder运行速度比StringBuffer快。</p><p><img src="/2021/01/08/String%EF%BC%8CStringBuffer%E5%92%8CStringBuilder%E7%B1%BB/1.png" alt="figer1"></p><p><img src="/2021/01/08/String%EF%BC%8CStringBuffer%E5%92%8CStringBuilder%E7%B1%BB/2.png" alt="figer2"></p><p>refer:<br><a href="https://www.runoob.com/java/java-string.html">Java String 类</a><br><a href="https://www.runoob.com/java/java-stringbuffer.html">Java StringBuffer 和 StringBuilder 类</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;String，StringBuffer和StringBuilder类&quot;&gt;&lt;a href=&quot;#String，StringBuffer和StringBuilder类&quot; class=&quot;headerlink&quot; title=&quot;String，StringBuffer和Stri</summary>
-      
-    
-    
-    
-    <category term="Java" scheme="https://luoyongjia.github.io/categories/Java/"/>
-    
-    
-    <category term="常用类" scheme="https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/"/>
     
   </entry>
   
