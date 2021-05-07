@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/</loc>
+    
+    <lastmod>2021-05-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/</loc>
     
     <lastmod>2021-05-05</lastmod>
@@ -291,7 +298,7 @@
 
   <url>
     <loc>https://luoyongjia.github.io/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -299,91 +306,91 @@
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
-    <lastmod>2021-05-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Colab/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/GPU/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Linux/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/hexo/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/latex/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E5%8F%A3%E8%AF%AD/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/leetcode/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Nas/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -392,70 +399,70 @@
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/leetcode/</loc>
-    <lastmod>2021-05-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/categories/Java/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/categories/Java/</loc>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/TOEFL/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E8%A7%84%E5%88%92/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/Research/</loc>
-    <lastmod>2021-05-05</lastmod>
+    <lastmod>2021-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

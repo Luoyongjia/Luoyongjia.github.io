@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【ML】Self-attention | Gugugu&#39;s blog</title>
+  <meta name="description" content="在2020课程看到RNN的时候，突然在旁边发现了2021的一个讲transformer的，诶嘿，就找到2021的课程了。大约之前的都是一样的，所以就直接从cnn之后的self-attention开始了。 适用的任务大致框架输入的是一个序列的vector，不同的序列之间很可能长短不一。输出可以是和输入的vector数量相同，也可以是不同的。 Examples文字输入，判断每个词的词性。分子输入（图）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ML】Self-attention">
+<meta property="og:url" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/index.html">
+<meta property="og:site_name" content="Gugugu&#39;s blog">
+<meta property="og:description" content="在2020课程看到RNN的时候，突然在旁边发现了2021的一个讲transformer的，诶嘿，就找到2021的课程了。大约之前的都是一样的，所以就直接从cnn之后的self-attention开始了。 适用的任务大致框架输入的是一个序列的vector，不同的序列之间很可能长短不一。输出可以是和输入的vector数量相同，也可以是不同的。 Examples文字输入，判断每个词的词性。分子输入（图）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/1.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/2.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/3.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/4.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/5.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/6.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/7.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/8.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/9.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/10.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/11.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/12.png">
+<meta property="og:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/13.png">
+<meta property="article:published_time" content="2021-05-07T02:53:21.000Z">
+<meta property="article:modified_time" content="2021-05-07T03:56:51.377Z">
+<meta property="article:author" content="罗咏佳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/1.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Luoyongjia" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">鸽子精</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Liaoning, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Luoyongjia" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>我不做咕咕精辣！🐦</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Research/">Research</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOEFL/">TOEFL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">基本操作</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%A7%84%E5%88%92/">规划</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Colab/" style="font-size: 13px;">Colab</a> <a href="/tags/GPU/" style="font-size: 13px;">GPU</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Nas/" style="font-size: 13px;">Nas</a> <a href="/tags/hexo/" style="font-size: 13px;">hexo</a> <a href="/tags/latex/" style="font-size: 13px;">latex</a> <a href="/tags/leetcode/" style="font-size: 13px;">leetcode</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 13px;">单调栈</a> <a href="/tags/%E5%8F%A3%E8%AF%AD/" style="font-size: 13px;">口语</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/" style="font-size: 13.5px;">常用类</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" style="font-size: 13px;">环境变量</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 14px;">编程</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 13px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/" class="title">【ML】Self-attention</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-07T02:53:21.000Z" itemprop="datePublished">2021-05-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">基本操作</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/" class="title">Colab使用基础指南</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-05-05T11:57:50.000Z" itemprop="datePublished">2021-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/04/23/%E3%80%90ML%E3%80%91CNN/" class="title">【ML】CNN</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-04-23T13:54:40.000Z" itemprop="datePublished">2021-04-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/04/23/%E3%80%90ML%E3%80%91How-to-train-DNN/" class="title">【ML】How to train DNN</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-04-23T07:14:54.000Z" itemprop="datePublished">2021-04-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/04/21/%E3%80%90ML%E3%80%91DNN/" class="title">【ML】DNN</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-04-21T13:19:14.000Z" itemprop="datePublished">2021-04-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-【ML】Self-attention" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【ML】Self-attention
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/" class="article-date">
+	  <time datetime="2021-05-07T02:53:21.000Z" itemprop="datePublished">2021-05-07</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>在2020课程看到RNN的时候，突然在旁边发现了2021的一个讲transformer的，诶嘿，就找到2021的课程了。大约之前的都是一样的，所以就直接从cnn之后的self-attention开始了。</p>
+<h1 id="适用的任务"><a href="#适用的任务" class="headerlink" title="适用的任务"></a>适用的任务</h1><h2 id="大致框架"><a href="#大致框架" class="headerlink" title="大致框架"></a>大致框架</h2><p><strong>输入</strong>的是一个序列的vector，不同的序列之间很可能长短不一。<strong>输出</strong>可以是和输入的vector数量相同，也可以是不同的。</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>文字输入，判断每个词的词性。<br>分子输入（图），判断这个分子的有效性。</p>
+<p>可以是一段音频，也可以是一个图，只要是vector序列，就可以作为输入。</p>
+<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>比如说输入一句话：I saw a saw.<br>这里两个saw分别代表不同的词性。但是就之前的神经网络来说，这两个输入是相同的，所以输出也应该是相同的。就不对了。这里就需要结合更多的相关信息（比如说前面是什么词性，比如说在整句中是一个什么位置）来判断这个saw是什么词性了。</p>
+<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>有一种方法是增加一个window，使得每次的输入包括的vector增加，增加一个前后的输入。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/1.png" alt="f1"></p>
+<p>但是这种方法很明显存在一个缺陷，就是我的感受范围是确定的，也就是说没办法很好地覆盖每一个输入。</p>
+<h2 id="Self-attention"><a href="#Self-attention" class="headerlink" title="Self-attention"></a>Self-attention</h2><p>它做了一个什么操作呢？假设我们这个序列里有<script type="math/tex">n</script>个vector, 然后通过self-attention后，每个vector都根据与其他vector的相关性进行了一定的融合，然后生成了一个新的vector，输出对应的<script type="math/tex">n</script>个vector。是不是很像当时logistic regression最后提到的，换一个分布。但是这里是根据全局的其他相关信息换的。从名字也可以知道，attention，就是关注更多与自己相关的输入。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/2.png" alt="f2"></p>
+<p>这个self-attention可以在网络中多次出现，可以在不同位置出现。</p>
+<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>假设我们现在想算<script type="math/tex">a^{1}</script>的输出。那么首先，我们需要计算出<script type="math/tex">a^{1}</script>与其他几个vector的相关度。这里采用Dot-product方法计算相关度。当然也存在其他的计算相关度的方法，仅是这里采用此方法。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/3.png" alt="f3"></p>
+<p>第一步算出<script type="math/tex">a^{1}</script>与其他的相关度</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/4.png" alt="f4"></p>
+<p>然后过一层normalization层。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/5.png" alt="f5"></p>
+<p>计算出每个vector对应的v之后与经过normalization的相关度相乘再相加。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/6.png" alt="f6"></p>
+<p>就算<script type="math/tex">a^{1}</script>对应的输出<script type="math/tex">b^{1}</script>啦。由于每个v乘的系数是经过normalization的相关度，所以说再<script type="math/tex">b^{1}</script>中相关度高的影响就大，相关度低的影响较小，从而做到了关注相关的。</p>
+<p>课上老师提出的：是否可以删除计算自己的相关度？我认为是不行的，因为我认为输出主要的部分还是原输入，如果抛弃了原输入只关注周围信息，肯定是没办法得到想要的结果的。</p>
+<h2 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h2><p>对于每一个输入的向量，都做了上述的操作。那，理所当然，我们就想到了用矩阵加速。</p>
+<p>对于每一个输入，我们都需要乘系数<script type="math/tex">W^{q}, W^{k}, W^{v}</script>，那么，就可以得到：</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/7.png" alt="f7"></p>
+<p>求相关度可以合并为：</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/8.png" alt="f8"></p>
+<p>最后再乘一个V：</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/9.png" alt="f10"></p>
+<p>也就是说，这个运算最后可以简化为：<script type="math/tex">O = VK^{T}Q</script>这样子。</p>
+<h2 id="multi-head-self-attention"><a href="#multi-head-self-attention" class="headerlink" title="multi-head self-attention"></a>multi-head self-attention</h2><p>上面的都是基于一个head的。就称他们为一套吧。我现在可以有多套，然后出来多个b，最后乘个系数得到唯一输出b。就是这样子。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/10.png" alt="f10"></p>
+<h2 id="位置信息"><a href="#位置信息" class="headerlink" title="位置信息"></a>位置信息</h2><p>从上面的操作我们可以看出，这么一操作，位置信息就全咩了。所以如果需要位置信息，我们可以给每个输入加上一个位置向量。这个向量可以是学出来的，也可以是手动设置的。当然，这个还在研究中这样子。</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/11.png" alt="f11"></p>
+<h1 id="一些应用"><a href="#一些应用" class="headerlink" title="一些应用"></a>一些应用</h1><h2 id="Speech"><a href="#Speech" class="headerlink" title="Speech"></a>Speech</h2><p>语音任务，一段语音特别长，我们可以把attention的范围缩小到一定范围中</p>
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>就是把每个点的不同通道数值作为一个vector，整个图片就有很多vector了。（这样是不是就可以把不同大小的图片作为输入了？）</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/12.png" alt="f12"></p>
+<h2 id="Self-attention-v-s-CNN"><a href="#Self-attention-v-s-CNN" class="headerlink" title="Self-attention v.s. CNN"></a>Self-attention v.s. CNN</h2><p>CNN像是有很多先验的self-attention。如果数据集较小可以选择CNN，大的数据选Self-attention</p>
+<p><img src="/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/13.png" alt="f13"></p>
+<h2 id="Self-attention-v-s-RNN"><a href="#Self-attention-v-s-RNN" class="headerlink" title="Self-attention v.s. RNN"></a>Self-attention v.s. RNN</h2><p>RNN的范围扩大是通过储存之前的输出。这样子导致输出具有序列性。并且不能够并行。</p>
+<h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2010.11929.pdf 37">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=hYdO9CscNes">Attention 1</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gmsMY5kc-zw">Attention 2</a>    </p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/" title="【ML】Self-attention" target="_blank" rel="external">https://luoyongjia.github.io/2021/05/07/%E3%80%90ML%E3%80%91Self-attention/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Luoyongjia" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Luoyongjia" target="_blank"><span class="text-dark">鸽子精</span><small class="ml-1x">Student</small></a></h3>
+        <div>鸽子精本精</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/05/05/Colab%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80%E6%8C%87%E5%8D%97/" title="Colab使用基础指南"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Luoyongjia" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '34gCi0O2RInex7JNM8H90VfK-gzGzoHsz',
+    appKey: '4j2aSFWODDTyn3FovQgEvjcU',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+<!-- <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
