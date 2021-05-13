@@ -254,20 +254,6 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/repository/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/tags/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
@@ -276,6 +262,20 @@
   
   <url>
     <loc>https://luoyongjia.github.io/links/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/repository/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/tags/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -312,6 +312,13 @@
 
   
   <url>
+    <loc>https://luoyongjia.github.io/tags/Colab/</loc>
+    <lastmod>2021-05-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
     <lastmod>2021-05-13</lastmod>
     <changefreq>daily</changefreq>
@@ -334,13 +341,6 @@
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Linux/</loc>
-    <lastmod>2021-05-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/tags/Colab/</loc>
     <lastmod>2021-05-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -412,6 +412,13 @@
   </url>
   
   <url>
+    <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2021-05-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/categories/leetcode/</loc>
     <lastmod>2021-05-13</lastmod>
     <changefreq>daily</changefreq>
@@ -420,13 +427,6 @@
   
   <url>
     <loc>https://luoyongjia.github.io/categories/Java/</loc>
-    <lastmod>2021-05-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2021-05-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
