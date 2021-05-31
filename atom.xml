@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-05-31T05:06:55.983Z</updated>
+  <updated>2021-05-31T05:15:21.747Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://luoyongjia.github.io/2021/05/31/%E3%80%90ML%E3%80%91Transformer/"/>
     <id>https://luoyongjia.github.io/2021/05/31/%E3%80%90ML%E3%80%91Transformer/</id>
     <published>2021-05-31T03:56:11.000Z</published>
-    <updated>2021-05-31T05:06:55.983Z</updated>
+    <updated>2021-05-31T05:15:21.747Z</updated>
     
     <content type="html"><![CDATA[<p>李宏毅机器学习2021笔记</p><h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>主要应用在输入队列与输出队列长短不确定的时刻。输出队列的长短不确定的情况。</p><p>就比如说，输入一段5s的语音，将这段语音翻译成汉字。在这个任务中，5s的语音可能只对应“你好”两个字，也可能对应“机器学习”四个字，这个输出长度就是不确定的。</p><p>在图像的问题中，可以是多标签分类任务。一张图片，它可以同时属于多个类，但是这个类的数量是不确定的，这时候就需要模型自己去判断需要给这张图片几个类这样子。</p><p>再比如说，物体识别的方向上。假设这个马的图像，我们需要让模型自己去判断图像中有几只马这样子。<a href="https://arxiv.org/abs/2005.12872">paper</a></p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/1.png" alt="f1"></p><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>Transformer 主要分成两部分，Encoder和Decoder. Encoder的功能就类似于编码，对于输入的序列进行编码。然后Decoder根据编码产生输出，判断输出序列的长度。</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/2.png" alt="f2"></p><h2 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h2><p>Encoder是基于上一课中提到的self-attention操作来构成的，但是又有一点不同。它的流程如下图所示。</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/3.png" alt="f3"></p><p>Multi-Head Attention就是在self-attention中提到过的多头的attention策略。这里与其不同的是，在attention之后进行了一个residual的操作。如图所示。</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/4.png" alt="f4"></p><p>在此操作之后，再过一个layer Norm，输出。之后便是全联接+layer norm。当然，这个流程是可以更改的，比如将norm的位置调换一下等等，可能会出其不意得到好的结果。</p><h2 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h2><p>Decoder, 有两种方法。第一种是和RNN方法很相近的一种，基于之前的输入，然后判断下一个的输出，最开始用begin开始。还有一种是我直接输入很多个（n）占位符，然后直接产生n个输出，找其中最先出现end的位置作为结束。但其主要过程差不多，只是产生结果的方式不同。如下图所示</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/5.png" alt="f5"></p><p>其中的attention部分和Encoder部分不同，这里的attention特指了masked attention, 也就是说其只考虑左边的输入，这是由于其特性所决定的，每一次attention的输入是上一个输出，这样子右方的信息是缺失的，所以只使用左边的输入。</p><p>其连接的方式如图所示：</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/6.png" alt="f6"><br>基于Encoder的输出，以及当前经过mask self-attention的当前输出，做self-attention操作，再输出，进入FC层判断输出，这样子。</p><h3 id="如何学习输出长度"><a href="#如何学习输出长度" class="headerlink" title="如何学习输出长度"></a>如何学习输出长度</h3><p>Decoder对于每一个可能输出用vector表示，加入了end标签，当Decoder的结果是end时，就让这个模型停止输出这样子。</p><h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="train"><a href="#train" class="headerlink" title="train"></a>train</h3><p>在train的过程中，Decoder的输入是正确答案的序列。当然这种情况在test过程中是不可能出现的，所以在正确答案中添加一些噪声信息。</p><h3 id="chat-bot"><a href="#chat-bot" class="headerlink" title="chat-bot"></a>chat-bot</h3><p>有的时候输出只是对于输入的一个简单复制，这时候就需要Chat-bot，占个位置，啥都不干，至于具体怎么加的，我并不清楚。</p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><p><a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></p>]]></content>
     
