@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-05-13T04:36:30.526Z</updated>
+  <updated>2021-05-31T05:06:55.983Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【ML】Transformer</title>
+    <link href="https://luoyongjia.github.io/2021/05/31/%E3%80%90ML%E3%80%91Transformer/"/>
+    <id>https://luoyongjia.github.io/2021/05/31/%E3%80%90ML%E3%80%91Transformer/</id>
+    <published>2021-05-31T03:56:11.000Z</published>
+    <updated>2021-05-31T05:06:55.983Z</updated>
+    
+    <content type="html"><![CDATA[<p>李宏毅机器学习2021笔记</p><h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>主要应用在输入队列与输出队列长短不确定的时刻。输出队列的长短不确定的情况。</p><p>就比如说，输入一段5s的语音，将这段语音翻译成汉字。在这个任务中，5s的语音可能只对应“你好”两个字，也可能对应“机器学习”四个字，这个输出长度就是不确定的。</p><p>在图像的问题中，可以是多标签分类任务。一张图片，它可以同时属于多个类，但是这个类的数量是不确定的，这时候就需要模型自己去判断需要给这张图片几个类这样子。</p><p>再比如说，物体识别的方向上。假设这个马的图像，我们需要让模型自己去判断图像中有几只马这样子。<a href="https://arxiv.org/abs/2005.12872">paper</a></p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/1.png" alt="f1"></p><h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>Transformer 主要分成两部分，Encoder和Decoder. Encoder的功能就类似于编码，对于输入的序列进行编码。然后Decoder根据编码产生输出，判断输出序列的长度。</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/2.png" alt="f2"></p><h2 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h2><p>Encoder是基于上一课中提到的self-attention操作来构成的，但是又有一点不同。它的流程如下图所示。</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/3.png" alt="f3"></p><p>Multi-Head Attention就是在self-attention中提到过的多头的attention策略。这里与其不同的是，在attention之后进行了一个residual的操作。如图所示。</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/4.png" alt="f4"></p><p>在此操作之后，再过一个layer Norm，输出。之后便是全联接+layer norm。当然，这个流程是可以更改的，比如将norm的位置调换一下等等，可能会出其不意得到好的结果。</p><h2 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h2><p>Decoder, 有两种方法。第一种是和RNN方法很相近的一种，基于之前的输入，然后判断下一个的输出，最开始用begin开始。还有一种是我直接输入很多个（n）占位符，然后直接产生n个输出，找其中最先出现end的位置作为结束。但其主要过程差不多，只是产生结果的方式不同。如下图所示</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/5.png" alt="f5"></p><p>其中的attention部分和Encoder部分不同，这里的attention特指了masked attention, 也就是说其只考虑左边的输入，这是由于其特性所决定的，每一次attention的输入是上一个输出，这样子右方的信息是缺失的，所以只使用左边的输入。</p><p>其连接的方式如图所示：</p><p><img src="/2021/05/31/%E3%80%90ML%E3%80%91Transformer/6.png" alt="f6"><br>基于Encoder的输出，以及当前经过mask self-attention的当前输出，做self-attention操作，再输出，进入FC层判断输出，这样子。</p><h3 id="如何学习输出长度"><a href="#如何学习输出长度" class="headerlink" title="如何学习输出长度"></a>如何学习输出长度</h3><p>Decoder对于每一个可能输出用vector表示，加入了end标签，当Decoder的结果是end时，就让这个模型停止输出这样子。</p><h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><h3 id="train"><a href="#train" class="headerlink" title="train"></a>train</h3><p>在train的过程中，Decoder的输入是正确答案的序列。当然这种情况在test过程中是不可能出现的，所以在正确答案中添加一些噪声信息。</p><h3 id="chat-bot"><a href="#chat-bot" class="headerlink" title="chat-bot"></a>chat-bot</h3><p>有的时候输出只是对于输入的一个简单复制，这时候就需要Chat-bot，占个位置，啥都不干，至于具体怎么加的，我并不清楚。</p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><p><a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;李宏毅机器学习2021笔记&lt;/p&gt;
+&lt;h1 id=&quot;应用场景&quot;&gt;&lt;a href=&quot;#应用场景&quot; class=&quot;headerlink&quot; title=&quot;应用场景&quot;&gt;&lt;/a&gt;应用场景&lt;/h1&gt;&lt;p&gt;主要应用在输入队列与输出队列长短不确定的时刻。输出队列的长短不确定的情况。&lt;/p&gt;</summary>
+      
+    
+    
+    
+    <category term="深度学习基础" scheme="https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【ML】Batch Normalization</title>
@@ -462,31 +485,6 @@
     
     <category term="数据结构" scheme="https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>503. 下一个更大的元素2</title>
-    <link href="https://luoyongjia.github.io/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/"/>
-    <id>https://luoyongjia.github.io/2021/03/06/503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A02/</id>
-    <published>2021-03-06T15:37:15.000Z</published>
-    <updated>2021-03-07T08:35:14.909Z</updated>
-    
-    <content type="html"><![CDATA[<p>先来看看题，这题…有点绕。</p><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个循环数组（首尾相接那种），输出每个元素的下一个更大元素。如果搜完了整个数组，都没有找到比它大的数字，就输出-1。</p><blockquote><p><strong>输入：</strong>[1, 2, 1]<br><br><strong>输出：</strong>[2, -1, 2]<br><br><strong>解释：</strong>第一个1的下一个更大的数是2；<br><br>数字2找不到下一个更大的数；<br>第二个1的下一个最大的数循环搜索，结果就是2</p></blockquote><h2 id="自己一想"><a href="#自己一想" class="headerlink" title="自己一想"></a>自己一想</h2><p>简单，粗暴的方法。这样时间复杂度到了<script type="math/tex">O(n^{2})</script></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public int[] nextGreaterElements(int[] nums) &#123;</span><br><span class="line">    int[] ans &#x3D; new int[nums.length];</span><br><span class="line">    boolean forhead;</span><br><span class="line">    &#x2F;&#x2F; 找每一个数字的下一个更大的元素</span><br><span class="line">    for(int i &#x3D; 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">        forhead &#x3D; true;</span><br><span class="line">        &#x2F;&#x2F; 先找i后面的元素</span><br><span class="line">        for(int j &#x3D; i+1; j &lt; nums.length; j++)&#123;</span><br><span class="line">            if(nums[j] &gt; nums[i])&#123;</span><br><span class="line">                ans[i] &#x3D; nums[j];</span><br><span class="line">                forhead &#x3D; false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 再找i前面的元素</span><br><span class="line">        if(forhead &#x3D;&#x3D; true)&#123;</span><br><span class="line">            int k;</span><br><span class="line">            for(k &#x3D; 0; k &lt; i; k++)&#123;</span><br><span class="line">                if(nums[k] &gt; nums[i])&#123;</span><br><span class="line">                    ans[i] &#x3D; nums[k];</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(k &#x3D;&#x3D; i)&#123;</span><br><span class="line">                ans[i] &#x3D; -1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="然后解析里的“单调栈”"><a href="#然后解析里的“单调栈”" class="headerlink" title="然后解析里的“单调栈”"></a>然后解析里的“单调栈”</h2><h3 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h3><p>栈里面的元素从栈底到栈顶是单调的。</p><ul><li>如果栈空，当前元素入栈</li><li>栈非空，判断当前和栈顶元素的大小<ul><li>如果比栈顶元素大，那么逐个弹出比较，构建ans</li><li>如果比栈顶元素小，则当前元素入栈</li></ul></li></ul><h3 id="循环数组实现方法："><a href="#循环数组实现方法：" class="headerlink" title="循环数组实现方法："></a>循环数组实现方法：</h3><p><strong>Way1:</strong>  把数组复制一份到数组的末尾<br><strong>Way2:</strong> 使用取模运算，把下表为<script type="math/tex">i</script>映射到数组<script type="math/tex">nums</script>的长度<script type="math/tex">0-N</script>中</p><h2 id="重写代码"><a href="#重写代码" class="headerlink" title="重写代码"></a>重写代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int[] nextGreaterElements(int[] nums) &#123;</span><br><span class="line">    int n &#x3D; nums.length;</span><br><span class="line">    int[] ans &#x3D; new int[n];</span><br><span class="line">    &#x2F;&#x2F;将ans用-1初始化</span><br><span class="line">    Arrays.fill(ans, -1);</span><br><span class="line">    Deque&lt;Integer&gt; stack &#x3D; new LinkedList&lt;Integer&gt;();</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n;i++)&#123;</span><br><span class="line">        &#x2F;&#x2F; 栈非空,且比栈顶元素大，逐个弹出比较，构建ans</span><br><span class="line">        while(!stack.isEmpty() &amp;&amp; nums[stack.peek()]&lt;nums[i%n])&#123;</span><br><span class="line">            ans[stack.pop()] &#x3D; nums[i%n];</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 不比栈顶元素大了，或者小了，或者栈空了，压入</span><br><span class="line">        stack.push(i%n);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr><p><a href="https://leetcode-cn.com/problems/next-greater-element-ii/solution/dong-hua-jiang-jie-dan-diao-zhan-by-fuxu-4z2g/">动画讲解：单调栈</a></p><p><a href="https://leetcode-cn.com/problems/next-greater-element-ii/solution/xia-yi-ge-geng-da-yuan-su-ii-by-leetcode-bwam/">code来源-LeetCode-Solution</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;先来看看题，这题…有点绕。&lt;/p&gt;
-&lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;给定一个循环数组（首尾相接那种），输出每个元素的下一个更大元素。如果搜完了整个数组，都没有找到比它</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://luoyongjia.github.io/categories/leetcode/"/>
-    
-    
-    <category term="单调栈" scheme="https://luoyongjia.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"/>
     
   </entry>
   
