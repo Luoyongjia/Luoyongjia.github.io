@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-06-11T05:15:35.643Z</updated>
+  <updated>2021-06-22T12:22:58.769Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【RL】概念列表</title>
+    <link href="https://luoyongjia.github.io/2021/06/22/%E3%80%90RL%E3%80%91%E6%A6%82%E5%BF%B5%E5%88%97%E8%A1%A8/"/>
+    <id>https://luoyongjia.github.io/2021/06/22/%E3%80%90RL%E3%80%91%E6%A6%82%E5%BF%B5%E5%88%97%E8%A1%A8/</id>
+    <published>2021-06-22T09:12:54.000Z</published>
+    <updated>2021-06-22T12:22:58.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>感谢大大推荐的王树森老师！这里附上课程<a href="https://github.com/wangshusen/DRL">链接</a>。</p><h1 id="数学背景"><a href="#数学背景" class="headerlink" title="数学背景"></a>数学背景</h1><h2 id="概率"><a href="#概率" class="headerlink" title="概率"></a>概率</h2><p><strong>随机变量：</strong>随机事件的数量表现，eg：抛100次硬币，其中正面朝上的次数，就是一个随机变量。<br><strong>分布函数：</strong>表示随机变量在分布域上的分布情况。</p><h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p><strong>state</strong>: 当前的状态<br><strong>Action</strong>: 可以采取的行为<br><strong>Agent</strong>: 采取行动的个体<br><strong>Policy</strong>:  基于当前状态，决定下一个行为的策略<br><strong>Reward：</strong>回报，采取这一行为之后获得的奖励<br><strong>state transition</strong>: 表示在当前环境下根据Policy选择行为后，环境发生的改变。</p><p><img src="/2021/06/22/%E3%80%90RL%E3%80%91%E6%A6%82%E5%BF%B5%E5%88%97%E8%A1%A8/1.png" alt="f1"><br>就如图中这个马里奥游戏为例子。其中state就是当前的环境，有金币，有龟龟等。Action表示这个马里奥可以选择向左，或是向右，或是上跳。Agent就是马里奥，而Policy是根据当前环境，对于下一个Action的选择。Reward，比如说做了这个行为，马里奥吃到了金币，那就是1， 如果马里奥碰到了龟龟死了，就是-10000这种。当选择向上跳之后，环境中的龟龟向左（or向右）移动了，金币减少了，这就是state transition。</p><h2 id="随机性体现"><a href="#随机性体现" class="headerlink" title="随机性体现"></a>随机性体现</h2><h3 id="Action的选择"><a href="#Action的选择" class="headerlink" title="Action的选择"></a>Action的选择</h3><p>Policy得出来的是选择每个Action的概率，而不是直接选择概率最大的行为，所以这里行为的选取具有一定的随机性</p><h3 id="环境的变化"><a href="#环境的变化" class="headerlink" title="环境的变化"></a>环境的变化</h3><p>做出当前行为后，环境可能会发生不同的变化；比如说马里奥里面，龟龟可以向左走，也可以向右走。</p><h1 id="Reward一系"><a href="#Reward一系" class="headerlink" title="Reward一系"></a>Reward一系</h1><p>return: <script type="math/tex">U_{t} = R_{t} + R_{t + 1} + R_{t + 2} + \cdots</script></p><p>由于对于越远的reward来说，当前的action的影响越小，所以给它加一个<script type="math/tex">U_{t} = R_{t} + \gamma R_{t + 1} + \gamma^{2} R_{t + 2} + \cdots</script></p><p>在强化学习的问题中，有两个分布函数，分别是在某环境下每个action的分布函数；和在某环境下做了某行为后的state transition 分布。</p><script type="math/tex; mode=display">\mathbb{P}[A=a | S=s] = \pi (a | s)</script><script type="math/tex; mode=display">\mathbb{p} [S = s' | S= s, A = a] = p(s'|s,a)</script><h1 id="value-function"><a href="#value-function" class="headerlink" title="value function"></a>value function</h1><h2 id="Action-function"><a href="#Action-function" class="headerlink" title="Action function"></a>Action function</h2><script type="math/tex; mode=display">Q_{\pi} (s_{\tau}, a_{\tau}) = \mathbb{E}[U_{\tau} | S = s_{\tau}, A = a_{\tau]]</script><p>其中，<script type="math/tex">U_{\tau}}</script>为reward中的reward，使用action分布函数和state transition分布函数将非<script type="math/tex">\tau</script>的后续行为积分消去。</p><p>所以，这个函数是在使用<script type="math/tex">\pi</script>这个policy，<script type="math/tex">S_{\tau}</script>这个情况下，对于各个<script type="math/tex">a</script>进行打分。</p><script type="math/tex; mode=display">Q^{*} (s_{\tau}, a_{\tau}) = \max_{\pi} Q_{\pi} (s_{\tau}, a_{\tau})</script><p>这里通过使用最好的policy对于行为进行打分，至于这个最好的policy是如何获得的还并不清楚。</p><p>所以学习有两个选项，一个是学习policy，一个是学习这个拥有最好policy的打分函数。具体还不清楚，后续课程补充。</p><h2 id="state-value-function"><a href="#state-value-function" class="headerlink" title="state value function"></a>state value function</h2><script type="math/tex; mode=display">V_{\pi}(s_{\tau}) = \mathbb{E}_{A} [Q_{\pi}(s_{\tau}, A)]</script><p>对于所有的<script type="math/tex">a</script>求期望，消除<script type="math/tex">A</script>。</p><p>也就是说这个函数只是一个<script type="math/tex">S</script>的函数，用于判断当前的形势是好是坏。</p><p>同时，我们也可以计算：</p><script type="math/tex; mode=display">\mathbb{E}_{s}[V_{\pi}(s)]</script><p>用于计算<script type="math/tex">\pi</script>policy的好坏。当policy越好的时候，这个期望值将会越大。</p><p>那是否，通过这个函数可以选出最好的policy？</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;感谢大大推荐的王树森老师！这里附上课程&lt;a href=&quot;https://github.com/wangshusen/DRL&quot;&gt;链接&lt;/a&gt;。&lt;/p&gt;
+&lt;h1 id=&quot;数学背景&quot;&gt;&lt;a href=&quot;#数学背景&quot; class=&quot;headerlink&quot; title=&quot;数学背景&quot;&gt;</summary>
+      
+    
+    
+    
+    <category term="深度学习基础" scheme="https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【ML】GNN</title>
@@ -464,28 +487,6 @@
     
     
     <category term="口语" scheme="https://luoyongjia.github.io/tags/%E5%8F%A3%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【数据结构】栈和队列</title>
-    <link href="https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/"/>
-    <id>https://luoyongjia.github.io/2021/03/10/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</id>
-    <published>2021-03-10T12:51:00.000Z</published>
-    <updated>2021-03-11T02:26:17.195Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>是线性表的应用和推广。是受限的线性表。栈，就是“先进后出”。就像一个只有一个出口的桶，先进去的人只能等后进去的人走了才能出去。</p><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p><strong>isEmpty()</strong> 栈是否为空<br><strong>push(&amp;s, T elem)</strong> 压入栈<br><strong>pop(&amp;s, T elem)</strong> 吐出最顶上那个元素<br><strong>getTop(s, &amp;x)</strong>  把最顶上那个复制一份给x<br><strong>destroyStack()</strong> 毁灭吧，栈</p><h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><h3 id="顺序存储—-gt-顺序栈"><a href="#顺序存储—-gt-顺序栈" class="headerlink" title="顺序存储—&gt;顺序栈"></a>顺序存储—&gt;顺序栈</h3><p>就是用数组来存，然后有一个位置指针来操作。</p><h4 id="共享栈"><a href="#共享栈" class="headerlink" title="共享栈"></a>共享栈</h4><p>顺序栈的抠门做法。一个空间俩栈用。一个从头开始，一个从尾巴开始这样子。</p><h3 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h3><p>就叫链栈。便于多个栈共享存储空间，提高效率。不存在放不下的问题，反正链式，可以无限扩展。</p><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>算式转换，中序转后序。这个不好怎么解释，就来个🌰体会一下。</p><blockquote><p>中序表达式 <code>a + b - a * ((c + d) / e - f) + g</code>转换为等价的后缀表达式为<code>ab+acd+e/f-*-g+</code><br><br>过程大约是这个样子的：<br></p><ol><li>最先压入一个“#”<br></li><li>然后遇到数字直接输出<br></li><li>遇到符号根据优先级来，如果后一个的优先级高于栈顶的，则直接压入；如果后一个的优先级低于栈顶的，则弹出栈顶的，再做比较。</li></ol></blockquote><p>来一道例题吧</p><blockquote><p>假设栈初始为空，将中序表达式<code>a / b + (c * d - e * f) / g</code>转换为等价的后缀表达式的过程中，当扫描到<code>f</code>时，栈中的元素依次是<br><br>A.<code>+(*-</code> B. <code>+(-*</code> C. <code>/+(*-*</code> D. <code>/+-*</code><br><br><br><br>直接来个答案吧，B</p></blockquote><h2 id="题"><a href="#题" class="headerlink" title="题"></a>题</h2><blockquote><ol><li>设链表不带头节点，且所有操作均在表头进行，则下列最不适合作为链栈的是（ ）<br><br> A. 只有表头节点指针，没有表尾指针的双向循环链表<br> B. 只有表尾节点指针，没有表头指针的双向循环链表<br>C. 只有表头节点指针，没有表尾指针的单项循环链表<br>D.只有表尾节点指针，没有表头指针的单项循环链表<br><br><br><br>C. 因为这里只有表头，没有表尾。每次对于栈的操作都是在头上做的。但是为了维持循环链表，所以得找到尾，所以所有操作至少都是<script type="math/tex">O(n)</script>，所以它不合适。<br><br></li><li><p>若已知一个栈的入栈序列是1，2，3，4，其出栈序列为<script type="math/tex">P_{1}, P_{2}, P_{3}, P_{4}</script>, 则<script type="math/tex">P_{2}, P_{4}</script>不可能是（ ）<br><br>A. 2，4  B. 2，1 C. 4，3 D.<br><br><br><br>这种题目，就只有一种方法，那就是自己一个个举例子。<br><br></p></li><li><p>设栈的初始状态为空，当字符序列“n1_”作为栈的输入时，输出长度为3，且可用作C语言标识符的序列有（ ）<br><br>A. 4 B. 5 C. 3 D. 6<br><br><br><br>这个题我个人觉得出的还挺好的，结合了数据结构和C语言的知识。这里，C语言标识符的要求是“第1个字符只能是字母或是下划线。”</p></li></ol></blockquote><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>也是特殊的线性表。先进先出，就跟那吸管一样，只有一头可以进，另一头可以出。</p><h2 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h2><p><strong>front</strong> 头<br><strong>rear</strong> 尾<br><strong>enQueue()</strong> 压入<br><strong>deQueue()</strong> 出队列<br><strong>getHead()</strong> 获取头</p><h2 id="存储结构-1"><a href="#存储结构-1" class="headerlink" title="存储结构"></a>存储结构</h2><h3 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h3><p>“假溢出”。要是用传统的一条的那种数组来存队列的话，进进出出几次，下标就给整没了，但是其实那时候队列里面还是有空间存储元素的。</p><h4 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h4><p>所以人们就变聪明了，用环形的来存储队列。这就涉及一个下标计算的问题，这个问题常考，所以要记得一些公式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">队首指针进1: front &#x3D; (front + 1) % MaxSize</span><br><span class="line">队尾指针进1:rear &#x3D; (rear + 1) %MaxSize</span><br><span class="line">队列长度:(rear + MaxSize - front) %MaxSize</span><br><span class="line">队满：(rear + 1) % MaxSize &#x3D;&#x3D; front</span><br><span class="line">空：front &#x3D;&#x3D; rear</span><br></pre></td></tr></table></figure><h3 id="链式存储-1"><a href="#链式存储-1" class="headerlink" title="链式存储"></a>链式存储</h3><p>带头节点单链表。有一个头头节点，然后有一个rear节点，这样子就能够很好的表示队列。</p><h2 id="奇奇怪怪的队列增加了"><a href="#奇奇怪怪的队列增加了" class="headerlink" title="奇奇怪怪的队列增加了"></a>奇奇怪怪的队列增加了</h2><h3 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h3><p>就是两端都可以出栈和入栈。</p><h2 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h2><p>解决主机与外设之间速度不匹配的问题，解决由多用户引起的cpu资源竞争问题。<br>eg：设置一个打印数据缓冲区。cpu中的任务排成一个队列。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot; title=&quot;栈&quot;&gt;&lt;/a&gt;栈&lt;/h1&gt;&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;是线性表的应用</summary>
-      
-    
-    
-    
-    <category term="数据结构" scheme="https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
     
   </entry>
   
