@@ -18,15 +18,15 @@
   
   
   <title>SimSiam的炼丹之旅 | Gugugu&#39;s blog</title>
-  <meta name="description" content="hyperparameterbatch size64: 效果较差，83左右512: 86左右 learning rate0.12: 直接爆炸0.05: better0.03: 总感觉差点什么     dataLoadernormalization修改了norm的参数： 效果未知，同样得等实验6 transform操作高斯模糊： 还没试 modellr scheduler带warm up：效果能好个">
+  <meta name="description" content="hyperparameterbatch size64: 效果较差，83左右512: 86左右 learning rate0.12: 直接爆炸0.05: better0.03: 总感觉差点什么     dataLoadernormalization修改了norm的参数： 86.5 transform操作高斯模糊： 还没试 modellr scheduler带warm up：效果能好个1-2个点直接慢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SimSiam的炼丹之旅">
 <meta property="og:url" content="https://luoyongjia.github.io/2021/10/12/SimSiam%E7%9A%84%E7%82%BC%E4%B8%B9%E4%B9%8B%E6%97%85/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
-<meta property="og:description" content="hyperparameterbatch size64: 效果较差，83左右512: 86左右 learning rate0.12: 直接爆炸0.05: better0.03: 总感觉差点什么     dataLoadernormalization修改了norm的参数： 效果未知，同样得等实验6 transform操作高斯模糊： 还没试 modellr scheduler带warm up：效果能好个">
+<meta property="og:description" content="hyperparameterbatch size64: 效果较差，83左右512: 86左右 learning rate0.12: 直接爆炸0.05: better0.03: 总感觉差点什么     dataLoadernormalization修改了norm的参数： 86.5 transform操作高斯模糊： 还没试 modellr scheduler带warm up：效果能好个1-2个点直接慢">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-12T08:20:43.000Z">
-<meta property="article:modified_time" content="2021-10-12T08:22:15.508Z">
+<meta property="article:modified_time" content="2021-10-13T12:48:06.760Z">
 <meta property="article:author" content="罗咏佳">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
@@ -358,13 +358,13 @@
       
         <h2 id="hyperparameter"><a href="#hyperparameter" class="headerlink" title="hyperparameter"></a>hyperparameter</h2><h3 id="batch-size"><a href="#batch-size" class="headerlink" title="batch size"></a>batch size</h3><p>64: 效果较差，83左右<br>512: 86左右</p>
 <h3 id="learning-rate"><a href="#learning-rate" class="headerlink" title="learning rate"></a>learning rate</h3><p>0.12: 直接爆炸<br>0.05: better<br>0.03: 总感觉差点什么    </p>
-<h2 id="dataLoader"><a href="#dataLoader" class="headerlink" title="dataLoader"></a>dataLoader</h2><h3 id="normalization"><a href="#normalization" class="headerlink" title="normalization"></a>normalization</h3><p>修改了norm的参数： 效果未知，同样得等实验6</p>
+<h2 id="dataLoader"><a href="#dataLoader" class="headerlink" title="dataLoader"></a>dataLoader</h2><h3 id="normalization"><a href="#normalization" class="headerlink" title="normalization"></a>normalization</h3><p>修改了norm的参数： 86.5</p>
 <h3 id="transform操作"><a href="#transform操作" class="headerlink" title="transform操作"></a>transform操作</h3><p>高斯模糊： 还没试</p>
 <h2 id="model"><a href="#model" class="headerlink" title="model"></a>model</h2><h3 id="lr-scheduler"><a href="#lr-scheduler" class="headerlink" title="lr scheduler"></a>lr scheduler</h3><p>带warm up：效果能好个1-2个点<br>直接慢慢decay：普通</p>
-<h3 id="net"><a href="#net" class="headerlink" title="net"></a>net</h3><h4 id="projection-layer"><a href="#projection-layer" class="headerlink" title="projection layer:"></a>projection layer:</h4><p>3: 之前一直是3<br>2: 正在跑了</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>在跑实验中，还是需要将loss和accuracy图画出来的，所以这里添加了画图部分的代码，能不能run还不知道，得看实验6结果怎么样</p>
+<h3 id="net"><a href="#net" class="headerlink" title="net"></a>net</h3><h4 id="projection-layer"><a href="#projection-layer" class="headerlink" title="projection layer:"></a>projection layer:</h4><p>3: 之前一直是3<br>2: 86.5</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>在跑实验中，还是需要将loss和accuracy图画出来的，所以这里添加了画图部分的代码。    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">loss_x &#x3D; range(0, 800)</span><br><span class="line">loss_y &#x3D; trainlosses</span><br><span class="line">plt.plot(loss_x, loss_y, &#39;o-&#39;, color&#x3D;&#39;b&#39;, label&#x3D;&quot;Loss&quot;)</span><br><span class="line">plt.ylabel(&quot;Loss&quot;)</span><br><span class="line">pl.legend()</span><br><span class="line">plt.savefig(f&#39;.&#x2F;res&#x2F;&#123;args.exp_num&#125;&#x2F;loss.png&#39;)</span><br><span class="line">plt.close()</span><br></pre></td></tr></table></figure>
-<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>很奇怪，明明和别人一样的设置，一样的代码，为什么我的效果就达不到91？有被针对到。</p>
+<h2 id="调整路径"><a href="#调整路径" class="headerlink" title="调整路径"></a>调整路径</h2><p>很奇怪，明明和别人一样的设置，一样的代码，为什么我的效果就达不到91？有被针对到。<br><strong>10.13</strong> 能run，之前设置的lr0.03，感觉acc上升得有点慢，所以实验7中lr设到了0.05。同时，实验7中适当调小了batch_size。</p>
 
       
     </div>
