@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-10-15T13:03:01.195Z</updated>
+  <updated>2021-11-01T13:26:15.040Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【env】CUDA, pyTorch，驱动版本对应</title>
+    <link href="https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91CUDA-pyTorch%EF%BC%8C%E9%A9%B1%E5%8A%A8%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/"/>
+    <id>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91CUDA-pyTorch%EF%BC%8C%E9%A9%B1%E5%8A%A8%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/</id>
+    <published>2021-11-01T12:35:14.000Z</published>
+    <updated>2021-11-01T13:26:15.040Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CUDA对应显卡驱动版本"><a href="#CUDA对应显卡驱动版本" class="headerlink" title="CUDA对应显卡驱动版本"></a>CUDA对应显卡驱动版本</h2><p>这个不重要，显卡驱动是向下兼容的。所以就，有机会就更新到最新。</p><h2 id="CUDAToolkit和PyTorch"><a href="#CUDAToolkit和PyTorch" class="headerlink" title="CUDAToolkit和PyTorch"></a>CUDAToolkit和PyTorch</h2><div class="table-container"><table><thead><tr><th>CUDAToolkit</th><th>PyTorch</th></tr></thead><tbody><tr><td>7.5</td><td>0.4.1 ，0.3.0， 0.2.0，0.1.12-0.1.6</td></tr><tr><td>8.0</td><td>1.1.0，1.0.0 ，0.4.1</td></tr><tr><td>9.0</td><td>1.1.0，1.0.1, 1.0.0，0.4.1</td></tr><tr><td>10.0</td><td>1.2.0，1.1.0，1.0.1 ,1.0.0</td></tr><tr><td>10.1</td><td>1.7.1，1.7.0，1.6.0，1.5.1，1.5.0， 1.4.0，1.3.0</td></tr><tr><td>10.2</td><td>1.7.1，1.7.0，1.6.0，1.5.1，1.5.0</td></tr><tr><td>11.0</td><td>1.7.1，1.7.0</td></tr><tr><td>11.1</td><td>1.9.0，1.8.0</td></tr></tbody></table></div><p><a href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA</a>往期版本选择网页。<br>简单的安装后，不安装显卡驱动就行。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nvcc -V&#x2F;&#x2F;先试试是不是直接就能用，感觉在安装的时候可能就默认配置了，如果没有</span><br><span class="line">vim ~.bashrc&#x2F;&#x2F;打开环境变量配置</span><br><span class="line">export CUDA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-x.x</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-x.x&#x2F;lib64:$LD_LIBRARY_PATH</span><br><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-x.x&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure><h2 id="CUDA-Toolkit安装"><a href="#CUDA-Toolkit安装" class="headerlink" title="CUDA Toolkit安装"></a>CUDA Toolkit安装</h2><p>因为<a href="https://developer.nvidia.com/rdp/cudnn-archive">下载网页</a>中给出的都是直接的对应版本的，所以只需要根据安装的cuda版本来选择。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf cudnn-10.1-linux-x64-v8.0.4.30.tgz-C &#x2F;PATH&#x2F;&#x2F; 解压</span><br><span class="line">sudo cp cuda&#x2F;include&#x2F;cudnn.h &#x2F;usr&#x2F;local&#x2F;cuda-X.X&#x2F;include&#x2F;</span><br><span class="line">sudo cp cuda&#x2F;lib64&#x2F;libcudnn* &#x2F;usr&#x2F;local&#x2F;cuda-X.X&#x2F;lib64&#x2F;</span><br><span class="line">sudo chmod a+r &#x2F;usr&#x2F;local&#x2F;cuda-X.X&#x2F;include&#x2F;cudnn.h</span><br><span class="line">sudo chmod a+r &#x2F;usr&#x2F;local&#x2F;cuda-X.X&#x2F;lib64&#x2F;libcudnn*</span><br></pre></td></tr></table></figure><p>新的里面，就是没有把版本号搞进去，所以</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp cuda&#x2F;include&#x2F;cudnn_version.h &#x2F;usr&#x2F;local&#x2F;cuda-X.X&#x2F;include&#x2F;</span><br></pre></td></tr></table></figure><p>然后通过此句验证</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;usr&#x2F;local&#x2F;cuda-X.X&#x2F;include&#x2F;cudnn_version.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;CUDA对应显卡驱动版本&quot;&gt;&lt;a href=&quot;#CUDA对应显卡驱动版本&quot; class=&quot;headerlink&quot; title=&quot;CUDA对应显卡驱动版本&quot;&gt;&lt;/a&gt;CUDA对应显卡驱动版本&lt;/h2&gt;&lt;p&gt;这个不重要，显卡驱动是向下兼容的。所以就，有机会就更新到最新</summary>
+      
+    
+    
+    
+    <category term="基本操作" scheme="https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>SimSiam的炼丹之旅</title>
@@ -462,29 +484,6 @@
     
     
     <category term="环境变量" scheme="https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【数据结构】串</title>
-    <link href="https://luoyongjia.github.io/2021/03/18/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E4%B8%B2/"/>
-    <id>https://luoyongjia.github.io/2021/03/18/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91%E4%B8%B2/</id>
-    <published>2021-03-18T02:08:37.000Z</published>
-    <updated>2021-03-18T04:01:39.258Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>计算机上非数值的处理对象。</p><h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p><strong>Copy(&amp;T, s)</strong> 就是copy操作，将一个地址里的东西取出来，存到新的字符串里面。<br><strong>length()</strong> 字符串的长度。<br><strong>Index(S, T)</strong> 定位t的初始位置。</p><h1 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h1><h2 id="定长顺序存储"><a href="#定长顺序存储" class="headerlink" title="定长顺序存储"></a>定长顺序存储</h2><p>顺序存储结构，分配一个定长的空间存储字符串。</p><h2 id="堆分配存储"><a href="#堆分配存储" class="headerlink" title="堆分配存储"></a>堆分配存储</h2><p>是在程序运行的过程中，动态分配形成的。当程序请求一块空间之后，在堆空间中分配一块区域。不成功返回null。</p><h2 id="块链存储"><a href="#块链存储" class="headerlink" title="块链存储"></a>块链存储</h2><p>类似于链式存储。多个节点，每个节点里面放几个字符。空的用“#”补全。</p><h1 id="字符串算法"><a href="#字符串算法" class="headerlink" title="字符串算法"></a>字符串算法</h1><h2 id="暴力匹配"><a href="#暴力匹配" class="headerlink" title="暴力匹配"></a>暴力匹配</h2><p>老暴力方法了，就两个字符串硬比，没什么技术水平。</p><h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>这才是重中之重！<br>为什么有这种方法呢，因为在暴力算法中重复了大量的比较，这种方法能够减少这种重复的出现。</p><h3 id="先来一个文字描述"><a href="#先来一个文字描述" class="headerlink" title="先来一个文字描述"></a>先来一个文字描述</h3><blockquote><p><strong>什么是next数组</strong><br>next数组就是匹配字串的每一位所在的最长前后缀相同的长度。<br><br><strong>如何构建呢？<br></strong></p><ol><li>我使用的是动态规划的方法。前后两个指针。前指针指向后缀的最后一个字符，后指针指向后缀的最后一个字符。比较这两个指针存的内容，<br></li><li>当前指针为0，且前指针与后指针内容不相等的时候，后指针所指下标next数组存为0<br></li><li>相同则后指针所在位置等于前指针前一位next数组存的数字+1<br></li><li>不同则将前指针移动到前指针前一位next数组存的数字地址再做比较，直到前指针到0。<br><br><strong>如何匹配<br></strong></li><li>正常匹配<br></li><li>当遇到两个字符不相等的时候，将母串与子串的next数组对应的前一位的内容做对比，相当于将子串移动到前一next位。这样就减少了前一next之前的那些重复的比较。</li></ol></blockquote><h3 id="再来一个代码"><a href="#再来一个代码" class="headerlink" title="再来一个代码"></a>再来一个代码</h3><p>代码再说吧，有时间再写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;计算机上非数值的处理对象。&lt;/p&gt;
-&lt;h1 id=&quot;基本操作&quot;&gt;&lt;a href=&quot;#基本操作&quot; class=&quot;headerlink&quot; tit</summary>
-      
-    
-    
-    
-    <category term="数据结构" scheme="https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
     
   </entry>
   
