@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2021-11-01T13:26:15.040Z</updated>
+  <updated>2021-11-01T14:19:49.666Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【env】服务器远程连接（密钥连接）</title>
+    <link href="https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"/>
+    <id>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</id>
+    <published>2021-11-01T14:05:16.000Z</published>
+    <updated>2021-11-01T14:19:49.666Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于直接连接集群出了一点问题，所以，这里想出了用密钥连接的方法。</p><p>首先，看看自己有没有密钥。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br></pre></td></tr></table></figure><p>有<code>id_rsa.pub</code>的时候，就不要乱重新生成！我就导致之后gayhub的公钥需要重新上传！！血泪教训</p><p>如果没有，就生成，上传到服务器的<code>～/.ssh</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv film &#x2F;Path</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure><p>调整权限</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 authorized_keys</span><br><span class="line">chmod 700 ~&#x2F;.ssh</span><br></pre></td></tr></table></figure><p>设置ssh配置文件<code>/etc/ssh/sshd_config</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">PermitRootLogin yes&#x2F;&#x2F;root登陆保留</span><br></pre></td></tr></table></figure><p>然后重启</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><p><a href="https://blog.heguangyu.net/ubuntu%E4%BD%BF%E7%94%A8rsa%E5%AF%86%E9%92%A5%E5%AF%B9%E7%99%BB%E9%99%86ssh/">Ubuntu使用RSA密钥对登陆SSH</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;由于直接连接集群出了一点问题，所以，这里想出了用密钥连接的方法。&lt;/p&gt;
+&lt;p&gt;首先，看看自己有没有密钥。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=</summary>
+      
+    
+    
+    
+    <category term="基本操作" scheme="https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>【env】CUDA, pyTorch，驱动版本对应</title>
@@ -462,28 +486,6 @@
     
     
     <category term="Nas" scheme="https://luoyongjia.github.io/tags/Nas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac配置Anaconda环境变量</title>
-    <link href="https://luoyongjia.github.io/2021/03/26/Mac%E9%85%8D%E7%BD%AEAnaconda%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    <id>https://luoyongjia.github.io/2021/03/26/Mac%E9%85%8D%E7%BD%AEAnaconda%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</id>
-    <published>2021-03-26T05:15:34.000Z</published>
-    <updated>2021-03-26T05:23:46.212Z</updated>
-    
-    <content type="html"><![CDATA[<p>因为好像就是这两年，macOS的系统大更新，把默认shell的bash改成了zsh。导致以前的一些配置环境变量的东西都没法儿用了。今天要开始看python的代码了，所以想着来把anaconda配一下。真的太久没用了，导致版本都……所以需要在终端配置一下，居然发现我的终端的conda, not found了。就来解决了一下。</p><h2 id="机器背景"><a href="#机器背景" class="headerlink" title="机器背景"></a>机器背景</h2><p>mbp2018, bash。</p><p>会发现，原来的<code>bash_profile</code>都不管用了<br>而且，anaconda的默认路径也更改了。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>anaconda的路径: <code>/Users/USERNAME/opt/anaconda3/bin</code></p><p>bash配置文件路径：<code>/private/etc/bashrc</code></p><p>就，强制在bashrc文件里面加<code>export PATH=&quot;/Users/USERNAME/opt/anaconda3/bin:$PATH&quot;</code><br>即可。</p><p>暂时还没出现问题，后续再说吧。</p><h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr><p><a href="https://zhuanlan.zhihu.com/p/121086727">Mac 没有找到 conda命令</a><br><a href="https://discussionschinese.apple.com/thread/251633370">mac设置全局环境变量</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;因为好像就是这两年，macOS的系统大更新，把默认shell的bash改成了zsh。导致以前的一些配置环境变量的东西都没法儿用了。今天要开始看python的代码了，所以想着来把anaconda配一下。真的太久没用了，导致版本都……所以需要在终端配置一下，居然发现我的终端的c</summary>
-      
-    
-    
-    
-    
-    <category term="环境变量" scheme="https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
     
   </entry>
   

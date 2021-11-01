@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</loc>
+    
+    <lastmod>2021-11-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91CUDA-pyTorch%EF%BC%8C%E9%A9%B1%E5%8A%A8%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/</loc>
     
     <lastmod>2021-11-01</lastmod>
@@ -289,14 +296,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/repository/index.html</loc>
+    <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/index.html</loc>
+    <loc>https://luoyongjia.github.io/repository/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -317,14 +324,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/404.html</loc>
+    <loc>https://luoyongjia.github.io/books/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/books/index.html</loc>
+    <loc>https://luoyongjia.github.io/404.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -382,14 +389,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
