@@ -289,13 +289,6 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/categories/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://luoyongjia.github.io/repository/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
@@ -303,7 +296,7 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/index.html</loc>
+    <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -311,6 +304,13 @@
   
   <url>
     <loc>https://luoyongjia.github.io/links/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/tags/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -382,14 +382,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -417,14 +417,14 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/leetcode/</loc>
+    <loc>https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://luoyongjia.github.io/tags/leetcode/</loc>
     <lastmod>2021-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
