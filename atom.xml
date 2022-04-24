@@ -6,7 +6,7 @@
   <link href="https://luoyongjia.github.io/atom.xml" rel="self"/>
   
   <link href="https://luoyongjia.github.io/"/>
-  <updated>2022-04-23T10:43:11.626Z</updated>
+  <updated>2022-04-24T15:31:28.741Z</updated>
   <id>https://luoyongjia.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://luoyongjia.github.io/2022/04/23/Ubuntu-%E6%89%93%E5%8C%85conda%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E5%AE%89%E8%A3%85/"/>
     <id>https://luoyongjia.github.io/2022/04/23/Ubuntu-%E6%89%93%E5%8C%85conda%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E5%AE%89%E8%A3%85/</id>
     <published>2022-04-23T10:20:25.000Z</published>
-    <updated>2022-04-23T10:43:11.626Z</updated>
+    <updated>2022-04-24T15:31:28.741Z</updated>
     
-    <content type="html"><![CDATA[<p>由于现在这个环境配起来比较复杂吧，所以就查了这么一个方法来保存环境。还有一个好处就是集群die了的时候能够快速恢复环境。</p><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>安装conda pack</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install conda-pack</span><br></pre></td></tr></table></figure><p>打包(这里打包到的路径就是当前路径)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda pack -n env_name -o pack_name.tar.gz</span><br></pre></td></tr></table></figure><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>先进入conda的env路径<code>/root/anaconda3/env</code>，创建想要的新env的名称的文件夹，然后存的打包文件传过来，解压，就ok！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root&#x2F;anaconda3&#x2F;env</span><br><span class="line">mkdir new_env</span><br><span class="line">tar -xzf pack_name.tar.gz -C .&#x2F;# 这里-C后面的.&#x2F;也可以变成绝对路径&#x2F;root&#x2F;anaconda3&#x2F;env&#x2F;new_env&#x2F;</span><br><span class="line"></span><br><span class="line">conda env list# 环境中就能出现new_env辣</span><br></pre></td></tr></table></figure><hr><p>是不是很简单，还免去了装包的困境！定时更新这个打包的env就行啦</p>]]></content>
+    <content type="html"><![CDATA[<p>由于现在这个环境配起来比较复杂吧，所以就查了这么一个方法来保存环境。还有一个好处就是集群die了的时候能够快速恢复环境。</p><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>安装conda pack</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install conda-pack</span><br></pre></td></tr></table></figure><p>打包(这里打包到的路径就是当前路径)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda pack -n env_name -o pack_name.tar.gz</span><br></pre></td></tr></table></figure><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>先进入conda的env路径<code>/root/anaconda3/env</code>，创建想要的新env的名称的文件夹，然后存的打包文件传过来，解压，就ok！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;root&#x2F;anaconda3&#x2F;env</span><br><span class="line">mkdir new_env</span><br><span class="line">tar -xzf pack_name.tar.gz -C .&#x2F;# 这里-C后面的.&#x2F;也可以变成绝对路径&#x2F;root&#x2F;anaconda3&#x2F;env&#x2F;new_env&#x2F;</span><br><span class="line"></span><br><span class="line">conda env list# 环境中就能出现new_env辣</span><br></pre></td></tr></table></figure><h2 id="指定版本pip"><a href="#指定版本pip" class="headerlink" title="指定版本pip"></a>指定版本pip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3.6 -m pip install &lt;package_name&gt;</span><br></pre></td></tr></table></figure><hr><p>是不是很简单，还免去了装包的困境！定时更新这个打包的env就行啦</p>]]></content>
     
     
       
