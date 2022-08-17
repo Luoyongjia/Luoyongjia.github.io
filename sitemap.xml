@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luoyongjia.github.io/2022/08/17/%E3%80%90env%E3%80%91ubuntu20-04%E4%B8%8Ecuda11-04%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%97%B4%E4%B8%8D%E5%BE%97%E4%B8%8D%E8%AF%B4%E7%9A%84%E5%9D%91/</loc>
+    
+    <lastmod>2022-08-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91CUDA-pyTorch%EF%BC%8C%E9%A9%B1%E5%8A%A8%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/</loc>
+    
+    <lastmod>2022-08-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://luoyongjia.github.io/2022/05/19/%E3%80%90torch%E3%80%911-6-%E7%89%88%E6%9C%AC%E5%AD%98%E5%82%A8%E8%8A%82%E7%82%B9%E5%8F%82%E6%95%B0zip/</loc>
     
     <lastmod>2022-05-18</lastmod>
@@ -24,13 +38,6 @@
   
   <url>
     <loc>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</loc>
-    
-    <lastmod>2021-11-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/2021/11/01/%E3%80%90env%E3%80%91CUDA-pyTorch%EF%BC%8C%E9%A9%B1%E5%8A%A8%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94/</loc>
     
     <lastmod>2021-11-01</lastmod>
     
@@ -310,13 +317,6 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/links/index.html</loc>
-    
-    <lastmod>2020-12-29</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://luoyongjia.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
@@ -324,7 +324,7 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/tags/index.html</loc>
+    <loc>https://luoyongjia.github.io/links/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -338,7 +338,7 @@
   </url>
   
   <url>
-    <loc>https://luoyongjia.github.io/404.html</loc>
+    <loc>https://luoyongjia.github.io/tags/index.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -346,6 +346,13 @@
   
   <url>
     <loc>https://luoyongjia.github.io/books/index.html</loc>
+    
+    <lastmod>2020-12-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/404.html</loc>
     
     <lastmod>2020-12-29</lastmod>
     
@@ -361,7 +368,7 @@
 
   <url>
     <loc>https://luoyongjia.github.io/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -369,91 +376,91 @@
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Colab/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/GPU/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Linux/</loc>
-    <lastmod>2022-05-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luoyongjia.github.io/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</loc>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/hexo/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/latex/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E5%8F%A3%E8%AF%AD/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/leetcode/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/tags/Nas/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -462,63 +469,63 @@
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/Java/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E7%82%BC%E4%B8%B9/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/TOEFL/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://luoyongjia.github.io/categories/Research/</loc>
-    <lastmod>2022-05-18</lastmod>
+    <lastmod>2022-08-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
