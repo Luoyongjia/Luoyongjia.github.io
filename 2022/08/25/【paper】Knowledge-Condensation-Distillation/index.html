@@ -17,27 +17,22 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>【ML】Gradient Descent | Gugugu&#39;s blog</title>
-  <meta name="description" content="李宏毅机器学习3-1笔记。 是什么是一种得到loss最优值的一种方法。   随机取一点 求这一点的梯度 根据梯度以及learning rate来更新参数从而得到最小的loss&#x3D;&#x3D;得到最佳的参数   为什么有效GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。  如何快速地取到这个局部最优呢？这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取： h(x) \approx h">
+  <title>【paper】Knowledge Condensation Distillation | Gugugu&#39;s blog</title>
+  <meta name="description" content="ECCV 2022 知识蒸馏是一个发展了有一段时间的技术，其主要是将大型的网络学到的知识继承到规模更小，更快的网络上去。这与我们希望将场景流提取网络加速，以及大规模点云数据训练的需求不谋而合。所以这里选取了这方向的文章来详细读一下。 Overview本文主要的，提出了一种挑选训练样本的方法。通过图中可以看到，使用Student网络对于样本的评分来挑选这个样本是否有效。对于相对无效和完全无效的样本进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【ML】Gradient Descent">
-<meta property="og:url" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/index.html">
+<meta property="og:title" content="【paper】Knowledge Condensation Distillation">
+<meta property="og:url" content="https://luoyongjia.github.io/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/index.html">
 <meta property="og:site_name" content="Gugugu&#39;s blog">
-<meta property="og:description" content="李宏毅机器学习3-1笔记。 是什么是一种得到loss最优值的一种方法。   随机取一点 求这一点的梯度 根据梯度以及learning rate来更新参数从而得到最小的loss&#x3D;&#x3D;得到最佳的参数   为什么有效GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。  如何快速地取到这个局部最优呢？这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取： h(x) \approx h">
+<meta property="og:description" content="ECCV 2022 知识蒸馏是一个发展了有一段时间的技术，其主要是将大型的网络学到的知识继承到规模更小，更快的网络上去。这与我们希望将场景流提取网络加速，以及大规模点云数据训练的需求不谋而合。所以这里选取了这方向的文章来详细读一下。 Overview本文主要的，提出了一种挑选训练样本的方法。通过图中可以看到，使用Student网络对于样本的评分来挑选这个样本是否有效。对于相对无效和完全无效的样本进">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/2.png">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/4.png">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/3.png">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/5.png">
-<meta property="og:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/6.png">
-<meta property="article:published_time" content="2021-04-12T13:39:07.000Z">
-<meta property="article:modified_time" content="2021-04-19T07:31:51.687Z">
+<meta property="og:image" content="https://luoyongjia.github.io/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/networkstructure.png">
+<meta property="article:published_time" content="2022-08-24T16:49:51.000Z">
+<meta property="article:modified_time" content="2022-08-24T17:37:00.546Z">
 <meta property="article:author" content="罗咏佳">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png">
+<meta name="twitter:image" content="https://luoyongjia.github.io/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/networkstructure.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/index.html">
+  <link rel="canonical" href="https://luoyongjia.github.io/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Gugugu&#39;s blog" type="application/atom+xml">
   
@@ -328,14 +323,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-【ML】Gradient-Descent" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-【paper】Knowledge-Condensation-Distillation" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      【ML】Gradient Descent
+      【paper】Knowledge Condensation Distillation
     </h1>
   
 
@@ -343,61 +338,46 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/" class="article-date">
-	  <time datetime="2021-04-12T13:39:07.000Z" itemprop="datePublished">2021-04-12</time>
+	<a href="/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/" class="article-date">
+	  <time datetime="2022-08-24T16:49:51.000Z" itemprop="datePublished">2022-08-25</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">深度学习基础</a>
+    <a class="article-category-link" href="/categories/Research/">Research</a>
   </span>
 
         
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>李宏毅机器学习3-1笔记。</p>
-<h1 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h1><p>是一种得到loss最优值的一种方法。</p>
-<blockquote>
-<ol>
-<li>随机取一点</li>
-<li>求这一点的梯度</li>
-<li>根据梯度以及learning rate来更新参数<br><br>从而得到最小的loss==得到最佳的参数</li>
-</ol>
-</blockquote>
-<h1 id="为什么有效"><a href="#为什么有效" class="headerlink" title="为什么有效"></a>为什么有效</h1><p>GD其实是通过取局部loss下降最多的点，来决定参数的变化方向的。</p>
-<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/1.png" alt="f1"></p>
-<h2 id="如何快速地取到这个局部最优呢？"><a href="#如何快速地取到这个局部最优呢？" class="headerlink" title="如何快速地取到这个局部最优呢？"></a>如何快速地取到这个局部最优呢？</h2><p>这时候就引入了泰勒公式，将一个复杂的函数在一个很小的范围内取：</p>
-<script type="math/tex; mode=display">h(x) \approx h(x_{0}) + h'(x_{0})(x - x_{0})</script><p>假设u、v为loss对于两个参数的偏微分，则：</p>
-<script type="math/tex; mode=display">L(\theta) \approx s + u(\theta_{1} - a) + v(\theta_{2} - b)</script><p>想要<script type="math/tex">L(\theta)</script>取得最小值，则如图所示<script type="math/tex">(\Delta \theta_{1}, \Delta \theta_{2})</script>取(u, v)反方向，最大值。所以Gradient Descent的过程是<script type="math/tex">\theta^{1}\gets \theta ^{0 } - \eta \Delta L</script></p>
-<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/2.png" alt="f2"></p>
-<h1 id="Gradient-Descent的升级版"><a href="#Gradient-Descent的升级版" class="headerlink" title="Gradient Descent的升级版"></a>Gradient Descent的升级版</h1><h2 id="基于Learning-Rate"><a href="#基于Learning-Rate" class="headerlink" title="基于Learning Rate"></a>基于Learning Rate</h2><p>Learning rate 这个东西，太大很可能得不到最优值，太小呢效率又低，所以选择一个正确的learning rate是十分重要的。</p>
-<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/4.png" alt="f4"><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/3.png" alt="f3"></p>
-<h3 id="Adaptive-Learning-Rate"><a href="#Adaptive-Learning-Rate" class="headerlink" title="Adaptive Learning Rate"></a>Adaptive Learning Rate</h3><p>这是基于随着梯度下降的进行，当前点距离最优解是越来越近的理论的。随着梯度下降的进行，learning rate随之减小，比如说像这样的learning rate：</p>
-<script type="math/tex; mode=display">\eta^{t} = \frac{\eta}{\sqrt{n + 1}}</script><h4 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h4><script type="math/tex; mode=display">
-\begin{equation*}
-\begin{aligned}
-&w^{t+1} \gets w^{t} - \frac{n^{t}}{\sigma^{t}}\\
-&\sigma^{t} = \sqrt{\frac{1}{t + 1}\sum_{i = 0}^{t}(g^{i})^{2}}\\
-& \eta^{t} = \frac{\eta}{\sqrt{n + 1}}\\
-\end{aligned}
-\end{equation*}</script><p>其中<script type="math/tex">\sigma^{t}</script>是之前这个<script type="math/tex">w</script>的所有偏微分值的均方根。这样子当t较大的时候，<script type="math/tex">\sigma^{t}</script>就能十分接近二次微分从而做到对于不同的<script type="math/tex">w</script>有一个将不同参数的分布进行类似归一化的处理。使得不同的参数的取值距离最优点距离的估算都是一个单位的。</p>
-<p>对于上述算式进行化简，得到：</p>
-<script type="math/tex; mode=display">w^{t+1} \gets w^{t} - \frac{\eta}{\sqrt{\sum_{i = 0}^{t} (g^{i})^{2}}}</script><h2 id="Stochastic-Gradient-Descent"><a href="#Stochastic-Gradient-Descent" class="headerlink" title="Stochastic Gradient Descent"></a>Stochastic Gradient Descent</h2><p>传统的GD是对于所有的训练数据计算梯度，然后更新系数。SGD是从训练数据中随机的抽取几个数据来算梯度，立马更新。显然这种方法更加快，效果也不错。</p>
-<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/5.png" alt="f5"></p>
-<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><p>当不同参数传入的特征值单位相差很大的时候，不同参数对于结果的影响就会出现偏差，这样是非常不好的，不仅仅会影响到参数的更新，也会影响到训练的效率以及结果。所以需要将不同的特征值进行归一化处理。</p>
-<p><img src="/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/6.png" alt="f6"></p>
-<p>将特征的值，通过：</p>
-<script type="math/tex; mode=display">x_{i}^{r} \gets \frac{x_{i}^{r} - m_{i}}{\sigma^{2}}</script><p>其中<script type="math/tex">m_{i}</script>是所有<script type="math/tex">x_{i}</script>这个特征值的平均值，<script type="math/tex">\sigma^{2}</script>是方差。这样处理之后，此特征的分布平均值为0，方差为1，对于所有的feature都进行这样的处理了之后，就服从相同的分布了。</p>
-<h6 id="refer"><a href="#refer" class="headerlink" title="refer"></a>refer</h6><hr>
-<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=yKKNr-QKz2Q&amp;feature=youtu.be">ML Lecture 3-1: Gradient Descent</a></p>
+        <p><strong>ECCV 2022</strong></p>
+<p>知识蒸馏是一个发展了有一段时间的技术，其主要是将大型的网络学到的知识继承到规模更小，更快的网络上去。这与我们希望将场景流提取网络加速，以及大规模点云数据训练的需求不谋而合。所以这里选取了这方向的文章来详细读一下。</p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><img src="/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/networkstructure.png" width="50%"><br>本文主要的，提出了一种挑选训练样本的方法。通过图中可以看到，使用Student网络对于样本的评分来挑选这个样本是否有效。对于相对无效和完全无效的样本进行了一个调整，使其对于Student网络的影响不那么大。</p>
+<ul>
+<li>在以往的蒸馏学习方法中添加了样本有效的分布</li>
+<li>评分方法</li>
+<li>本文对于为何提出此种策略的描述</li>
+</ul>
+<h2 id="评分方法"><a href="#评分方法" class="headerlink" title="评分方法"></a>评分方法</h2><p>对于有效的训练样本，通常需要更多的训练（见[24]）</p>
+<p>Prediction Entropy</p>
+<script type="math/tex; mode=display">V(x) = -\sum_{c\in C}P_{s}(x, c)\log P_s(x, c)</script><p>where <script type="math/tex">P_s</script>means the output of student network, and then they further ranked the prediction entropy and conduct a probability about knowkedge value:</p>
+<script type="math/tex; mode=display">p_{R_V}(y; x, \theta) = 1 - \frac{R_V(x)}{|x|}</script><h3 id="OGVR"><a href="#OGVR" class="headerlink" title="OGVR"></a>OGVR</h3><p>评分并不是单一化的，而是通过了以往多期的评分组合而成</p>
+<script type="math/tex; mode=display">V^{F(x)}(x) = \frac{F(x) - 1}{F(x)} \times V^{F(x) - 1} + \frac{1}{F(x)} V(x)</script><h3 id="VAKS"><a href="#VAKS" class="headerlink" title="VAKS"></a>VAKS</h3><p>根据评分方法将样本分为了<script type="math/tex">K_1</script>(有效部分), <script type="math/tex">K_0</script>(无效部分)，但也没有完全抛弃<script type="math/tex">K_0</script>部分。这里将<script type="math/tex">K_1</script>分为<script type="math/tex">K_1^H</script>和<script type="math/tex">K_1^L</script>, 其中<script type="math/tex">K_1^L</script>与<script type="math/tex">K_0</script>结合并根据其有效值分配占样本比例进行组合，从而每一部分的样本都有被用到。</p>
+<p>其他部分没有细看，以上。</p>
+<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><ul>
+<li>是否可以将基于RNN的方法通过KD到PointPWC上的结构上来，还是需要先搞清楚RNN方法的特点。感觉对于RNN方法并不够了解但是近年来有效的方法大多基于RNN。</li>
+<li>而将分类的KD方法用到Point数据上另一个是样本本身特性的不一样，所以对于样本的选择方法（评分方法）应该进行一个适配。是使用评分方法来做一个下采样，还是说对于一整个sample进行筛选。</li>
+<li>是否可以使用本文中的评分方法对于复杂样本、简单样本的一个选取。</li>
+<li>以及，基本的KD结构其实通过本篇文章并不能有一个清晰的了解，需要单独对于KD结构进行了解。</li>
+</ul>
 
       
     </div>
@@ -407,7 +387,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/" title="【ML】Gradient Descent" target="_blank" rel="external">https://luoyongjia.github.io/2021/04/12/%E3%80%90ML%E3%80%91Gradient-Descent/</a>
+      <a href="https://luoyongjia.github.io/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/" title="【paper】Knowledge Condensation Distillation" target="_blank" rel="external">https://luoyongjia.github.io/2022/08/25/%E3%80%90paper%E3%80%91Knowledge-Condensation-Distillation/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -453,13 +433,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2021/04/18/%E3%80%90ML%E3%80%91Classification-and-Logistic-Regression/" title="【ML】Classification and Logistic Regression"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2021/04/10/%E3%80%90ML%E3%80%91Error/" title="【ML】Error"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2022/08/17/%E3%80%90env%E3%80%91ubuntu20-04%E4%B8%8Ecuda11-04%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%97%B4%E4%B8%8D%E5%BE%97%E4%B8%8D%E8%AF%B4%E7%9A%84%E5%9D%91/" title="【env】ubuntu20.04与cuda11.04集群之间不得不说的坑"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
